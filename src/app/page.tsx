@@ -56,6 +56,7 @@ export default function Home() {
                   src={
                     data.status == "loss" ? "/ms/emoji.game.over.png" : "/ms/emoji.game.start.png"
                   }
+                  priority
                 />
               </button>
               <Timer />

@@ -20,7 +20,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
           ></div>
         );
       case "flagged":
-        return <Image alt="flag" src={"/ms/cell.flag.svg"} width={24} height={24} />;
+        return <Image alt="flag" src={"/ms/cell.flag.svg"} width={24} height={24} priority />;
       case "revealed":
         if (cell.mineCount === -1) {
           return (
@@ -31,6 +31,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
                 src={"/ms/bomb.svg"}
                 width={24}
                 height={24}
+                priority
               />
             </div>
           );
@@ -43,21 +44,24 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
               src={`/ms/count/${cell.mineCount}.svg`}
               width={24}
               height={24}
+              priority
             />
           </div>
         ) : (
-          <Image alt="flag" src={"/ms/cell.clicked.svg"} width={24} height={24} />
+          <Image alt="flag" src={"/ms/cell.clicked.svg"} width={24} height={24} priority />
         );
       case "detonated":
         return (
           <div className={`w-full h-full bg-[url(/ms/cell.click.svg)] pl-0.5 pt-0.5`}>
             <div className="bg-red-600">
-              <Image alt="bomb" src={"/ms/bomb.svg"} width={24} height={24} />
+              <Image alt="bomb" src={"/ms/bomb.svg"} width={24} height={24} priority />
             </div>
           </div>
         );
       default:
-        return <Image alt="default cell" src={"./cell.default.svg"} width={24} height={24} />;
+        return (
+          <Image alt="default cell" priority src={"./cell.default.svg"} width={24} height={24} />
+        );
     }
   };
   const cursorPointer = cell.status == "hidden" || cell.status == "flagged";
