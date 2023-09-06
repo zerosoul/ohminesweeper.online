@@ -1,0 +1,24 @@
+diff --git a/node_modules/minesweeper-redux/package.json b/node_modules/minesweeper-redux/package.json
+index 0b19930..f98bf89 100644
+--- a/node_modules/minesweeper-redux/package.json
++++ b/node_modules/minesweeper-redux/package.json
+@@ -5,11 +5,16 @@
+   "type": "module",
+   "main": "./dist/minesweeper-redux.umd.cjs",
+   "module": "./dist/minesweeper-redux.js",
+-  "types": "./dist/index.d.ts",
+   "exports": {
+     ".": {
+-      "import": "./dist/minesweeper-redux.js",
+-      "require": "./dist/minesweeper-redux.umd.cjs"
++      "import": {
++        "types": "./dist/index.d.ts",
++        "default": "./dist/minesweeper-redux.js"
++      },
++      "require": {
++        "types": "./dist/index.d.ts",
++        "default": "./dist/minesweeper-redux.umd.cjs"
++      }
+     }
+   },
+   "files": [
