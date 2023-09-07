@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-button {
-  background-color: unset;
-}
 * {
   user-select: none;
   -webkit-user-drag: none;
