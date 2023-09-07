@@ -1,0 +1,1 @@
+Play the classic minesweeper in beginner, intermediate, and expert modes

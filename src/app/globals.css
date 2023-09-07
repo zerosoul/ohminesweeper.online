@@ -5,6 +5,10 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+select {
+  min-width: 100px;
+  /* padding-left: 20px !important; */
+}
 #root-modal {
   pointer-events: none;
   position: fixed;
@@ -22,7 +26,7 @@
 }
 
 #root-modal.mask > .wrapper {
-  background-color: rgba(2, 2, 2, 0.4);
+  background-color: rgba(2, 2, 2, 0.7);
   pointer-events: all;
   width: 100vw;
   height: 100vh;

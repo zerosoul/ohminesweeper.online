@@ -31,8 +31,12 @@ const Board = ({ startNewGame }: Props) => {
     />
   ));
   return (
-    <div className="flex flex-col border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
-      {status === "waiting" ? <button onClick={startNewGame}>Start Game</button> : rows}
+    <div className="flex flex-col min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
+      {status === "waiting" ? (
+        <div className="flex justify-center items-center">Loading...</div>
+      ) : (
+        rows
+      )}
     </div>
   );
 };

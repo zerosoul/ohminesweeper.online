@@ -17,6 +17,11 @@ export const difficulty: Record<Level, Difficulty> = {
     width: 30,
     height: 30,
     numMines: 180
+  },
+  custom: {
+    width: 50,
+    height: 20,
+    numMines: 189
   }
 };
 

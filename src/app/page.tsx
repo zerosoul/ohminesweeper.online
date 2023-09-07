@@ -13,24 +13,27 @@ import Language from "./components/select-lang";
 import { Level } from "@/types";
 import ScreenShoot from "./components/screenshoot";
 import SelectLevel from "./components/select-level";
+import { shallowEqual } from "react-redux";
 
 export default function Home() {
   console.log("diff", difficulties);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const [seconds, setSeconds] = useState(0);
   const [level, setLevel] = useState<Level>("beginner");
-  const data = useAppSelector((store) => store.minesweeper);
+  const status = useAppSelector((store) => store.minesweeper.status);
+  const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
+  const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
   const dispatch = useAppDispatch();
   const handleStart = () => {
     console.log("start");
-    if (data.timerStopper) {
-      data.timerStopper();
+    if (timerStopper) {
+      timerStopper();
       setSeconds(0);
     }
     // easy hard medium
     dispatch(
       startGame({
-        difficulty: difficulty[level],
+        difficulty: difficulty.custom,
         randSeed: Math.random(),
         timerCallback: handleTimer
       })
@@ -67,7 +70,7 @@ export default function Home() {
         <div className="window-body">
           <div className="status-bar !mb-4">
             <div className="status-bar-field !p-2 flex justify-between">
-              <Timer count={data.remainingFlags} />
+              <Timer count={remainingFlags} />
               <button
                 onClick={handleStart}
                 className="!w-10 min-w-[unset] h-10 !p-0 flex items-center justify-center"
@@ -76,9 +79,7 @@ export default function Home() {
                   width={36}
                   height={36}
                   alt="game status emoji"
-                  src={
-                    data.status == "loss" ? "/ms/emoji.game.over.png" : "/ms/emoji.game.start.png"
-                  }
+                  src={status == "loss" ? "/ms/emoji.game.over.png" : "/ms/emoji.game.start.png"}
                   priority
                 />
               </button>
@@ -90,14 +91,11 @@ export default function Home() {
 
         <div className="status-bar fsh">
           <p className="status-bar-field capitalize">Level: {level}</p>
-          {/* <p className="status-bar-field">
-            Flag: {data.numFlagged}/{data.numFlagged + data.remainingFlags}
-          </p> */}
-          <p className="status-bar-field capitalize">Status: {data.status}</p>
+          <p className="status-bar-field capitalize">Status: {status}</p>
         </div>
       </div>
       <div className="window flex items-center gap-1 m-2 fsh !px-2 !py-1">
-        <SelectLevel level={level} status={data.status} updateLevel={setLevel} />
+        <SelectLevel level={level} status={status} updateLevel={setLevel} />
         <DarkMode />
         <ScreenShoot />
         <Language />
