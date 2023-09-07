@@ -33,7 +33,7 @@ export default function Home() {
     // easy hard medium
     dispatch(
       startGame({
-        difficulty: difficulty.custom,
+        difficulty: difficulty[level],
         randSeed: Math.random(),
         timerCallback: handleTimer
       })
