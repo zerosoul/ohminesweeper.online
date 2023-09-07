@@ -7,7 +7,9 @@ import "98.css";
 
 export const metadata: Metadata = {
   title: "MineSweeper Game Online",
-  description: "classic minesweeper game online"
+  description: "classic minesweeper game online",
+  keywords:
+    "minesweeper, play minesweeper, game, minesweeper free, minesweeper game, classic minesweeper, minesweeper google, microsoft minesweeper, minesweeper mac, minesweeper windows, mine sweeper, how to play minesweeper"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
