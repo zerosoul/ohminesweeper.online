@@ -3,16 +3,14 @@ import type { Metadata } from "next";
 // import { Inter } from 'next/font/google'
 import ReduxProvider from "../redux/provider";
 import "98.css";
-import { AppleWebMeta } from "../config";
+import { PWAMeta } from "../config";
 import Footer from "./components/footer";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "MineSweeper Game Online",
-  description: "windows 98/2000 classic minesweeper game online",
+  ...PWAMeta,
   keywords:
     "minesweeper, play minesweeper, game, minesweeper free, minesweeper game, classic minesweeper, minesweeper google, microsoft minesweeper, minesweeper mac, minesweeper windows, mine sweeper, how to play minesweeper",
-  themeColor: "#c0c0c0",
   category: "game",
   alternates: {
     canonical: "https://ohminesweeper.online"
@@ -20,8 +18,7 @@ export const metadata: Metadata = {
     //   'en-US': 'https://ohminesweeper.online/en-US',
     //   'zh-CN': 'https://ohminesweeper.online/zh-CN',
     // },
-  },
-  appleWebApp: AppleWebMeta
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

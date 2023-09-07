@@ -23,7 +23,7 @@ const SelectLevel = ({ level, status, updateLevel }: Props) => {
       onChange={handleLevelChange}
     >
       {Object.keys(difficulty).map((key) => (
-        <option key={key} value={key} selected={level == key}>
+        <option key={key} value={key}>
           {`${key}`}
         </option>
       ))}

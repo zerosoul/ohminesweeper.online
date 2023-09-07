@@ -69,7 +69,6 @@ const ScreenShoot = (props: Props) => {
       >
         Screen Shoot
       </button>
-      ;
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { Difficulty } from "minesweeper-redux";
 import { Level } from "./types";
 import { AppleWebApp } from "next/dist/lib/metadata/types/extra-types";
+import { Metadata } from "next";
 
 export const difficulty: Record<Level, Difficulty> = {
   beginner: {
@@ -28,6 +29,7 @@ export const difficulty: Record<Level, Difficulty> = {
 export const AppleWebMeta: AppleWebApp = {
   title: "MineSweeper",
   statusBarStyle: "black-translucent",
+  capable: true,
   startupImage: [
     {
       url: "/splash/iphone5_splash.png",
@@ -71,4 +73,34 @@ export const AppleWebMeta: AppleWebApp = {
         "(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
     }
   ]
+};
+const title = {
+  default: "MineSweeper Game Online",
+  template: "%s | MineSweeper Game Online"
+};
+const description = "windows 98/2000 classic minesweeper game online";
+export const PWAMeta: Metadata = {
+  applicationName: "MineSweeper",
+  title,
+  description,
+  manifest: "/manifest.json",
+  appleWebApp: AppleWebMeta,
+  themeColor: "#c0c0c0",
+  formatDetection: {
+    telephone: false
+  },
+  openGraph: {
+    type: "website",
+    siteName: "MineSweeper",
+    title,
+    description
+  },
+  twitter: {
+    title,
+    description,
+    card: "summary_large_image",
+    site: "@minesweeper",
+    creator: "@wsygc",
+    images: ["/twitter-image.png"]
+  }
 };
