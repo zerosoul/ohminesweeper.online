@@ -5,10 +5,10 @@ type Props = {};
 const Language = (props: Props) => {
   return (
     <select>
-      <option>English</option>
-      <option>简体中文</option>
-      <option>正體中文</option>
-      <option>日本语</option>
+      <option>Language: English</option>
+      <option>Language: 简体中文</option>
+      <option>Language: 正體中文</option>
+      <option>Language: 日本语</option>
     </select>
   );
 };

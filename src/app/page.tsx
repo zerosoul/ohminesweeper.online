@@ -70,10 +70,13 @@ export default function Home() {
           <div className="status-bar !mb-4">
             <div className="status-bar-field !p-2 flex justify-between">
               <Timer count={data.remainingFlags} />
-              <button onClick={handleStart} className="!w-8 min-w-[unset] h-8 !p-0">
+              <button
+                onClick={handleStart}
+                className="!w-10 min-w-[unset] h-10 !p-0 flex items-center justify-center"
+              >
                 <Image
-                  width={30}
-                  height={30}
+                  width={36}
+                  height={36}
                   alt="game status emoji"
                   src={
                     data.status == "loss" ? "/ms/emoji.game.over.png" : "/ms/emoji.game.start.png"
@@ -89,22 +92,22 @@ export default function Home() {
 
         <div className="status-bar fsh">
           <p className="status-bar-field capitalize">Level: {level}</p>
-          <p className="status-bar-field">
-            Flag: {data.numFlagged}/{data.remainingFlags}
-          </p>
-          <p className="status-bar-field">Status: {data.status}</p>
+          {/* <p className="status-bar-field">
+            Flag: {data.numFlagged}/{data.numFlagged + data.remainingFlags}
+          </p> */}
+          <p className="status-bar-field capitalize">Status: {data.status}</p>
         </div>
       </div>
-      <div className="flex items-center gap-1 m-2 fsh">
+      <div className="window flex items-center gap-1 m-2 fsh !px-2 !py-1">
         <select value={level} className="capitalize" onChange={handleLevelChange}>
           {Object.keys(difficulty).map((key) => (
             <option key={key} value={key} selected={level == key}>
-              {key}
+              {`Level: ${key}`}
             </option>
           ))}
         </select>
         <DarkMode />
-        <button>Screen Shoot</button>
+        <button disabled={!(data.status == "loss" || data.status == "win")}>Screen Shoot</button>
         <Language />
       </div>
       {/* <Rank /> */}

@@ -17,6 +17,9 @@ const config: Config = {
       }
     }
   },
+  // corePlugins: {
+  //   preflight: false
+  // },
   plugins: [
     plugin(function ({ addVariant }) {
       addVariant("fullscreen", "&:fullscreen");
