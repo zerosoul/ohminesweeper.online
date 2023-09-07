@@ -15,13 +15,13 @@ export const difficulty: Record<Level, Difficulty> = {
   },
   expert: {
     width: 30,
-    height: 30,
-    numMines: 180
+    height: 16,
+    numMines: 99
   },
   custom: {
-    width: 50,
-    height: 20,
-    numMines: 189
+    width: 16,
+    height: 30,
+    numMines: 99
   }
 };
 

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description: "windows 98/2000 classic minesweeper game online",
   keywords:
     "minesweeper, play minesweeper, game, minesweeper free, minesweeper game, classic minesweeper, minesweeper google, microsoft minesweeper, minesweeper mac, minesweeper windows, mine sweeper, how to play minesweeper",
+  themeColor: "#c0c0c0",
   category: "game",
   alternates: {
     canonical: "https://ohminesweeper.online"

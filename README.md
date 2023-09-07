@@ -15,3 +15,9 @@
 - sound effect
 - high-score saved for each level
 - safe first click
+- pwa
+- mobile friendly
+
+[98.css](https://jdan.github.io/98.css)
+[minesweepergame.com](https://minesweepergame.com)
+[minesweeperonline.com](https://minesweeperonline.com)

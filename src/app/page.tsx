@@ -94,7 +94,7 @@ export default function Home() {
           <p className="status-bar-field capitalize">Status: {status}</p>
         </div>
       </div>
-      <div className="window flex items-center gap-1 m-2 fsh !px-2 !py-1">
+      <div className="window flex items-center gap-1 m-2 mt-28 fsh !px-2 !py-1">
         <SelectLevel level={level} status={status} updateLevel={setLevel} />
         <DarkMode />
         <ScreenShoot />

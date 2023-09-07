@@ -16,6 +16,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
         return (
           <div
             role="button"
+            aria-label="cell"
             className="w-full h-full bg-[url(/ms/cell.default.svg)] active:bg-[url(/ms/cell.click.svg)] hover:invert-[0.15] bg-contain transition-all"
           ></div>
         );
