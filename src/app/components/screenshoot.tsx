@@ -36,6 +36,13 @@ const ScreenShoot = (props: Props) => {
       return !prev;
     });
   };
+  const handleSave = () => {
+    var link = document.createElement("a");
+    link.download = `ms.${new Date().getTime()}.jpeg`;
+    link.href = screenURL;
+    link.click();
+  };
+
   return (
     <>
       {modalVisible ? (
@@ -47,8 +54,11 @@ const ScreenShoot = (props: Props) => {
                 <button aria-label="Close" onClick={toggleModalVisible}></button>
               </div>
             </div>
-            <div className="window-body">
+            <div className="window-body py-4  px-6 flex flex-col items-center gap-2">
               {screenURL ? <img src={screenURL} alt="screen shoot" /> : "Generating..."}
+              <button className="m-auto" onClick={handleSave}>
+                Save
+              </button>
             </div>
           </div>
         </Modal>
