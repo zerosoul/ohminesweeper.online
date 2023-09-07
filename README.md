@@ -21,3 +21,4 @@
 [98.css](https://jdan.github.io/98.css)
 [minesweepergame.com](https://minesweepergame.com)
 [minesweeperonline.com](https://minesweeperonline.com)
+[figma](<https://www.figma.com/file/HrRfanYL0SSWWJR4sCuaD5/Minesweeper-%E2%80%94-Interactive-Components-Demo-(Community)?node-id=1%3A63&mode=dev>)
