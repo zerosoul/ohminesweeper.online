@@ -1,11 +1,16 @@
+"use client";
 import { Theme } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { useTranslation } from "react-i18next";
 
 // type Props = {}
 
 const DarkMode = () => {
-  const [theme, setTheme] = useState<Theme>(localStorage.theme || "auto");
+  const [theme, setTheme] = useState<Theme | undefined>();
+  useEffect(() => {
+    setTheme(localStorage.theme || "auto");
+  }, []);
+
   const handleThemeToggle = (v: Theme) => {
     setTheme(v);
     localStorage.theme = v;
