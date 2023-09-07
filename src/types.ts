@@ -1,4 +1,5 @@
-import { Coordinate } from 'minesweeper-redux'
+import { Coordinate } from "minesweeper-redux";
 
-export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void
-export type Level = "beginner" | "intermediate" | "expert"
+export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
+export type Level = "beginner" | "intermediate" | "expert";
+export type Theme = "auto" | "dark" | "light";

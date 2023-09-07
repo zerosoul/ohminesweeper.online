@@ -4,7 +4,7 @@ type Props = {};
 
 const Rank = (props: Props) => {
   return (
-    <section className="window-body w-full">
+    <section className="window-body w-full fsh">
       <p>Rank:</p>
       <menu role="tablist">
         <li role="tab" aria-selected="true">
