@@ -4,11 +4,11 @@ type Props = {};
 
 const Language = (props: Props) => {
   return (
-    <select>
-      <option>Language: English</option>
-      <option>Language: 简体中文</option>
-      <option>Language: 正體中文</option>
-      <option>Language: 日本语</option>
+    <select className="dark:bg-gray-900 dark:text-gray-100">
+      <option>English</option>
+      <option>简体中文</option>
+      <option>正體中文</option>
+      <option>日本语</option>
     </select>
   );
 };

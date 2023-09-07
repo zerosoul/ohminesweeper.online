@@ -5,12 +5,14 @@ import { difficulties, startGame } from "minesweeper-redux";
 import Board from "./components/board";
 import Timer from "./components/timer";
 import { useEffect, useRef, useState } from "react";
-import Rank from "./components/rank";
+// import Rank from "./components/rank";
 import { difficulty } from "@/config";
 import Image from "next/image";
 import DarkMode from "./components/button-darkmode";
 import Language from "./components/select-lang";
 import { Level } from "@/types";
+import ScreenShoot from "./components/screenshoot";
+import SelectLevel from "./components/select-level";
 
 export default function Home() {
   console.log("diff", difficulties);
@@ -42,11 +44,7 @@ export default function Home() {
       boardRef.current.requestFullscreen();
     }
   };
-  const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("level", e.target.value);
 
-    setLevel(e.target.value as Level);
-  };
   useEffect(() => {
     handleStart();
   }, [level]);
@@ -54,12 +52,12 @@ export default function Home() {
   return (
     <main
       ref={boardRef}
-      className="flex flex-col transition-colors min-h-screen w-screen justify-center items-center [&_.fsh]:fullscreen:hidden dark:bg-gray-950"
+      className="flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
     >
-      <div className="window">
-        <section className="title-bar fsh">
-          <div className="title-bar-text flex gap-1 !items-center">
-            <div className="w-4 h-4 bg-[url(/ms/bomb.svg)] bg-contain"></div> Mine Sweeper Online!
+      <div id="SCREEN_SHOOT_AREA" className="window">
+        <section className="title-bar cursor-not-allowed fsh">
+          <div className="title-bar-text flex gap-2 !items-center">
+            <div className="w-3.5 h-3.5 bg-[url(/icon.png)] bg-contain"></div> Mine Sweeper Online!
           </div>
           <div className="title-bar-controls flex gap-1">
             <button aria-label="Help" title="Press F1 for help"></button>
@@ -99,15 +97,9 @@ export default function Home() {
         </div>
       </div>
       <div className="window flex items-center gap-1 m-2 fsh !px-2 !py-1">
-        <select value={level} className="capitalize" onChange={handleLevelChange}>
-          {Object.keys(difficulty).map((key) => (
-            <option key={key} value={key} selected={level == key}>
-              {`Level: ${key}`}
-            </option>
-          ))}
-        </select>
+        <SelectLevel level={level} status={data.status} updateLevel={setLevel} />
         <DarkMode />
-        <button disabled={!(data.status == "loss" || data.status == "win")}>Screen Shoot</button>
+        <ScreenShoot />
         <Language />
       </div>
       {/* <Rank /> */}

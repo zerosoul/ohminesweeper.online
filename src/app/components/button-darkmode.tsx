@@ -15,13 +15,13 @@ const DarkMode = () => {
     setTheme(v);
     localStorage.theme = v;
     // reset
-    document.body.classList.remove("dark");
-    document.body.classList.remove("light");
+    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove("light");
     if (v !== "auto") {
-      document.body.classList.add(v);
+      document.documentElement.classList.add(v);
     } else {
       const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      document.body.classList.add(isDark ? "dark" : "light");
+      document.documentElement.classList.add(isDark ? "dark" : "light");
     }
   };
   return (
