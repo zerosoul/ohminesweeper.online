@@ -104,3 +104,25 @@ export const PWAMeta: Metadata = {
     images: ["/twitter-image.png"]
   }
 };
+export const CellSizes = [
+  {
+    name: "small",
+    value: 26
+  },
+  {
+    name: "normal",
+    value: 30
+  },
+  {
+    name: "medium",
+    value: 34
+  },
+  {
+    name: "large",
+    value: 42
+  },
+  {
+    name: "huge",
+    value: 48
+  }
+];

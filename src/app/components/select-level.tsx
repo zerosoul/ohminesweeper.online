@@ -1,19 +1,21 @@
 import { difficulty } from "@/config";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { updateLevel } from "@/redux/slice/user.data";
 import { Level } from "@/types";
 import { GameStatus } from "minesweeper-redux";
 import React from "react";
 
 type Props = {
   status: GameStatus;
-  level: Level;
-  updateLevel: (level: Level) => void;
 };
 
-const SelectLevel = ({ level, status, updateLevel }: Props) => {
+const SelectLevel = ({ status }: Props) => {
+  const level = useAppSelector((store) => store.userData.level);
+  const dispatch = useAppDispatch();
   const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("level", e.target.value);
 
-    updateLevel(e.target.value as Level);
+    dispatch(updateLevel(e.target.value as Level));
   };
   return (
     <select

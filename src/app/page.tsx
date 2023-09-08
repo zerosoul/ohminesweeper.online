@@ -9,18 +9,19 @@ import { useEffect, useRef, useState } from "react";
 import { difficulty } from "@/config";
 import Image from "next/image";
 import DarkMode from "./components/button-darkmode";
-import Language from "./components/select-lang";
-import { Level } from "@/types";
+// import Language from "./components/select-lang";
 import ScreenShoot from "./components/screenshoot";
 import SelectLevel from "./components/select-level";
 import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
+import SelectZoom from "./components/select-cellsize";
+import clsx from "clsx";
 
 export default function Home() {
   console.log("diff", difficulties);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const [seconds, setSeconds] = useState(0);
-  const [level, setLevel] = useState<Level>("beginner");
+  const level = useAppSelector((store) => store.userData.level);
   const status = useAppSelector((store) => store.minesweeper.status);
   const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
   const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
@@ -52,14 +53,13 @@ export default function Home() {
   useEffect(() => {
     handleStart();
   }, [level]);
-
   return (
     <>
       <main
         ref={boardRef}
         className="flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
       >
-        <div id="SCREEN_SHOOT_AREA" className="window">
+        <div id="SCREEN_SHOOT_AREA" className={clsx("window transition-transform")}>
           <section className="title-bar cursor-not-allowed fsh">
             <div className="title-bar-text flex gap-2 !items-center">
               <div className="w-3.5 h-3.5 bg-[url(/icon.png)] bg-contain"></div> Mine Sweeper
@@ -97,10 +97,11 @@ export default function Home() {
             <p className="status-bar-field capitalize">Status: {status}</p>
           </div>
         </div>
-        <div className="window flex items-center gap-1 m-2 mt-28 fsh !px-2 !py-1">
-          <SelectLevel level={level} status={status} updateLevel={setLevel} />
+        <div className="window flex items-center gap-1 m-2 mt-8 fsh !px-2 !py-1">
+          <SelectLevel status={status} />
           <DarkMode />
           <ScreenShoot />
+          <SelectZoom />
           {/* <Language /> */}
         </div>
         {/* <Rank /> */}
