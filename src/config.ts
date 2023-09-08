@@ -19,7 +19,7 @@ export const difficulty: Record<Level, Difficulty> = {
     height: 16,
     numMines: 99
   },
-  custom: {
+  ["expert(vertical)"]: {
     width: 16,
     height: 30,
     numMines: 99

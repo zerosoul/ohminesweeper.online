@@ -1,7 +1,7 @@
 import { Coordinate, GameStatus, Minesweeper } from "minesweeper-redux";
 
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
-export type Level = "beginner" | "intermediate" | "expert" | "custom";
+export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
 export type Theme = "auto" | "dark" | "light";
 export type PlayRecord = {
   duration: number;
