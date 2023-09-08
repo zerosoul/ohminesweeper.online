@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import ReduxProvider from "../redux/provider";
 import "98.css";
 import { PWAMeta } from "../config";
-import Footer from "./components/footer";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
         <ReduxProvider>{children}</ReduxProvider>
         <div id="root-modal"></div>
-        <Footer />
       </body>
     </html>
   );
