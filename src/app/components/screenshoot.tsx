@@ -68,17 +68,14 @@ const ScreenShoot = (props: Props) => {
       <button
         onClick={toggleModalVisible}
         disabled={disabled}
-        className={clsx(
-          "min-w-[unset] !p-0.5 disabled:cursor-not-allowed",
-          modalVisible && "active"
-        )}
+        className={clsx("min-w-[unset] !p-1 disabled:cursor-not-allowed", modalVisible && "active")}
       >
         <Image
-          className={disabled ? "grayscale-0" : ""}
+          className={disabled ? "grayscale opacity-60" : ""}
           alt="screen shoot button"
           src={"/camera.png"}
-          width={25}
-          height={25}
+          width={22}
+          height={22}
         />
       </button>
     </>

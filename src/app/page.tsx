@@ -18,6 +18,7 @@ import SelectZoom from "./components/select-cellsize";
 import clsx from "clsx";
 import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/user.data";
 import TaskBar from "./components/task-bar";
+import StartFaceButton from "./components/start-face-button";
 
 export default function Home() {
   console.log("diff", difficulties);
@@ -75,7 +76,16 @@ export default function Home() {
             </div>
             <div className="title-bar-controls flex gap-1">
               <button aria-label="Minimize" onClick={handleMini} title="Hide the window"></button>
-              <button aria-label="Help" title="Press F1 for help"></button>
+              <button
+                aria-label="Help"
+                onClick={() => {
+                  const btn = document.querySelector("#HELP_TASK_BUTTON") as HTMLButtonElement;
+                  if (btn) {
+                    btn.click();
+                  }
+                }}
+                title="Press F1 for help"
+              ></button>
               <button aria-label="Maximize" onClick={handleFullscreen}></button>
             </div>
           </section>
@@ -83,18 +93,7 @@ export default function Home() {
             <div className="status-bar !mb-4">
               <div className="status-bar-field !p-2 flex justify-between">
                 <Timer type="flag" />
-                <button
-                  onClick={handleStart}
-                  className="!w-10 min-w-[unset] h-10 !p-0 flex items-center justify-center"
-                >
-                  <Image
-                    width={36}
-                    height={36}
-                    alt="game status emoji"
-                    src={status == "loss" ? "/ms/emoji.game.over.png" : "/ms/emoji.game.start.png"}
-                    priority
-                  />
-                </button>
+                <StartFaceButton startGame={handleStart} />
                 <Timer type="time" />
               </div>
             </div>
