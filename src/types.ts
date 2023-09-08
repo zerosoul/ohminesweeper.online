@@ -20,4 +20,5 @@ export interface UserData {
   elapsedTime: number;
   cellSize: number;
   records: PlayRecord[];
+  cellActive: boolean;
 }

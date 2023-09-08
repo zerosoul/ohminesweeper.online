@@ -2,7 +2,8 @@ import { MouseEventHandler } from "react";
 import { Cell as ICell } from "minesweeper-redux";
 import clsx from "clsx";
 import Image from "next/image";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { updateCellActive } from "@/redux/slice/user.data";
 
 export interface CellProps {
   cell: ICell;
@@ -11,15 +12,22 @@ export interface CellProps {
 }
 
 function Cell({ cell, leftClick, rightClick }: CellProps) {
+  const dispatch = useAppDispatch();
   const size = useAppSelector((store) => store.userData.cellSize);
+  const handleMouseDown = () => {
+    console.log("cell mouse down");
+    dispatch(updateCellActive(true));
+  };
+
   const cellContent = (cell: ICell) => {
     switch (cell.status) {
       case "hidden":
         return (
           <div
+            onMouseDown={handleMouseDown}
             role="button"
             aria-label="cell"
-            className="w-full h-full bg-[url(/ms/cell.default.svg)] active:bg-[url(/ms/cell.click.svg)] hover:invert-[0.15] bg-contain"
+            className="cell w-full h-full bg-[url(/ms/cell.default.svg)] active:bg-[url(/ms/cell.click.svg)] hover:invert-[0.15] bg-contain"
           ></div>
         );
       case "flagged":

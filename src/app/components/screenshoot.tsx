@@ -49,7 +49,7 @@ const ScreenShoot = (props: Props) => {
     <>
       {modalVisible ? (
         <Modal>
-          <div className="window">
+          <div className="window max-h-screen">
             <div className="title-bar">
               <div className="title-bar-text">Screen Shoot</div>
               <div className="title-bar-controls">
@@ -57,7 +57,11 @@ const ScreenShoot = (props: Props) => {
               </div>
             </div>
             <div className="window-body py-4  px-6 flex flex-col items-center gap-2">
-              {screenURL ? <img src={screenURL} alt="screen shoot" /> : "Generating..."}
+              {screenURL ? (
+                <img className="max-h-[1200px]" src={screenURL} alt="screen shoot" />
+              ) : (
+                "Generating..."
+              )}
               <button className="m-auto" onClick={handleSave}>
                 Save
               </button>

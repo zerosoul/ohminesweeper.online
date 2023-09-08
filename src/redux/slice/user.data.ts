@@ -6,7 +6,8 @@ const initialState: UserData = {
   level: "beginner",
   cellSize: 30,
   elapsedTime: 0,
-  records: []
+  records: [],
+  cellActive: false
 };
 
 const userDataSlice = createSlice({
@@ -19,7 +20,12 @@ const userDataSlice = createSlice({
     updateLevel(state, action: PayloadAction<Level>) {
       state.level = action.payload;
     },
+    updateCellActive(state, action: PayloadAction<boolean>) {
+      if (state.cellActive === action.payload) return;
+      state.cellActive = action.payload;
+    },
     updateMini(state, action: PayloadAction<boolean>) {
+      if (state.minimized === action.payload) return;
       state.minimized = action.payload;
     },
     tickElapsedTime(state) {
@@ -41,6 +47,7 @@ export const {
   updateCellSize,
   tickElapsedTime,
   resetElapsedTime,
-  updateMini
+  updateMini,
+  updateCellActive
 } = userDataSlice.actions;
 export default userDataSlice.reducer;
