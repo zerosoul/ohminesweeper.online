@@ -14,8 +14,10 @@ export type UserInfo = {
   email: string;
 };
 export interface UserData {
+  minimized: boolean;
   user?: UserInfo;
   level: Level;
+  elapsedTime: number;
   cellSize: number;
   records: PlayRecord[];
 }

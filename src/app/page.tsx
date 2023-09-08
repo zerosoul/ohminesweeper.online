@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { difficulties, startGame } from "minesweeper-redux";
 import Board from "./components/board";
-import Timer from "./components/timer";
+import Timer from "./components/counter";
 import { useEffect, useRef, useState } from "react";
 // import Rank from "./components/rank";
 import { difficulty } from "@/config";
@@ -16,12 +16,14 @@ import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
 import SelectZoom from "./components/select-cellsize";
 import clsx from "clsx";
+import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/user.data";
+import TaskBar from "./components/task-bar";
 
 export default function Home() {
   console.log("diff", difficulties);
   const boardRef = useRef<HTMLDivElement | null>(null);
-  const [seconds, setSeconds] = useState(0);
   const level = useAppSelector((store) => store.userData.level);
+  const minimized = useAppSelector((store) => store.userData.minimized);
   const status = useAppSelector((store) => store.minesweeper.status);
   const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
   const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
@@ -30,7 +32,7 @@ export default function Home() {
     console.log("start");
     if (timerStopper) {
       timerStopper();
-      setSeconds(0);
+      dispatch(resetElapsedTime());
     }
     // easy hard medium
     dispatch(
@@ -41,8 +43,11 @@ export default function Home() {
       })
     );
   };
+  const handleMini = () => {
+    dispatch(updateMini(true));
+  };
   const handleTimer = () => {
-    setSeconds((prev) => prev + 1);
+    dispatch(tickElapsedTime());
   };
   const handleFullscreen = () => {
     if (boardRef && boardRef.current) {
@@ -59,13 +64,17 @@ export default function Home() {
         ref={boardRef}
         className="flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
       >
-        <div id="SCREEN_SHOOT_AREA" className={clsx("window transition-transform")}>
+        <div
+          id="SCREEN_SHOOT_AREA"
+          className={clsx("window transition-transform", minimized && "hidden")}
+        >
           <section className="title-bar cursor-not-allowed fsh">
             <div className="title-bar-text flex gap-2 !items-center">
               <div className="w-3.5 h-3.5 bg-[url(/icon.png)] bg-contain"></div> Mine Sweeper
               Online!
             </div>
             <div className="title-bar-controls flex gap-1">
+              <button aria-label="Minimize" onClick={handleMini} title="Hide the window"></button>
               <button aria-label="Help" title="Press F1 for help"></button>
               <button aria-label="Maximize" onClick={handleFullscreen}></button>
             </div>
@@ -73,7 +82,7 @@ export default function Home() {
           <div className="window-body">
             <div className="status-bar !mb-4">
               <div className="status-bar-field !p-2 flex justify-between">
-                <Timer count={remainingFlags} />
+                <Timer type="flag" />
                 <button
                   onClick={handleStart}
                   className="!w-10 min-w-[unset] h-10 !p-0 flex items-center justify-center"
@@ -86,7 +95,7 @@ export default function Home() {
                     priority
                   />
                 </button>
-                <Timer count={seconds} />
+                <Timer type="time" />
               </div>
             </div>
             <Board startNewGame={handleStart} />
@@ -97,13 +106,7 @@ export default function Home() {
             <p className="status-bar-field capitalize">Status: {status}</p>
           </div>
         </div>
-        <div className="window flex items-center gap-1 m-2 mt-8 fsh !px-2 !py-1">
-          <SelectLevel status={status} />
-          <DarkMode />
-          <ScreenShoot />
-          <SelectZoom />
-          {/* <Language /> */}
-        </div>
+        <TaskBar startGame={handleStart} />
         {/* <Rank /> */}
       </main>
       <PWAUpgradeChecker />

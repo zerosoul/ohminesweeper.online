@@ -17,7 +17,7 @@ const SelectZoom = () => {
   return (
     <select
       value={cellSize}
-      className="capitalize dark:bg-gray-900 dark:text-gray-100"
+      className="capitalize dark:bg-teal-950 dark:text-gray-100 font-semibold"
       onChange={handleSizeChange}
     >
       {CellSizes.map((size) => (

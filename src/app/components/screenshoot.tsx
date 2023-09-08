@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { shallowEqual } from "react-redux";
 import { toPng } from "html-to-image";
 import Modal from "./modal";
+import Image from "next/image";
+import clsx from "clsx";
 
 type Props = {};
 
@@ -42,7 +44,7 @@ const ScreenShoot = (props: Props) => {
     link.href = screenURL;
     link.click();
   };
-
+  const disabled = !(gameStatus == "loss" || gameStatus == "win");
   return (
     <>
       {modalVisible ? (
@@ -65,9 +67,19 @@ const ScreenShoot = (props: Props) => {
       ) : null}
       <button
         onClick={toggleModalVisible}
-        disabled={!(gameStatus == "loss" || gameStatus == "win")}
+        disabled={disabled}
+        className={clsx(
+          "min-w-[unset] !p-0.5 disabled:cursor-not-allowed",
+          modalVisible && "active"
+        )}
       >
-        Screen Shoot
+        <Image
+          className={disabled ? "grayscale-0" : ""}
+          alt="screen shoot button"
+          src={"/camera.png"}
+          width={25}
+          height={25}
+        />
       </button>
     </>
   );

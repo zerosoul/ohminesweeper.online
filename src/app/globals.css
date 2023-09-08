@@ -9,6 +9,17 @@ select {
   min-width: 80px;
   text-indent: 4px;
 }
+button:not(:disabled).active,
+input[type="reset"]:not(:disabled).active,
+input[type="submit"]:not(:disabled).active {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px grey;
+  text-shadow: 1px 1px #222;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2M8cODAf3t7ewbG/////z948CADAFuqCj64BtLKAAAAAElFTkSuQmCC);
+}
 #root-modal {
   pointer-events: none;
   position: fixed;

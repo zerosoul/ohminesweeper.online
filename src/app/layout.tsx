@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col justify-between dark:bg-gray-950">
+      <body className="min-h-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
         <ReduxProvider>{children}</ReduxProvider>
         <div id="root-modal"></div>
         <Footer />

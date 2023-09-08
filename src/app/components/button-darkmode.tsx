@@ -25,7 +25,10 @@ const DarkMode = () => {
     }
   };
   return (
-    <button onClick={handleThemeToggle.bind(null, theme == "dark" ? "light" : "dark")}>
+    <button
+      className="font-semibold"
+      onClick={handleThemeToggle.bind(null, theme == "dark" ? "light" : "dark")}
+    >
       {theme == "dark" ? `Light Mode` : `Dark Mode`}
     </button>
   );

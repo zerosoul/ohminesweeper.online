@@ -5,12 +5,13 @@ import { Level } from "@/types";
 import { GameStatus } from "minesweeper-redux";
 import React from "react";
 
-type Props = {
-  status: GameStatus;
-};
+// type Props = {
 
-const SelectLevel = ({ status }: Props) => {
+// };
+
+const SelectLevel = () => {
   const level = useAppSelector((store) => store.userData.level);
+  const status = useAppSelector((store) => store.minesweeper.status);
   const dispatch = useAppDispatch();
   const handleLevelChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("level", e.target.value);
@@ -21,7 +22,7 @@ const SelectLevel = ({ status }: Props) => {
     <select
       disabled={status == "running"}
       value={level}
-      className="capitalize dark:bg-gray-900 dark:text-gray-100"
+      className="capitalize dark:bg-teal-950 dark:text-gray-100 font-semibold"
       onChange={handleLevelChange}
     >
       {Object.keys(difficulty).map((key) => (
