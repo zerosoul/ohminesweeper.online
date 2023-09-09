@@ -1344,6 +1344,11 @@
   resolved "https://mirrors.cloud.tencent.com/npm/@uidotdev/usehooks/-/usehooks-2.2.0.tgz#62e811350b95145d780145c1bf715005ec02282a"
   integrity sha512-K4tirEf3lvEgi/Z6Pv2aNR8r6YCobfg0N5AOkn3hhuWtGS8n7mMSL7RGFpE2Bj56oeLGGZXrVKteEwg4vGitGA==
 
+"@vercel/analytics@^1.0.2":
+  version "1.0.2"
+  resolved "https://mirrors.cloud.tencent.com/npm/@vercel/analytics/-/analytics-1.0.2.tgz#7af719a1bf33734840aee6f04eb548d2cedab9ec"
+  integrity sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==
+
 "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"
   resolved "https://mirrors.cloud.tencent.com/npm/@yarnpkg/lockfile/-/lockfile-1.1.0.tgz#e77a97fbd345b76d83245edcd17d393b1b41fb31"

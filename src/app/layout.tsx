@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 // import { Inter } from 'next/font/google'
 import ReduxProvider from "../redux/provider";
 import "98.css";
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
         <ReduxProvider>{children}</ReduxProvider>
         <div id="root-modal"></div>
+        <Analytics />
       </body>
     </html>
   );
