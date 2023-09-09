@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
         <ReduxProvider>{children}</ReduxProvider>
         <div id="root-modal"></div>
-        <Analytics />
+        {process.env.NODE_ENV == "production" && <Analytics />}
       </body>
     </html>
   );

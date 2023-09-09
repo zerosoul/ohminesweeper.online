@@ -35,8 +35,15 @@ const TaskBar = ({ startGame }: Props) => {
         <button onClick={startGame} className="px-2 min-w-[unset]">
           <Image alt="start button" src={"/start-button.png"} width={45} height={14} />
         </button>
-        <button onClick={handleMini} className={clsx(!minimized && "active")}>
-          Mine Sweeper
+        <button
+          onClick={handleMini}
+          className={clsx(
+            "px-3 flex items-center justify-center gap-1 !min-w-[unset]",
+            !minimized && "active"
+          )}
+        >
+          <Image alt="mine icon" src={"/icon.png"} width={14} height={14} />
+          <span className="hidden md:inline-block">Mine Sweeper</span>
         </button>
       </div>
       {/* <Language /> */}
