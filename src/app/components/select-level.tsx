@@ -2,8 +2,8 @@ import { difficulty } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateLevel } from "@/redux/slice/user.data";
 import { Level } from "@/types";
-import { GameStatus } from "minesweeper-redux";
 import React from "react";
+import Select from "./select";
 
 // type Props = {
 
@@ -19,18 +19,14 @@ const SelectLevel = () => {
     dispatch(updateLevel(e.target.value as Level));
   };
   return (
-    <select
+    <Select
       disabled={status == "running"}
       value={level}
-      className="capitalize dark:bg-teal-950 dark:text-gray-100 font-semibold"
       onChange={handleLevelChange}
-    >
-      {Object.keys(difficulty).map((key) => (
-        <option key={key} value={key}>
-          {`${key}`}
-        </option>
-      ))}
-    </select>
+      list={Object.keys(difficulty).map((key) => {
+        return { value: key, name: `${key}` };
+      })}
+    />
   );
 };
 

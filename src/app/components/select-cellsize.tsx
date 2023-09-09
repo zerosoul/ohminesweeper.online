@@ -2,10 +2,8 @@ import { CellSizes } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateCellSize } from "@/redux/slice/user.data";
 import React from "react";
+import Select from "./select";
 
-// type Props = {
-//   status: GameStatus;
-// };
 const SelectZoom = () => {
   const cellSize = useAppSelector((store) => store.userData.cellSize);
   const dispatch = useAppDispatch();
@@ -15,17 +13,14 @@ const SelectZoom = () => {
     dispatch(updateCellSize(+e.target.value));
   };
   return (
-    <select
+    <Select
+      disabled={status == "running"}
       value={cellSize}
-      className="capitalize dark:bg-teal-950 dark:text-gray-100 font-semibold"
       onChange={handleSizeChange}
-    >
-      {CellSizes.map((size) => (
-        <option key={size.name} value={size.value}>
-          {`${size.name}`}
-        </option>
-      ))}
-    </select>
+      list={CellSizes.map((size) => {
+        return { value: `${size.value}`, name: `${size.name}` };
+      })}
+    />
   );
 };
 

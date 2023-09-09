@@ -1,15 +1,17 @@
 import React from "react";
+import Select from "./select";
 
 type Props = {};
 
 const Language = (props: Props) => {
   return (
-    <select className="dark:bg-teal-950 dark:text-gray-100">
-      <option>English</option>
-      <option>简体中文</option>
-      <option>正體中文</option>
-      <option>日本语</option>
-    </select>
+    <Select
+      value={"English"}
+      // onChange={handleSizeChange}
+      list={["English", "简体中文"].map((name) => {
+        return { value: name, name };
+      })}
+    />
   );
 };
 

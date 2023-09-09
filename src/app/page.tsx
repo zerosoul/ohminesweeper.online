@@ -7,18 +7,14 @@ import Timer from "./components/counter";
 import { useEffect, useRef, useState } from "react";
 // import Rank from "./components/rank";
 import { difficulty } from "@/config";
-import Image from "next/image";
-import DarkMode from "./components/button-darkmode";
 // import Language from "./components/select-lang";
-import ScreenShoot from "./components/screenshoot";
-import SelectLevel from "./components/select-level";
 import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
-import SelectZoom from "./components/select-cellsize";
 import clsx from "clsx";
 import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/user.data";
 import TaskBar from "./components/task-bar";
 import StartFaceButton from "./components/start-face-button";
+import WindowTitleBar from "./components/window-title-bar";
 
 export default function Home() {
   console.log("diff", difficulties);
@@ -69,12 +65,8 @@ export default function Home() {
           id="SCREEN_SHOOT_AREA"
           className={clsx("window transition-transform", minimized && "hidden")}
         >
-          <section className="title-bar cursor-not-allowed fsh">
-            <div className="title-bar-text flex gap-2 !items-center">
-              <div className="w-3.5 h-3.5 bg-[url(/icon.png)] bg-contain"></div> Mine Sweeper
-              Online!
-            </div>
-            <div className="title-bar-controls flex gap-1">
+          <WindowTitleBar>
+            <>
               <button aria-label="Minimize" onClick={handleMini} title="Hide the window"></button>
               <button
                 aria-label="Help"
@@ -87,8 +79,8 @@ export default function Home() {
                 title="Press F1 for help"
               ></button>
               <button aria-label="Maximize" onClick={handleFullscreen}></button>
-            </div>
-          </section>
+            </>
+          </WindowTitleBar>
           <div className="window-body">
             <div className="status-bar !mb-4">
               <div className="status-bar-field !p-2 flex justify-between">
