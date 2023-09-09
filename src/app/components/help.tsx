@@ -4,9 +4,9 @@ import Image from "next/image";
 import clsx from "clsx";
 import WindowTitleBar from "./window-title-bar";
 
-type Props = {};
+// type Props = {};
 
-const Help = (props: Props) => {
+const Help = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const toggleModalVisible = () => {

@@ -1,5 +1,6 @@
-import { Coordinate, GameStatus, Minesweeper } from "minesweeper-redux";
+import { Coordinate, Minesweeper } from "minesweeper-redux";
 
+// eslint-disable-next-line no-unused-vars
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
 export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
 export type Theme = "auto" | "dark" | "light";

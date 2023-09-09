@@ -1,8 +1,8 @@
 import React from "react";
 
-type Props = {};
+// type Props = {};
 
-const Rank = (props: Props) => {
+const Rank = () => {
   return (
     <section className="window-body w-full fsh">
       <p>Rank:</p>

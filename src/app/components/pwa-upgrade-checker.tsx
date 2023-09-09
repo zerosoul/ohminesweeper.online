@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-type Props = {};
+// type Props = {};
 
-const PWAUpgradeChecker = (props: Props) => {
+const PWAUpgradeChecker = () => {
   // This hook only run once in browser after the component is rendered for the first time.
   // It has same effect as the old componentDidMount lifecycle callback.
   useEffect(() => {

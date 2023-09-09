@@ -8,9 +8,9 @@ import clsx from "clsx";
 import WindowTitleBar from "./window-title-bar";
 import Loading from "./loading";
 
-type Props = {};
+// type Props = {};
 
-const ScreenShoot = (props: Props) => {
+const ScreenShoot = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [screenURL, setScreenURL] = useState("");
   const gameStatus = useAppSelector((store) => store.minesweeper.status, shallowEqual);

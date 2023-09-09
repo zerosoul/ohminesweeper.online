@@ -1,9 +1,9 @@
 import React from "react";
 import Select from "./select";
 
-type Props = {};
+// type Props = {};
 
-const Language = (props: Props) => {
+const Language = () => {
   return (
     <Select
       value={"English"}

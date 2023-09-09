@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { difficulties, startGame } from "minesweeper-redux";
 import Board from "./components/board";
 import Timer from "./components/counter";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 // import Rank from "./components/rank";
 import { difficulty } from "@/config";
 // import Language from "./components/select-lang";
@@ -22,7 +22,6 @@ export default function Home() {
   const level = useAppSelector((store) => store.userData.level);
   const minimized = useAppSelector((store) => store.userData.minimized);
   const status = useAppSelector((store) => store.minesweeper.status);
-  const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
   const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
   const dispatch = useAppDispatch();
   const handleStart = () => {
