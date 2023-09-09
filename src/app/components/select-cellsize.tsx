@@ -14,7 +14,6 @@ const SelectZoom = () => {
   };
   return (
     <Select
-      disabled={status == "running"}
       value={cellSize}
       onChange={handleSizeChange}
       list={CellSizes.map((size) => {
