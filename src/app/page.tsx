@@ -89,7 +89,7 @@ export default function Home() {
                 <Timer type="time" />
               </div>
             </div>
-            <Board startNewGame={handleStart} />
+            <Board />
           </div>
 
           <div className="status-bar fsh">
