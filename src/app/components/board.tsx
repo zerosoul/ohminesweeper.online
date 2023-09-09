@@ -3,6 +3,7 @@ import { Coordinate, revealCell, toggleFlag } from "minesweeper-redux";
 import React from "react";
 import Row from "./row";
 import { shallowEqual } from "react-redux";
+import Loading from "./loading";
 
 type Props = {
   startNewGame: () => void;
@@ -32,11 +33,7 @@ const Board = ({ startNewGame }: Props) => {
   ));
   return (
     <div className="flex flex-col min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
-      {status === "waiting" ? (
-        <div className="flex justify-center items-center">Loading...</div>
-      ) : (
-        rows
-      )}
+      {status === "waiting" ? <Loading /> : rows}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import Modal from "./modal";
 import Image from "next/image";
 import clsx from "clsx";
 import WindowTitleBar from "./window-title-bar";
+import Loading from "./loading";
 
 type Props = {};
 
@@ -58,7 +59,7 @@ const ScreenShoot = (props: Props) => {
               {screenURL ? (
                 <img className="max-h-[1200px]" src={screenURL} alt="screen shoot" />
               ) : (
-                "Generating..."
+                <Loading />
               )}
               <button className="m-auto" onClick={handleSave}>
                 Save

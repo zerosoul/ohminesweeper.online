@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  cursor: url("/cursor.png"), auto;
+}
 * {
   user-select: none;
   -webkit-user-drag: none;
