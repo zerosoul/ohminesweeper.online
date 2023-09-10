@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .dvh-screen {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
 body {
   cursor: url("/cursor.png"), auto;
 }
@@ -8,6 +15,7 @@ body {
   user-select: none;
   -webkit-user-drag: none;
 }
+
 select {
   min-width: 80px;
   text-indent: 4px;
