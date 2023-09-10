@@ -24,6 +24,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
       case "hidden":
         return (
           <div
+            onTouchStart={handleMouseDown}
             onMouseDown={handleMouseDown}
             role="button"
             aria-label="cell"

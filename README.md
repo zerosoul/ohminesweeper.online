@@ -24,3 +24,7 @@
 [figma](<https://www.figma.com/file/HrRfanYL0SSWWJR4sCuaD5/Minesweeper-%E2%80%94-Interactive-Components-Demo-(Community)?node-id=1%3A63&mode=dev>)
 [pwa](https://ducanh-next-pwa.vercel.app/docs/next-pwa/getting-started)
 [win98 icons](https://win98icons.alexmeub.com/)
+https://www.figma.com/file/71nYfOmLYK88QfxtKpD16Q/Windows-98-Design-System-(Community)?node-id=4%3A14&mode=dev
+
+https://www.figma.com/file/2cbigNitjcruBDZT12ixIq/React95-Design-Kit?mode=dev
+https://github.com/React95/React95

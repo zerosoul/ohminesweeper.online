@@ -23,9 +23,11 @@ const StartFaceButton = ({ startGame }: Props) => {
       dispatch(updateCellActive(false));
     };
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchend", handleMouseUp);
 
     return () => {
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchend", handleMouseUp);
     };
   }, []);
 
