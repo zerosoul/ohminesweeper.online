@@ -8,9 +8,11 @@
     height: 100dvh;
   }
 }
+html {
+  overscroll-behavior: none;
+}
 body {
   cursor: url("/cursor.png"), auto;
-  overscroll-behavior: none;
 }
 * {
   user-select: none;
