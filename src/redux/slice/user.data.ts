@@ -1,4 +1,4 @@
-import { Level, UserData } from "@/types";
+import { Level, PlayRecord, UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: UserData = {
@@ -13,7 +13,12 @@ const initialState: UserData = {
 const userDataSlice = createSlice({
   name: "userData",
   initialState,
+
   reducers: {
+    fillUserData(state, action: PayloadAction<Partial<UserData>>) {
+      const newState = { ...state, ...action.payload };
+      return newState;
+    },
     resetUserData() {
       return initialState;
     },
@@ -37,17 +42,31 @@ const userDataSlice = createSlice({
     },
     updateCellSize(state, action: PayloadAction<number>) {
       state.cellSize = action.payload;
+    },
+    addRecord(state, action: PayloadAction<Pick<PlayRecord, "numCells" | "status" | "grid">>) {
+      const { status, numCells, grid } = action.payload;
+      const record: PlayRecord = {
+        timestamp: new Date().getTime(),
+        duration: state.elapsedTime,
+        level: state.level,
+        status,
+        numCells,
+        grid
+      };
+      state.records = [record, ...state.records];
     }
   }
 });
 
 export const {
+  fillUserData,
   resetUserData,
   updateLevel,
   updateCellSize,
   tickElapsedTime,
   resetElapsedTime,
   updateMini,
-  updateCellActive
+  updateCellActive,
+  addRecord
 } = userDataSlice.actions;
 export default userDataSlice.reducer;

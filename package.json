@@ -23,6 +23,7 @@
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "html-to-image": "^1.11.11",
+    "idb-keyval": "^6.2.1",
     "minesweeper-redux": "^6.0.4",
     "next": "13.4.19",
     "postcss": "8.4.29",
@@ -33,6 +34,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.0.3"

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { gameReducer } from "minesweeper-redux";
 import userDataReducer from "./slice/user.data";
+import { listenerMiddleware } from "./listenerMiddleware";
 
 const store = configureStore({
   reducer: {
@@ -10,7 +11,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false
-    })
+    }).prepend(listenerMiddleware.middleware),
+  devTools: process.env.NODE_ENV == "development"
 });
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

@@ -4,13 +4,11 @@ import React from "react";
 import Row from "./row";
 import { shallowEqual } from "react-redux";
 import Loading from "./loading";
-import usePreload from "../hooks/usePreload";
 
 // type Props = {
 //   startNewGame: () => void;
 // };
 const Board = () => {
-  const loaded = usePreload();
   const grid = useAppSelector((store) => store.minesweeper.grid, shallowEqual);
   const status = useAppSelector((store) => store.minesweeper.status, shallowEqual);
   const dispatch = useAppDispatch();
@@ -32,7 +30,7 @@ const Board = () => {
       rightClick={onRightClick}
     />
   ));
-  const loading = !loaded || status === "waiting";
+  const loading = status === "waiting";
   console.log("loading", loading);
 
   return (

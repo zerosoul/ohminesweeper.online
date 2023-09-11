@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { updateCellActive } from "@/redux/slice/user.data";
+import { addRecord, updateCellActive } from "@/redux/slice/user.data";
 import clsx from "clsx";
 import { GameStatus } from "minesweeper-redux";
 import React, { useEffect } from "react";
@@ -9,6 +9,9 @@ type Props = {
 };
 const StartFaceButton = ({ startGame }: Props) => {
   const dispatch = useAppDispatch();
+  // const elapsedTime = useAppSelector((store) => store.minesweeper.elapsedTime);
+  const grid = useAppSelector((store) => store.minesweeper.grid);
+  const numCells = useAppSelector((store) => store.minesweeper.numCells);
   const status = useAppSelector((store) => store.minesweeper.status);
   const cellActive = useAppSelector((store) => store.userData.cellActive);
   const positionMap: Record<GameStatus, string> = {
@@ -30,6 +33,26 @@ const StartFaceButton = ({ startGame }: Props) => {
       document.removeEventListener("touchend", handleMouseUp);
     };
   }, []);
+  useEffect(() => {
+    switch (status) {
+      case "loss":
+      case "win":
+        {
+          dispatch(
+            addRecord({
+              status,
+              numCells,
+              grid
+            })
+          );
+        }
+
+        break;
+
+      default:
+        break;
+    }
+  }, [status, numCells, grid]);
 
   return (
     <button

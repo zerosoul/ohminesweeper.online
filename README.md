@@ -28,3 +28,6 @@ https://www.figma.com/file/71nYfOmLYK88QfxtKpD16Q/Windows-98-Design-System-(Comm
 
 https://www.figma.com/file/2cbigNitjcruBDZT12ixIq/React95-Design-Kit?mode=dev
 https://github.com/React95/React95
+
+https://carlogino.com/blog/nextjs13-i18n
+https://locize.com/blog/next-13-app-dir-i18n/

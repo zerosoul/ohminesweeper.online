@@ -1,14 +1,18 @@
-import { Coordinate, Minesweeper } from "minesweeper-redux";
+import { CellStatus, Coordinate, GameStatus, Grid } from "minesweeper-redux";
 
 // eslint-disable-next-line no-unused-vars
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
 export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
 export type Theme = "auto" | "dark" | "light";
 export type PlayRecord = {
-  duration: number;
   timestamp: number;
+  status: GameStatus;
+  numCells: number;
+  duration: number;
   level: Level;
-  game: Minesweeper;
+  grid: any;
+  // numFlagged: number;
+  // remainingFlags: number;
 };
 export type UserInfo = {
   name: string;

@@ -5,7 +5,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="p-4 m-auto">
+    <div className="p-4">
       <Image alt="loading icon" src={"/hourglass.png"} width={20} height={28} />
     </div>
   );

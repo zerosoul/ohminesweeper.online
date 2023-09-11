@@ -1,7 +1,7 @@
 // import Image from 'next/image'
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { difficulties, startGame } from "minesweeper-redux";
+import { startGame } from "minesweeper-redux";
 import Board from "./components/board";
 import Timer from "./components/counter";
 import { useEffect, useRef } from "react";
@@ -15,14 +15,16 @@ import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/use
 import TaskBar from "./components/task-bar";
 import StartFaceButton from "./components/start-face-button";
 import WindowTitleBar from "./components/window-title-bar";
+import usePreload from "./hooks/usePreload";
+import StartScreen from "./components/start-screen";
 
 export default function Home() {
-  console.log("diff", difficulties);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const level = useAppSelector((store) => store.userData.level);
   const minimized = useAppSelector((store) => store.userData.minimized);
   const status = useAppSelector((store) => store.minesweeper.status);
   const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
+  const preloaded = usePreload();
   const dispatch = useAppDispatch();
   const handleStart = () => {
     console.log("start");
@@ -54,6 +56,7 @@ export default function Home() {
   useEffect(() => {
     handleStart();
   }, [level]);
+  if (!preloaded) return <StartScreen />;
   return (
     <>
       <main
