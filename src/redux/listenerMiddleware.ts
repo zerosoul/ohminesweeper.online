@@ -1,7 +1,7 @@
 import { addListener, createListenerMiddleware, isAnyOf } from "@reduxjs/toolkit";
 import { set } from "idb-keyval";
 
-import { updateLevel, updateCellSize, updateMini } from "./slice/user.data";
+import { updateLevel, updateCellSize, updateMini, addRecord } from "./slice/user.data";
 
 import type { TypedAddListener, TypedStartListening } from "@reduxjs/toolkit";
 
@@ -16,7 +16,7 @@ export const addAppListener = addListener as TypedAddListener<RootState, AppDisp
 
 // Update user data
 startAppListening({
-  matcher: isAnyOf(updateLevel, updateCellSize, updateMini),
+  matcher: isAnyOf(updateLevel, updateCellSize, updateMini, addRecord),
 
   effect: async (action, listenerApi) => {
     console.log("action", action, listenerApi.getState());
@@ -34,6 +34,12 @@ startAppListening({
       case "userData/updateCellSize":
         {
           set("cellSize", action.payload);
+        }
+        break;
+      case "userData/addRecord":
+        {
+          const currState = listenerApi.getState();
+          set("records", currState.userData.records);
         }
         break;
 

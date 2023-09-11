@@ -17,6 +17,7 @@ import StartFaceButton from "./components/start-face-button";
 import WindowTitleBar from "./components/window-title-bar";
 import usePreload from "./hooks/usePreload";
 import StartScreen from "./components/start-screen";
+import RecordsWindow from "./components/window-records";
 
 export default function Home() {
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -103,6 +104,7 @@ export default function Home() {
         {/* <Rank /> */}
       </main>
       <PWAUpgradeChecker />
+      <RecordsWindow />
     </>
   );
 }

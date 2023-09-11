@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: UserData = {
   minimized: false,
+  recordWindowMinimized: true,
   level: "beginner",
   cellSize: 30,
   elapsedTime: 0,
@@ -32,6 +33,10 @@ const userDataSlice = createSlice({
     updateMini(state, action: PayloadAction<boolean>) {
       if (state.minimized === action.payload) return;
       state.minimized = action.payload;
+    },
+    updateMiniRecords(state, action: PayloadAction<boolean>) {
+      if (state.recordWindowMinimized === action.payload) return;
+      state.recordWindowMinimized = action.payload;
     },
     tickElapsedTime(state) {
       // +1
@@ -66,6 +71,7 @@ export const {
   tickElapsedTime,
   resetElapsedTime,
   updateMini,
+  updateMiniRecords,
   updateCellActive,
   addRecord
 } = userDataSlice.actions;

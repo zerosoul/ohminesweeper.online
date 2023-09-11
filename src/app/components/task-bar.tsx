@@ -6,7 +6,7 @@ import SelectZoom from "./select-cellsize";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
-import { updateMini } from "@/redux/slice/user.data";
+import { updateMini, updateMiniRecords } from "@/redux/slice/user.data";
 import { useClickAway } from "@uidotdev/usehooks";
 import Help from "./help";
 
@@ -18,6 +18,7 @@ const TaskBar = ({ startGame }: Props) => {
   const [settingVisible, setSettingVisible] = useState(false);
   const dispatch = useAppDispatch();
   const minimized = useAppSelector((store) => store.userData.minimized);
+  const recordWindowMinimized = useAppSelector((store) => store.userData.recordWindowMinimized);
   const ref = useClickAway(() => {
     // if (settingVisible) {
     setSettingVisible(false);
@@ -28,6 +29,9 @@ const TaskBar = ({ startGame }: Props) => {
   };
   const handleMini = () => {
     dispatch(updateMini(!minimized));
+  };
+  const handleMiniRecords = () => {
+    dispatch(updateMiniRecords(!recordWindowMinimized));
   };
   return (
     <div className="window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1">
@@ -44,6 +48,16 @@ const TaskBar = ({ startGame }: Props) => {
         >
           <Image alt="mine icon" src={"/icon.png"} width={14} height={14} />
           <span className="hidden md:inline-block">Mine Sweeper</span>
+        </button>
+        <button
+          onClick={handleMiniRecords}
+          className={clsx(
+            "px-3 flex items-center justify-center gap-1 !min-w-[unset]",
+            !recordWindowMinimized && "active"
+          )}
+        >
+          <Image alt="mine icon" src={"/notepad.png"} width={14} height={14} />
+          <span className="hidden md:inline-block">Play Records</span>
         </button>
       </div>
       {/* <Language /> */}

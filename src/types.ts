@@ -20,6 +20,7 @@ export type UserInfo = {
 };
 export interface UserData {
   minimized: boolean;
+  recordWindowMinimized: boolean;
   user?: UserInfo;
   level: Level;
   elapsedTime: number;
