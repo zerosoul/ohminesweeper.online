@@ -82,7 +82,7 @@ const TaskBar = ({ startGame }: Props) => {
         <div className="w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
         <div className="status-bar">
           <footer className="status-bar-field flex gap-1 !px-2">
-            Made by{" "}
+            <span className="hidden md:inline">Made by </span>
             <a
               href="http://yangerxiao.com"
               className="text-blue-500 dark:text-blue-700 underline"
