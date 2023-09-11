@@ -91,6 +91,7 @@ export const PWAMeta: Metadata = {
   },
   openGraph: {
     type: "website",
+    url: "https://ohminesweeper.online",
     siteName: "MineSweeper",
     title,
     description
