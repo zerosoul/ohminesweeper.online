@@ -1,23 +1,27 @@
 // import Image from 'next/image'
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { difficulties, startGame } from "minesweeper-redux";
-import Board from "./components/board";
-import Timer from "./components/counter";
+import { startGame } from "minesweeper-redux";
+import Board from "../components/board";
+import Timer from "../components/counter";
 import { useEffect, useRef } from "react";
 // import Rank from "./components/rank";
 import { difficulty } from "@/config";
 // import Language from "./components/select-lang";
 import { shallowEqual } from "react-redux";
-import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
+import PWAUpgradeChecker from "../components/pwa-upgrade-checker";
 import clsx from "clsx";
 import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/user.data";
-import TaskBar from "./components/task-bar";
-import StartFaceButton from "./components/start-face-button";
-import WindowTitleBar from "./components/window-title-bar";
+import TaskBar from "../components/task-bar";
+import StartFaceButton from "../components/start-face-button";
+import WindowTitleBar from "../components/window-title-bar";
+import { useParams } from "next/navigation";
+import { LocaleTypes } from "@/i18n/settings";
+import { useTranslation } from "@/i18n/client";
 
 export default function Home() {
-  console.log("diff", difficulties);
+  const locale = useParams()?.locale as LocaleTypes;
+  const { t } = useTranslation(locale, "trans");
   const boardRef = useRef<HTMLDivElement | null>(null);
   const level = useAppSelector((store) => store.userData.level);
   const minimized = useAppSelector((store) => store.userData.minimized);
@@ -92,7 +96,9 @@ export default function Home() {
           </div>
 
           <div className="status-bar fsh">
-            <p className="status-bar-field capitalize">Level: {level}</p>
+            <p className="status-bar-field capitalize">
+              {t("level.title")}: {level}
+            </p>
             <p className="status-bar-field capitalize">Status: {status}</p>
           </div>
         </div>
