@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
 import { updateMini, updateMiniRecords } from "@/redux/slice/user.data";
 import { useClickAway } from "@uidotdev/usehooks";
-import Help from "./help";
+// import Help from "./help";
+import SoundSwitch from "./sound-switch";
 
 type Props = {
   startGame: () => void;
@@ -92,7 +93,8 @@ const TaskBar = ({ startGame }: Props) => {
             </div>
           </aside>
         </div>
-        <Help />
+        {/* <Help /> */}
+        <SoundSwitch />
         <div className="w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
         <div className="status-bar">
           <footer className="status-bar-field flex gap-1 !px-2">

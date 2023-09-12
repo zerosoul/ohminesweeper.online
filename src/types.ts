@@ -4,6 +4,8 @@ export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
 export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
 export type Theme = "auto" | "dark" | "light";
+export type Sound = "tick" | "start" | "win" | "loss";
+
 export type PlayRecord = {
   timestamp: number;
   duration: number;
@@ -16,6 +18,7 @@ export type UserInfo = {
   email: string;
 };
 export interface UserData {
+  sound: boolean;
   minimized: boolean;
   recordWindowMinimized: boolean;
   user?: UserInfo;

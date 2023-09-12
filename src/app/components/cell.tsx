@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { Cell as ICell } from "minesweeper-redux";
 import clsx from "clsx";
 import Image from "next/image";
@@ -13,7 +13,33 @@ export interface CellProps {
 
 function Cell({ cell, leftClick, rightClick }: CellProps) {
   const dispatch = useAppDispatch();
+  const [lastTick, setLastTick] = useState(false);
   const size = useAppSelector((store) => store.userData.cellSize);
+  const enableSound = useAppSelector((store) => store.userData.sound);
+  const status = useAppSelector((store) => store.minesweeper.status);
+  const numMines = useAppSelector((store) => store.minesweeper.difficulty.numMines);
+  const grid = useAppSelector((store) => store.minesweeper.grid);
+  useEffect(() => {
+    if (status !== "running") return;
+    let leftHiddenNum = 0;
+    let onlyZero = true;
+    grid.forEach((row) => {
+      row.forEach((cell) => {
+        if (cell.status == "flagged" || cell.status == "hidden") {
+          leftHiddenNum++;
+        }
+        if (cell.status == "hidden" && cell.mineCount > 0) {
+          onlyZero = false;
+        }
+      });
+    });
+    const onlyLeftOne = leftHiddenNum - numMines == 1;
+    const isLastTick = onlyLeftOne || onlyZero;
+    console.log("isLastTick", onlyLeftOne, onlyZero);
+
+    setLastTick(isLastTick);
+  }, [grid, numMines, status]);
+
   const handleMouseDown = () => {
     console.log("cell mouse down");
     dispatch(updateCellActive(true));
@@ -73,8 +99,22 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
     }
   };
   const cursorPointer = cell.status == "hidden" || cell.status == "flagged";
+  const isBomb = cell.mineCount === -1;
+  const sound =
+    cell.status == "hidden"
+      ? status == "ready"
+        ? "start"
+        : lastTick
+        ? isBomb
+          ? "loss"
+          : "win"
+        : isBomb
+        ? "loss"
+        : "tick"
+      : "";
   return (
     <div
+      data-sound={enableSound ? sound : ""}
       className={clsx(
         "flex justify-center items-center relative",
         cursorPointer && "cursor-pointer"

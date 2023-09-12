@@ -4,6 +4,7 @@ import React from "react";
 import Row from "./row";
 import { shallowEqual } from "react-redux";
 import Loading from "./loading";
+import { Sound } from "@/types";
 
 // type Props = {
 //   startNewGame: () => void;
@@ -14,6 +15,27 @@ const Board = () => {
   const dispatch = useAppDispatch();
   const onLeftClick = (e: React.MouseEvent, coordinate: Coordinate) => {
     e.preventDefault();
+    const target = e.currentTarget as HTMLElement;
+    const _sound = target.dataset.sound;
+    console.log("click sound", _sound, target, e.currentTarget);
+    if (_sound) {
+      switch (_sound as Sound) {
+        case "tick":
+          window.SOUND_TICK.play();
+          break;
+        case "loss":
+          window.SOUND_LOSE.play();
+          break;
+        case "start":
+          window.SOUND_START.play();
+          break;
+        case "win":
+          window.SOUND_WIN.play();
+          break;
+        default:
+          break;
+      }
+    }
     dispatch(revealCell({ coordinate }));
   };
 

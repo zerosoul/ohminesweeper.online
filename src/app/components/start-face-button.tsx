@@ -43,7 +43,6 @@ const StartFaceButton = ({ startGame }: Props) => {
             minesweeper as DeepWriteable<Minesweeper>;
           dispatch(addRecord(rest));
         }
-
         break;
 
       default:

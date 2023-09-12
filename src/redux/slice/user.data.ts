@@ -2,6 +2,7 @@ import { Level, PlayRecord, UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: UserData = {
+  sound: false,
   minimized: false,
   recordWindowMinimized: true,
   level: "beginner",
@@ -34,6 +35,10 @@ const userDataSlice = createSlice({
       if (state.minimized === action.payload) return;
       state.minimized = action.payload;
     },
+    updateSound(state, action: PayloadAction<boolean>) {
+      if (state.sound === action.payload) return;
+      state.sound = action.payload;
+    },
     updateMiniRecords(state, action: PayloadAction<boolean>) {
       if (state.recordWindowMinimized === action.payload) return;
       state.recordWindowMinimized = action.payload;
@@ -61,6 +66,7 @@ const userDataSlice = createSlice({
 });
 
 export const {
+  updateSound,
   fillUserData,
   resetUserData,
   updateLevel,
