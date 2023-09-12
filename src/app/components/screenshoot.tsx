@@ -50,7 +50,7 @@ const ScreenShoot = () => {
   return (
     <>
       {modalVisible ? (
-        <Modal>
+        <Modal mask>
           <div className="window max-h-screen">
             <WindowTitleBar title="Screen shoot">
               <button aria-label="Close" onClick={toggleModalVisible}></button>

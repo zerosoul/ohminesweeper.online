@@ -28,6 +28,9 @@ select {
   min-width: 80px;
   text-indent: 4px;
 }
+/* .sunken-panel {
+  overflow-y: scroll;
+} */
 button:not(:disabled).active,
 input[type="reset"]:not(:disabled).active,
 input[type="submit"]:not(:disabled).active {
@@ -55,6 +58,6 @@ input[type="submit"]:not(:disabled).active {
   pointer-events: all;
 }
 
-#root-modal.mask > .wrapper {
+#root-modal.mask {
   background-color: rgba(2, 2, 2, 0.7);
 }

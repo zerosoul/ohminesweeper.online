@@ -20,6 +20,9 @@ const Modal: FC<PropsWithChildren<Props>> = ({ mask = true, children }) => {
     setWrapper(wrapper);
     return () => {
       modalRoot.removeChild(wrapper);
+      if (mask) {
+        modalRoot.classList.remove("mask");
+      }
     };
   }, [mask]);
 

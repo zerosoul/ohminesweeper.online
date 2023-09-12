@@ -3,44 +3,50 @@ import WindowTitleBar from "./window-title-bar";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
 import { updateMiniRecords } from "@/redux/slice/user.data";
-import Modal from "./modal";
 import Image from "next/image";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+// import relativeTime from "dayjs/plugin/relativeTime";
 
-import { PlayRecord } from "@/types";
+import { Level, PlayRecord } from "@/types";
 import useRecords from "../hooks/useRecords";
 
 // type Props = {}
-dayjs.extend(relativeTime);
-const PersonalBest = ({ data }: { data: PlayRecord }) => {
+// dayjs.extend(relativeTime);
+const PersonalBest = ({ level, data }: { level: Level; data: PlayRecord | null }) => {
   return (
     <div
       className={clsx(
-        "border p-1 my-2",
-        data.level == "beginner" && "border-yellow-700",
-        data.level == "intermediate" && "border-orange-600",
-        data.level == "expert" && "border-red-600"
+        "px-3 py-2 my-1 min-w-[135px] min-h-[90px] flex flex-col gap-2 relative",
+        level == "beginner" && "bg-yellow-700",
+        level == "intermediate" && "bg-orange-600",
+        level == "expert" && "bg-red-600",
+        !data && "grayscale text-gray-300"
       )}
     >
-      <fieldset className="">
-        <legend className="capitalize">
-          Personal Best at <strong>{data.level}</strong> Level
-        </legend>
-        <div className="flex items-center gap-3">
-          <Image
-            width={32}
-            height={32}
-            className="drop-shadow-xl"
-            alt="personal best"
-            src={"/cert.png"}
-          />
+      <span className="uppercase font-semibold absolute -top-1 -right-4 rotate-45 drop-shadow-xl text-black grayscale-0">
+        {level}
+      </span>
+      <div className="bg-transparent flex flex-col">
+        <span>Personal Best</span>
+        {data && <span>at {dayjs(data.timestamp).format("YYYY-MM-DD HH:mm:ss")}</span>}
+      </div>
+      <div className="flex items-center gap-3">
+        <Image
+          width={38}
+          height={38}
+          className={clsx("drop-shadow-xl")}
+          alt="personal best"
+          src={"/cert.png"}
+        />
+        {data ? (
           <div className="flex text-sm drop-shadow-lg">
-            <strong>{data.duration}s</strong> &nbsp;{` at `}
-            <strong>{dayjs(data.timestamp).fromNow()}</strong>
+            <strong>{data.duration}s</strong>
+            {/* <strong>{dayjs(data.timestamp).fromNow()}</strong> */}
           </div>
-        </div>
-      </fieldset>
+        ) : (
+          "No win yet!"
+        )}
+      </div>
     </div>
   );
 };
@@ -73,6 +79,7 @@ const RadioFilter = ({
     </div>
   );
 };
+export const RecordWindowTitle = `Play Records`;
 const RecordsWindow = () => {
   const dispatch = useAppDispatch();
   const recordWindowMinimized = useAppSelector((store) => store.userData.recordWindowMinimized);
@@ -89,75 +96,83 @@ const RecordsWindow = () => {
   };
   if (recordWindowMinimized) return null;
   return (
-    <Modal mask={false}>
-      <div className={clsx("window")}>
-        <WindowTitleBar allowDrag title="play records" icon="/table.png">
-          <button
-            aria-label="Minimize"
-            onClick={() => dispatch(updateMiniRecords(true))}
-            title="Hide the window"
-          ></button>
-        </WindowTitleBar>
-        <div className="window-body">
-          <div className="my-2">
-            <RadioFilter
-              filters={["all", "beginner", "intermediate", "expert"]}
-              filter={filter.level}
-              name="level"
-              handleUpdate={handleLevelChange}
-            />
-            <RadioFilter
-              filters={["all", "win", "loss"]}
-              filter={filter.result}
-              name="result"
-              handleUpdate={handleResultChange}
-            />
-          </div>
-          <div className="sunken-panel w-full md:w-96  min-h-[320px] max-h-96">
-            <table className="interactive w-full text-sm">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Level</th>
-                  <th>Duration</th>
-                  <th>Result</th>
+    <div className={clsx("window fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2")}>
+      <WindowTitleBar allowDrag title={RecordWindowTitle} icon="/table.png">
+        <button
+          aria-label="Minimize"
+          onClick={() => dispatch(updateMiniRecords(true))}
+          title="Hide the window"
+        ></button>
+      </WindowTitleBar>
+      <div className="window-body">
+        <div className="my-2">
+          <RadioFilter
+            filters={["all", "beginner", "intermediate", "expert"]}
+            filter={filter.level}
+            name="level"
+            handleUpdate={handleLevelChange}
+          />
+          <RadioFilter
+            filters={["all", "win", "loss"]}
+            filter={filter.result}
+            name="result"
+            handleUpdate={handleResultChange}
+          />
+        </div>
+        <div className="sunken-panel w-full md:w-96  min-h-[320px] max-h-96">
+          <table className="interactive w-full text-sm">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Level</th>
+                <th>Duration</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              {records.length == 0 ? (
+                <tr className="translate-y-20">
+                  <td colSpan={4} className="text-center">
+                    No records yet
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {records.length == 0 ? (
-                  <tr className="translate-y-20">
-                    <td colSpan={4} className="text-center">
-                      No records yet
-                    </td>
-                  </tr>
-                ) : (
-                  records.map((r) => {
-                    const { duration, level, timestamp, status } = r;
-                    return (
-                      <tr
-                        key={timestamp}
-                        className={clsx(
-                          "hover:bg-[#008] hover:text-white",
-                          status == "win" && "bg-teal-200"
-                        )}
-                      >
-                        <td width={30}>{dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss")}</td>
-                        <td>{level}</td>
-                        <td>{duration}s</td>
-                        <td>{status}</td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
+              ) : (
+                records.map((r) => {
+                  const { duration, level, timestamp, status } = r;
+                  return (
+                    <tr
+                      role="button"
+                      key={timestamp}
+                      className={clsx(
+                        "hover:bg-[#008] hover:text-white",
+                        status == "win" && "bg-teal-200"
+                      )}
+                    >
+                      <td width={30}>{dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss")}</td>
+                      <td>{level}</td>
+                      <td>{duration}s</td>
+                      <td>{status}</td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </table>
+        </div>
+        <em className="drop-shadow">* play time less than 1 second excluded</em>
+        <div className="grid  grid-rows-2 grid-cols-1 justify-items-center">
+          <div className="col-span-2">
+            <PersonalBest level="expert" data={best.expert} />
           </div>
-          {best.beginner && <PersonalBest data={best.beginner} />}
-          {best.intermediate && <PersonalBest data={best.intermediate} />}
-          {best.expert && <PersonalBest data={best.expert} />}
+          <div className="place-self-start">
+            <PersonalBest level="intermediate" data={best.intermediate} />
+          </div>
+          <div className="place-self-end">
+            <PersonalBest level="beginner" data={best.beginner} />
+          </div>
         </div>
       </div>
-    </Modal>
+    </div>
   );
 };
 

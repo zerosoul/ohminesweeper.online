@@ -54,6 +54,8 @@ const userDataSlice = createSlice({
       state.cellSize = action.payload;
     },
     addRecord(state, action: PayloadAction<Omit<PlayRecord, "timestamp" | "duration" | "level">>) {
+      // 时间太短，不予统计
+      if (state.elapsedTime <= 1) return;
       const record: PlayRecord = {
         timestamp: new Date().getTime(),
         duration: state.elapsedTime,

@@ -10,6 +10,7 @@ import { updateMini, updateMiniRecords } from "@/redux/slice/user.data";
 import { useClickAway } from "@uidotdev/usehooks";
 // import Help from "./help";
 import SoundSwitch from "./sound-switch";
+import { RecordWindowTitle } from "./window-records";
 
 type Props = {
   startGame: () => void;
@@ -58,7 +59,7 @@ const TaskBar = ({ startGame }: Props) => {
           )}
         >
           <Image alt="mine icon" src={"/table.png"} width={14} height={14} />
-          <span className="hidden md:inline-block">Play Records</span>
+          <span className="hidden md:inline-block">{RecordWindowTitle}</span>
         </button>
       </div>
       {/* <Language /> */}
