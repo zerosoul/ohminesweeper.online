@@ -9,8 +9,10 @@ const numImages = [...Array(9).keys()].map((i) => `/ms/num/${i}.svg`);
 const otherImages = ["/ms/cell.clicked.svg", "/ms/cell.click.svg", "/ms/result.face.png"];
 const images = [...otherImages, ...mineCountImages, ...numImages];
 
+let inter = 0;
 const usePreload = () => {
   const dispatch = useAppDispatch();
+  const [isTimeout, setIsTimeout] = useState(false);
   const [soundLoaded, setSoundLoaded] = useState(false);
   const [preloaded, setPreloaded] = useState(false);
   const [rehydrated, setRehydrated] = useState(false);
@@ -54,12 +56,17 @@ const usePreload = () => {
       setSoundLoaded(true);
     }
     // for test
-    // setTimeout(() => {
-    //   setTested(true);
-    // }, 3000000);
+    inter = window.setTimeout(() => {
+      setIsTimeout(true);
+    }, 6000);
   }, []);
+  useEffect(() => {
+    if (preloaded && rehydrated && soundLoaded) {
+      clearTimeout(inter);
+    }
+  }, [preloaded, rehydrated, soundLoaded]);
 
-  return preloaded && rehydrated && soundLoaded;
+  return preloaded && rehydrated && soundLoaded && isTimeout;
   // return preloaded && rehydrated && tested;
 };
 

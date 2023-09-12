@@ -24,6 +24,9 @@ const preloadAudio = (src: string) => {
     audio.oncanplay = function () {
       resolve(audio);
     };
+    audio.onloadedmetadata = function () {
+      resolve(audio);
+    };
     audio.onerror = reject;
     audio.src = src;
     switch (_sound as Sound) {
