@@ -31,3 +31,5 @@ https://github.com/React95/React95
 
 https://carlogino.com/blog/nextjs13-i18n
 https://locize.com/blog/next-13-app-dir-i18n/
+sound effect
+https://www.sounds-resource.com/pc_computer/minesweeper/sound/17799/

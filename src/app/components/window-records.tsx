@@ -113,7 +113,7 @@ const RecordsWindow = () => {
               handleUpdate={handleResultChange}
             />
           </div>
-          <div className="sunken-panel w-fit md:w-96  min-h-[320px] max-h-96">
+          <div className="sunken-panel w-full md:w-96  min-h-[320px] max-h-96">
             <table className="interactive w-full text-sm">
               <thead>
                 <tr>
