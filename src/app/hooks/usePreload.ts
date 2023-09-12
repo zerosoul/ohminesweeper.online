@@ -63,6 +63,7 @@ const usePreload = () => {
   useEffect(() => {
     if (preloaded && rehydrated && soundLoaded) {
       clearTimeout(inter);
+      setIsTimeout(true);
     }
   }, [preloaded, rehydrated, soundLoaded]);
 
