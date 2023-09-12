@@ -56,7 +56,7 @@ const TaskBar = ({ startGame }: Props) => {
             !recordWindowMinimized && "active"
           )}
         >
-          <Image alt="mine icon" src={"/notepad.png"} width={14} height={14} />
+          <Image alt="mine icon" src={"/table.png"} width={14} height={14} />
           <span className="hidden md:inline-block">Play Records</span>
         </button>
       </div>

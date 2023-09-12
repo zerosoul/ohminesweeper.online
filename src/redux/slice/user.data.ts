@@ -48,15 +48,12 @@ const userDataSlice = createSlice({
     updateCellSize(state, action: PayloadAction<number>) {
       state.cellSize = action.payload;
     },
-    addRecord(state, action: PayloadAction<Pick<PlayRecord, "numCells" | "status" | "grid">>) {
-      const { status, numCells, grid } = action.payload;
+    addRecord(state, action: PayloadAction<Omit<PlayRecord, "timestamp" | "duration" | "level">>) {
       const record: PlayRecord = {
         timestamp: new Date().getTime(),
         duration: state.elapsedTime,
         level: state.level,
-        status,
-        numCells,
-        grid
+        ...action.payload
       };
       state.records = [record, ...state.records];
     }

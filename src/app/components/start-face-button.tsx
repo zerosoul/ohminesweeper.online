@@ -1,7 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addRecord, updateCellActive } from "@/redux/slice/user.data";
+import { DeepWriteable } from "@/types";
 import clsx from "clsx";
-import { GameStatus } from "minesweeper-redux";
+import { GameStatus, Minesweeper } from "minesweeper-redux";
 import React, { useEffect } from "react";
 
 type Props = {
@@ -10,8 +11,7 @@ type Props = {
 const StartFaceButton = ({ startGame }: Props) => {
   const dispatch = useAppDispatch();
   // const elapsedTime = useAppSelector((store) => store.minesweeper.elapsedTime);
-  const grid = useAppSelector((store) => store.minesweeper.grid);
-  const numCells = useAppSelector((store) => store.minesweeper.numCells);
+  const minesweeper = useAppSelector((store) => store.minesweeper);
   const status = useAppSelector((store) => store.minesweeper.status);
   const cellActive = useAppSelector((store) => store.userData.cellActive);
   const positionMap: Record<GameStatus, string> = {
@@ -38,13 +38,10 @@ const StartFaceButton = ({ startGame }: Props) => {
       case "loss":
       case "win":
         {
-          dispatch(
-            addRecord({
-              status,
-              numCells,
-              grid
-            })
-          );
+          // eslint-disable-next-line no-unused-vars
+          const { timerStopper, timerCallback, elapsedTime, ...rest } =
+            minesweeper as DeepWriteable<Minesweeper>;
+          dispatch(addRecord(rest));
         }
 
         break;
@@ -52,7 +49,7 @@ const StartFaceButton = ({ startGame }: Props) => {
       default:
         break;
     }
-  }, [status, numCells, grid]);
+  }, [status, minesweeper]);
 
   return (
     <button

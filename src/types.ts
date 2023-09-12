@@ -1,19 +1,16 @@
-import { Coordinate, GameStatus } from "minesweeper-redux";
-
+import { Coordinate, Minesweeper } from "minesweeper-redux";
+export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 // eslint-disable-next-line no-unused-vars
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
 export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
 export type Theme = "auto" | "dark" | "light";
 export type PlayRecord = {
   timestamp: number;
-  status: GameStatus;
-  numCells: number;
   duration: number;
   level: Level;
-  grid: any;
   // numFlagged: number;
   // remainingFlags: number;
-};
+} & Omit<DeepWriteable<Minesweeper>, "timerCallback" | "timerStopper" | "elapsedTime">;
 export type UserInfo = {
   name: string;
   email: string;
