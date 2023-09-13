@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import ReduxProvider from "../redux/provider";
 import "98.css";
 import { PWAMeta } from "../config";
+import GTag from "./components/gtag";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ReduxProvider>{children}</ReduxProvider>
         <div id="root-modal"></div>
         {process.env.NODE_ENV == "production" && <Analytics />}
+        {process.env.NODE_ENV == "production" && <GTag />}
       </body>
     </html>
   );

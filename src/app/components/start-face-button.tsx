@@ -25,12 +25,15 @@ const StartFaceButton = ({ startGame }: Props) => {
     const handleMouseUp = () => {
       dispatch(updateCellActive(false));
     };
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("touchend", handleMouseUp);
+    const boardNode = document.querySelector("#SCREEN_SHOOT_AREA");
+    if (!boardNode) return;
+    boardNode.addEventListener("mouseup", handleMouseUp);
+    boardNode.addEventListener("touchend", handleMouseUp);
 
     return () => {
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("touchend", handleMouseUp);
+      if (!boardNode) return;
+      boardNode.removeEventListener("mouseup", handleMouseUp);
+      boardNode.removeEventListener("touchend", handleMouseUp);
     };
   }, []);
   useEffect(() => {

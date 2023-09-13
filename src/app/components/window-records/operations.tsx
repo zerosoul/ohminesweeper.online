@@ -1,7 +1,8 @@
 import React from "react";
 import WindowTitleBar from "../window-title-bar";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { removeRecord } from "@/redux/slice/user.data";
+import { getLoadableGameState, loadGame, startGame } from "minesweeper-redux";
 
 type Props = {
   handleClose: () => void;
@@ -10,6 +11,7 @@ type Props = {
 
 const Operations = ({ handleClose, timestamp }: Props) => {
   const dispatch = useAppDispatch();
+  const minesweeper = useAppSelector((store) => store.minesweeper);
   const handleRemove = () => {
     console.log(timestamp);
     dispatch(removeRecord(timestamp));
@@ -17,6 +19,16 @@ const Operations = ({ handleClose, timestamp }: Props) => {
   };
   const closeTheWindow = () => {
     handleClose();
+  };
+  const handleReplay = () => {
+    const wtf = getLoadableGameState(minesweeper);
+    loadGame({ gameState: wtf });
+    startGame({
+      difficulty: wtf.difficulty,
+      randSeed: wtf.randSeed
+    });
+    handleClose();
+    console.log({ wtf });
   };
 
   return (
@@ -32,7 +44,7 @@ const Operations = ({ handleClose, timestamp }: Props) => {
             </button>
           </li>
           <li>
-            <button disabled>Replay</button>
+            <button onClick={handleReplay}>Replay</button>
           </li>
         </ul>
       </div>
