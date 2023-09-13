@@ -80,6 +80,13 @@ const title = {
 };
 const description = "windows 98/2000 classic minesweeper game online";
 export const PWAMeta: Metadata = {
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 1,
+    userScalable: false
+  },
   applicationName: "MineSweeper",
   title,
   description,

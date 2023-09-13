@@ -16,18 +16,18 @@ const PersonalBest = ({ level, data }: { level: Level; data: PlayRecord | null }
   return (
     <div
       className={clsx(
-        "px-3 py-2 my-1 min-w-[135px] min-h-[90px] flex flex-col gap-2 relative",
-        level == "beginner" && "bg-yellow-700",
-        level == "intermediate" && "bg-orange-600",
-        level == "expert" && "bg-red-600",
+        "px-3 py-2 my-1 min-w-[135px] min-h-[90px] flex flex-col gap-2 relative shadow-md rounded bg-orange-600",
+        // level == "beginner" && "bg-yellow-700",
+        // level == "intermediate" && "bg-orange-600",
+        // level == "expert" && "bg-red-600",
         !data && "grayscale text-gray-300"
       )}
     >
-      <span className="uppercase font-semibold absolute -top-1 -right-4 rotate-45 drop-shadow-xl text-black grayscale-0">
-        {level}
+      <span className="font-semibold absolute -top-0 -right-4 rotate-45 drop-shadow-xl text-black grayscale-0">
+        Personal Best
       </span>
       <div className="bg-transparent flex flex-col">
-        <span>Personal Best</span>
+        <span className="font-semibold capitalize">{level}</span>
         {data && <span>at {dayjs(data.timestamp).format("YYYY-MM-DD HH:mm:ss")}</span>}
       </div>
       <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ const RecordsWindow = () => {
           </table>
         </div>
         <em className="drop-shadow">* play time less than 1 second excluded</em>
-        <div className="grid  grid-rows-2 grid-cols-1 justify-items-center">
+        <div className="mt-3 pt-5 grid grid-rows-2 grid-cols-1 justify-items-center">
           <div className="col-span-2">
             <PersonalBest level="expert" data={best.expert} />
           </div>
