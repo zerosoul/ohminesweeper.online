@@ -63,11 +63,15 @@ const userDataSlice = createSlice({
         ...action.payload
       };
       state.records = [record, ...state.records];
+    },
+    removeRecord(state, action: PayloadAction<number>) {
+      state.records = state.records.filter((r) => r.timestamp !== action.payload);
     }
   }
 });
 
 export const {
+  removeRecord,
   updateSound,
   fillUserData,
   resetUserData,
