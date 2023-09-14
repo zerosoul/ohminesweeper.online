@@ -1,7 +1,11 @@
 diff --git a/node_modules/minesweeper-redux/.DS_Store b/node_modules/minesweeper-redux/.DS_Store
 new file mode 100644
-index 0000000..be931a6
+index 0000000..1ec6bba
 Binary files /dev/null and b/node_modules/minesweeper-redux/.DS_Store differ
+diff --git a/node_modules/minesweeper-redux/dist/.DS_Store b/node_modules/minesweeper-redux/dist/.DS_Store
+new file mode 100644
+index 0000000..8593013
+Binary files /dev/null and b/node_modules/minesweeper-redux/dist/.DS_Store differ
 diff --git a/node_modules/minesweeper-redux/dist/__tests__/Minesweeper.test.d.ts b/node_modules/minesweeper-redux/dist/__tests__/Minesweeper.test.d.ts
 new file mode 100644
 index 0000000..cb0ff5c
@@ -147,6 +151,13 @@ index 802d651..2d45784 100644
  /** Generates a random number from a seed number. */
 -export declare type RandomNumberGenerator = (max?: number, min?: number) => number;
 +export type RandomNumberGenerator = (max?: number, min?: number) => number;
+diff --git a/node_modules/minesweeper-redux/dist/minesweeper-redux.d.ts b/node_modules/minesweeper-redux/dist/minesweeper-redux.d.ts
+new file mode 100644
+index 0000000..df7053e
+--- /dev/null
++++ b/node_modules/minesweeper-redux/dist/minesweeper-redux.d.ts
+@@ -0,0 +1 @@
++export * from './index'
 diff --git a/node_modules/minesweeper-redux/dist/minesweeper-redux.js b/node_modules/minesweeper-redux/dist/minesweeper-redux.js
 index 03e4270..aa64293 100644
 --- a/node_modules/minesweeper-redux/dist/minesweeper-redux.js
