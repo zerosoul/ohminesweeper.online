@@ -7,7 +7,8 @@ import {
   toggleMini,
   addRecord,
   toggleSound,
-  removeRecord
+  removeRecord,
+  updateCustom
 } from "./slice/user.data";
 
 import type { TypedAddListener, TypedStartListening } from "@reduxjs/toolkit";
@@ -23,12 +24,25 @@ export const addAppListener = addListener as TypedAddListener<RootState, AppDisp
 
 // Update user data
 startAppListening({
-  matcher: isAnyOf(updateLevel, updateCellSize, toggleMini, addRecord, toggleSound, removeRecord),
+  matcher: isAnyOf(
+    updateLevel,
+    updateCellSize,
+    toggleMini,
+    addRecord,
+    toggleSound,
+    removeRecord,
+    updateCustom
+  ),
 
   effect: async (action, listenerApi) => {
     console.log("action", action, listenerApi.getState());
     const currState = listenerApi.getState();
     switch (action.type) {
+      case "userData/updateCustom":
+        {
+          set("custom", action.payload);
+        }
+        break;
       case "userData/toggleMini":
         {
           set("minimized", currState.userData.minimized);

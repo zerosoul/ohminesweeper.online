@@ -92,15 +92,15 @@ const TaskBar = () => {
             )}
           >
             <div className="flex flex-col gap-1">
-              <label className="text-xs">Level:</label>
+              <label className="text-xs font-semibold">Level:</label>
               <SelectLevel />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs">Size:</label>
+              <label className="text-xs font-semibold">Size:</label>
               <SelectZoom />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs">Theme:</label>
+              <label className="text-xs font-semibold">Theme:</label>
               <DarkMode />
             </div>
           </aside>

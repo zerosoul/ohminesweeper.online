@@ -10,7 +10,6 @@ import { difficulty } from "@/config";
 // import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
 import clsx from "clsx";
-// import { resetElapsedTime, tickElapsedTime, toggleMini } from "@/redux/slice/user.data";
 import TaskBar from "./components/task-bar";
 import StartFaceButton from "./components/start-face-button";
 import WindowTitleBar from "./components/window-title-bar";
@@ -27,7 +26,6 @@ export default function Home() {
   const minimized = useAppSelector((store) => store.userData.minimized, shallowEqual);
   const status = useAppSelector((store) => store.minesweeper.status, shallowEqual);
   const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
-  // const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
   const preloaded = usePreload();
   const dispatch = useAppDispatch();
   const handleMini = () => {

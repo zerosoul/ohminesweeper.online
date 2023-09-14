@@ -41,9 +41,12 @@ const Board = () => {
     dispatch(revealCell({ coordinate }));
   };
   useEffect(() => {
+    const d = difficulty[level];
+    console.log({ d });
+
     dispatch(
       startGame({
-        difficulty: difficulty[level],
+        difficulty: d,
         randSeed: Math.random()
       })
     );
@@ -62,12 +65,11 @@ const Board = () => {
       rightClick={onRightClick}
     />
   ));
-  const loading = status === "waiting";
-  console.log("loading", loading);
+  const waiting = status === "waiting";
   const gameOver = status === "loss" || status === "win";
   return (
-    <div className="relative flex flex-col min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
-      {loading ? <Loading /> : rows}
+    <div className="relative flex flex-col justify-center items-center min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
+      {waiting ? <Loading /> : rows}
       {gameOver && <div className="absolute left-0 top-0 w-full h-full"></div>}
     </div>
   );

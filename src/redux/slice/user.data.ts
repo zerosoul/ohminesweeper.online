@@ -1,13 +1,15 @@
+import { defaultCustom, difficulty } from "@/config";
 import { Level, PlayRecord, UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Difficulty } from "minesweeper-redux";
 
 const initialState: UserData = {
+  custom: defaultCustom,
   sound: false,
   minimized: false,
   recordWindowMinimized: true,
   level: "beginner",
   cellSize: 30,
-  elapsedTime: 0,
   records: [],
   cellActive: false
 };
@@ -27,6 +29,11 @@ const userDataSlice = createSlice({
     updateLevel(state, action: PayloadAction<Level>) {
       state.level = action.payload;
     },
+    updateCustom(state, action: PayloadAction<Difficulty>) {
+      state.custom = action.payload;
+      difficulty.custom = action.payload;
+      console.log("update custom", difficulty.custom);
+    },
     updateCellActive(state, action: PayloadAction<boolean>) {
       if (state.cellActive === action.payload) return;
       state.cellActive = action.payload;
@@ -40,24 +47,18 @@ const userDataSlice = createSlice({
     toggleMiniRecords(state) {
       state.recordWindowMinimized = !state.recordWindowMinimized;
     },
-    setElapsedTime(state, action: PayloadAction<number>) {
-      // +1
-      state.elapsedTime = action.payload;
-    },
-    resetElapsedTime(state) {
-      state.elapsedTime = 0;
-    },
     updateCellSize(state, action: PayloadAction<number>) {
       state.cellSize = action.payload;
     },
-    addRecord(state, action: PayloadAction<Omit<PlayRecord, "timestamp" | "duration" | "level">>) {
+    addRecord(state, action: PayloadAction<Omit<PlayRecord, "timestamp" | "level">>) {
+      const { duration, ...rest } = action.payload;
       // 时间太短，不予统计
-      if (state.elapsedTime <= 1) return;
+      if (duration <= 1) return;
       const record: PlayRecord = {
         timestamp: new Date().getTime(),
-        duration: state.elapsedTime,
+        duration,
         level: state.level,
-        ...action.payload
+        ...rest
       };
       state.records = [record, ...state.records];
     },
@@ -69,13 +70,12 @@ const userDataSlice = createSlice({
 
 export const {
   removeRecord,
+  updateCustom,
   toggleSound,
   fillUserData,
   resetUserData,
   updateLevel,
   updateCellSize,
-  setElapsedTime,
-  resetElapsedTime,
   toggleMini,
   toggleMiniRecords,
   updateCellActive,

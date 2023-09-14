@@ -3,6 +3,11 @@ import { Level } from "./types";
 import { AppleWebApp } from "next/dist/lib/metadata/types/extra-types";
 import { Metadata } from "next";
 
+export const defaultCustom: Difficulty = {
+  width: 16,
+  height: 30,
+  numMines: 99
+};
 export const difficulty: Record<Level, Difficulty> = {
   beginner: {
     width: 9,
@@ -19,11 +24,7 @@ export const difficulty: Record<Level, Difficulty> = {
     height: 16,
     numMines: 99
   },
-  ["expert(vertical)"]: {
-    width: 16,
-    height: 30,
-    numMines: 99
-  }
+  custom: defaultCustom
 };
 
 export const AppleWebMeta: AppleWebApp = {

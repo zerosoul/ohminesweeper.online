@@ -1,8 +1,8 @@
-import { Coordinate, Minesweeper } from "minesweeper-redux";
+import { Coordinate, Difficulty, Minesweeper } from "minesweeper-redux";
 export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 // eslint-disable-next-line no-unused-vars
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
-export type Level = "beginner" | "intermediate" | "expert" | "expert(vertical)";
+export type Level = "beginner" | "intermediate" | "expert" | "custom";
 export type Theme = "auto" | "dark" | "light";
 export type Sound = "tick" | "start" | "win" | "loss";
 
@@ -12,18 +12,18 @@ export type PlayRecord = {
   level: Level;
   // numFlagged: number;
   // remainingFlags: number;
-} & Omit<DeepWriteable<Minesweeper>, "timerCallback" | "timerStopper" | "elapsedTime">;
+} & DeepWriteable<Minesweeper>;
 export type UserInfo = {
   name: string;
   email: string;
 };
 export interface UserData {
+  custom: Difficulty;
   sound: boolean;
   minimized: boolean;
   recordWindowMinimized: boolean;
   user?: UserInfo;
   level: Level;
-  elapsedTime: number;
   cellSize: number;
   records: PlayRecord[];
   cellActive: boolean;

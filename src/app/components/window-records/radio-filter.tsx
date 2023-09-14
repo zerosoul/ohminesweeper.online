@@ -14,8 +14,15 @@ const RadioFilter = ({ handleUpdate, name, filter, filters }: Props) => {
         {filters.map((_key) => {
           const id_key = `${name}_${_key}`;
           return (
-            <li key={_key} className="cursor-pointer" onClick={handleUpdate.bind(null, _key)}>
-              <input id={id_key} name={id_key} type="radio" checked={filter == _key} />
+            <li key={_key} className="flex cursor-pointer">
+              <input
+                className="cursor-pointer"
+                id={id_key}
+                name={id_key}
+                type="radio"
+                onChange={handleUpdate.bind(null, _key)}
+                checked={filter == _key}
+              />
               <label htmlFor={id_key}>{_key}</label>
             </li>
           );

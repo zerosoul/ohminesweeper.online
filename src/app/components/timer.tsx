@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useTimer } from "../hooks/useTimer";
 import { useEffect } from "react";
 import CounterView from "./counter-view";
-import { addRecord, resetElapsedTime, setElapsedTime } from "@/redux/slice/user.data";
+import { addRecord } from "@/redux/slice/user.data";
 import { DeepWriteable } from "@/types";
 import { Minesweeper } from "minesweeper-redux";
 // import React, { useEffect } from "react";
@@ -21,15 +21,15 @@ const Timer = () => {
       case "win":
         {
           pause();
-          dispatch(setElapsedTime(elapsedTime));
-          dispatch(addRecord(minesweeper as DeepWriteable<Minesweeper>));
+          dispatch(
+            addRecord({ duration: elapsedTime, ...(minesweeper as DeepWriteable<Minesweeper>) })
+          );
         }
         break;
       case "waiting":
       case "ready":
         {
           stop();
-          dispatch(resetElapsedTime());
         }
         break;
 
