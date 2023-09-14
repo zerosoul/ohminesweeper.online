@@ -15,11 +15,10 @@ const useRecords = () => {
   const records = useAppSelector((state) => state.userData.records);
   const [filteredRecords, setFilteredRecords] = useState<PlayRecord[]>([]);
   const [filter, setFilter] = useState<Filter>(defaultFilter);
-  const [best, setBest] = useState<Record<Level, PlayRecord | null>>({
+  const [best, setBest] = useState<Record<Exclude<Level, "custom">, PlayRecord | null>>({
     beginner: null,
     intermediate: null,
-    expert: null,
-    "expert(vertical)": null
+    expert: null
   });
   useEffect(() => {
     if (records.length > 0) {
@@ -30,7 +29,7 @@ const useRecords = () => {
         .filter((r) => r.level == "intermediate" && r.status == "win")
         .sort((a, b) => a.duration - b.duration);
       const experts = records
-        .filter((r) => (r.level == "expert" || r.level == "expert(vertical)") && r.status == "win")
+        .filter((r) => r.level == "expert" && r.status == "win")
         .sort((a, b) => a.duration - b.duration);
       setBest((prev) => ({
         ...prev,
