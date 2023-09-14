@@ -4,9 +4,9 @@ import { set } from "idb-keyval";
 import {
   updateLevel,
   updateCellSize,
-  updateMini,
+  toggleMini,
   addRecord,
-  updateSound,
+  toggleSound,
   removeRecord
 } from "./slice/user.data";
 
@@ -23,14 +23,15 @@ export const addAppListener = addListener as TypedAddListener<RootState, AppDisp
 
 // Update user data
 startAppListening({
-  matcher: isAnyOf(updateLevel, updateCellSize, updateMini, addRecord, updateSound, removeRecord),
+  matcher: isAnyOf(updateLevel, updateCellSize, toggleMini, addRecord, toggleSound, removeRecord),
 
   effect: async (action, listenerApi) => {
     console.log("action", action, listenerApi.getState());
+    const currState = listenerApi.getState();
     switch (action.type) {
-      case "userData/updateMini":
+      case "userData/toggleMini":
         {
-          set("minimized", action.payload);
+          set("minimized", currState.userData.minimized);
         }
         break;
       case "userData/updateLevel":
@@ -43,15 +44,14 @@ startAppListening({
           set("cellSize", action.payload);
         }
         break;
-      case "userData/updateSound":
+      case "userData/toggleSound":
         {
-          set("sound", action.payload);
+          set("sound", currState.userData.sound);
         }
         break;
       case "userData/removeRecord":
       case "userData/addRecord":
         {
-          const currState = listenerApi.getState();
           set("records", currState.userData.records);
         }
         break;

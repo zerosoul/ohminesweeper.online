@@ -1,4 +1,4 @@
-import React from "react";
+// import React, { memo } from "react";
 import { Cell as ICell } from "minesweeper-redux";
 import Cell from "./cell";
 import { CellMouseEvent } from "@/types";
@@ -25,3 +25,7 @@ const Row = ({ row, leftClick, rightClick, rowIndex }: RowProps) => {
 };
 
 export default Row;
+
+// export default memo(Row, (prev, next) => {
+//   return JSON.stringify(prev.row) == JSON.stringify(next.row);
+// });

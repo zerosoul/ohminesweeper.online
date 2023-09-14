@@ -1,17 +1,16 @@
+import { difficulty } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addRecord, updateCellActive } from "@/redux/slice/user.data";
-import { DeepWriteable } from "@/types";
+import { updateCellActive } from "@/redux/slice/user.data";
 import clsx from "clsx";
-import { GameStatus, Minesweeper } from "minesweeper-redux";
+import { GameStatus, startGame } from "minesweeper-redux";
 import React, { useEffect } from "react";
 
-type Props = {
-  startGame: () => void;
-};
-const StartFaceButton = ({ startGame }: Props) => {
+// type Props = {
+//   startGame: () => void;
+// };
+const StartFaceButton = () => {
   const dispatch = useAppDispatch();
-  // const elapsedTime = useAppSelector((store) => store.minesweeper.elapsedTime);
-  const minesweeper = useAppSelector((store) => store.minesweeper);
+  const level = useAppSelector((store) => store.userData.level);
   const status = useAppSelector((store) => store.minesweeper.status);
   const cellActive = useAppSelector((store) => store.userData.cellActive);
   const positionMap: Record<GameStatus, string> = {
@@ -36,26 +35,19 @@ const StartFaceButton = ({ startGame }: Props) => {
       boardNode.removeEventListener("touchend", handleMouseUp);
     };
   }, []);
-  useEffect(() => {
-    switch (status) {
-      case "loss":
-      case "win":
-        {
-          // eslint-disable-next-line no-unused-vars
-          const { timerStopper, timerCallback, elapsedTime, ...rest } =
-            minesweeper as DeepWriteable<Minesweeper>;
-          dispatch(addRecord(rest));
-        }
-        break;
-
-      default:
-        break;
-    }
-  }, [status, minesweeper]);
-
+  const handleRestart = () => {
+    dispatch(
+      startGame({
+        difficulty: difficulty[level],
+        randSeed: Math.random()
+      })
+    );
+  };
+  const gameOver = status == "win" || status == "loss";
   return (
     <button
-      onClick={startGame}
+      disabled={!gameOver}
+      onClick={handleRestart}
       className={clsx(
         "!w-12 min-w-[unset] h-12 !p-0 flex items-center justify-center",
         "bg-[url(/ms/result.face.png)] bg-no-repeat",

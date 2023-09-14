@@ -1,14 +1,10 @@
-import { useAppSelector } from "@/redux/hooks";
+// import { useAppSelector } from "@/redux/hooks";
 // import React, { useEffect } from "react";
 
 type Props = {
-  type: "flag" | "time";
+  count: number;
 };
-const Counter = ({ type }: Props) => {
-  const count = useAppSelector((store) =>
-    type == "flag" ? store.minesweeper.remainingFlags : store.userData.elapsedTime
-  );
-
+const CounterView = ({ count }: Props) => {
   const countStr = (count >= 999 ? 999 : count < 0 ? 0 : count).toString().padStart(3, "0");
   const [num1, num2, num3] = countStr.split("");
   console.log("count", countStr, num1, num2, num3);
@@ -22,4 +18,4 @@ const Counter = ({ type }: Props) => {
   );
 };
 
-export default Counter;
+export default CounterView;

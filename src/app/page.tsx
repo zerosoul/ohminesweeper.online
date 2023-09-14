@@ -1,62 +1,43 @@
 // import Image from 'next/image'
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { startGame } from "minesweeper-redux";
 import Board from "./components/board";
-import Timer from "./components/counter";
-import { useEffect, useRef } from "react";
+import Timer from "./components/timer";
+import { useRef } from "react";
 // import Rank from "./components/rank";
 import { difficulty } from "@/config";
 // import Language from "./components/select-lang";
-import { shallowEqual } from "react-redux";
+// import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
 import clsx from "clsx";
-import { resetElapsedTime, tickElapsedTime, updateMini } from "@/redux/slice/user.data";
+// import { resetElapsedTime, tickElapsedTime, toggleMini } from "@/redux/slice/user.data";
 import TaskBar from "./components/task-bar";
 import StartFaceButton from "./components/start-face-button";
 import WindowTitleBar from "./components/window-title-bar";
 import usePreload from "./hooks/usePreload";
 import StartScreen from "./components/start-screen";
 import RecordsWindow from "./components/window-records";
+import CounterView from "./components/counter-view";
+import { toggleMini } from "@/redux/slice/user.data";
+import { shallowEqual } from "react-redux";
 
 export default function Home() {
   const boardRef = useRef<HTMLDivElement | null>(null);
-  const level = useAppSelector((store) => store.userData.level);
-  const minimized = useAppSelector((store) => store.userData.minimized);
-  const status = useAppSelector((store) => store.minesweeper.status);
-  const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
+  const level = useAppSelector((store) => store.userData.level, shallowEqual);
+  const minimized = useAppSelector((store) => store.userData.minimized, shallowEqual);
+  const status = useAppSelector((store) => store.minesweeper.status, shallowEqual);
+  const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
+  // const timerStopper = useAppSelector((store) => store.minesweeper.timerStopper, shallowEqual);
   const preloaded = usePreload();
   const dispatch = useAppDispatch();
-  const handleStart = () => {
-    console.log("start");
-    if (timerStopper) {
-      timerStopper();
-      dispatch(resetElapsedTime());
-    }
-    // easy hard medium
-    dispatch(
-      startGame({
-        difficulty: difficulty[level],
-        randSeed: Math.random(),
-        timerCallback: handleTimer
-      })
-    );
-  };
   const handleMini = () => {
-    dispatch(updateMini(true));
-  };
-  const handleTimer = () => {
-    dispatch(tickElapsedTime());
+    dispatch(toggleMini());
   };
   const handleFullscreen = () => {
     if (boardRef && boardRef.current) {
       boardRef.current.requestFullscreen();
     }
   };
-
-  useEffect(() => {
-    handleStart();
-  }, [level]);
   if (!preloaded) return <StartScreen />;
   return (
     <>
@@ -87,9 +68,11 @@ export default function Home() {
           <div className="window-body">
             <div className="status-bar !mb-4">
               <div className="status-bar-field !p-2 flex justify-between">
-                <Timer type="flag" />
-                <StartFaceButton startGame={handleStart} />
-                <Timer type="time" />
+                <CounterView
+                  count={status == "ready" ? difficulty[level].numMines : remainingFlags}
+                />
+                <StartFaceButton />
+                <Timer />
               </div>
             </div>
             <Board />
@@ -100,7 +83,7 @@ export default function Home() {
             <p className="status-bar-field capitalize">Status: {status}</p>
           </div>
         </div>
-        <TaskBar startGame={handleStart} />
+        <TaskBar />
         {/* <Rank /> */}
       </main>
       <PWAUpgradeChecker />

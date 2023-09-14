@@ -6,6 +6,7 @@ import ReduxProvider from "../redux/provider";
 import "98.css";
 import { PWAMeta } from "../config";
 import GTag from "./components/gtag";
+import { StrictMode } from "react";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="dvh-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
-        <ReduxProvider>{children}</ReduxProvider>
+        <StrictMode>
+          <ReduxProvider>{children}</ReduxProvider>
+        </StrictMode>
         <div id="root-modal"></div>
         {process.env.NODE_ENV == "production" && <Analytics />}
         {process.env.NODE_ENV == "production" && <GTag />}

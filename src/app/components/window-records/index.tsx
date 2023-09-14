@@ -2,7 +2,7 @@
 import WindowTitleBar from "../window-title-bar";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
-import { updateMiniRecords } from "@/redux/slice/user.data";
+import { toggleMiniRecords } from "@/redux/slice/user.data";
 import dayjs from "dayjs";
 import PersonalBest from "./personal-best";
 // import relativeTime from "dayjs/plugin/relativeTime";
@@ -41,7 +41,7 @@ const RecordsWindow = () => {
       <WindowTitleBar allowDrag title={RecordWindowTitle} icon="/table.png">
         <button
           aria-label="Minimize"
-          onClick={() => dispatch(updateMiniRecords(true))}
+          onClick={() => dispatch(toggleMiniRecords())}
           title="Hide the window"
         ></button>
       </WindowTitleBar>

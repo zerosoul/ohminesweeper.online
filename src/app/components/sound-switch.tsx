@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { updateSound } from "@/redux/slice/user.data";
+import { toggleSound } from "@/redux/slice/user.data";
 import Image from "next/image";
 // import { Sound } from "@/types";
 // import { MouseEvent, useEffect } from "react";
@@ -15,7 +15,7 @@ const SoundSwitch = () => {
       // try to play
       window.SOUND_TICK.play();
     }
-    dispatch(updateSound(!sound));
+    dispatch(toggleSound());
   };
   return (
     <button onClick={handleSwitch} className={"min-w-[unset] !p-1 relative"}>

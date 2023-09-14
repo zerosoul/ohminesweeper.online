@@ -31,21 +31,18 @@ const userDataSlice = createSlice({
       if (state.cellActive === action.payload) return;
       state.cellActive = action.payload;
     },
-    updateMini(state, action: PayloadAction<boolean>) {
-      if (state.minimized === action.payload) return;
-      state.minimized = action.payload;
+    toggleMini(state) {
+      state.minimized = !state.minimized;
     },
-    updateSound(state, action: PayloadAction<boolean>) {
-      if (state.sound === action.payload) return;
-      state.sound = action.payload;
+    toggleSound(state) {
+      state.sound = !state.sound;
     },
-    updateMiniRecords(state, action: PayloadAction<boolean>) {
-      if (state.recordWindowMinimized === action.payload) return;
-      state.recordWindowMinimized = action.payload;
+    toggleMiniRecords(state) {
+      state.recordWindowMinimized = !state.recordWindowMinimized;
     },
-    tickElapsedTime(state) {
+    setElapsedTime(state, action: PayloadAction<number>) {
       // +1
-      state.elapsedTime++;
+      state.elapsedTime = action.payload;
     },
     resetElapsedTime(state) {
       state.elapsedTime = 0;
@@ -72,15 +69,15 @@ const userDataSlice = createSlice({
 
 export const {
   removeRecord,
-  updateSound,
+  toggleSound,
   fillUserData,
   resetUserData,
   updateLevel,
   updateCellSize,
-  tickElapsedTime,
+  setElapsedTime,
   resetElapsedTime,
-  updateMini,
-  updateMiniRecords,
+  toggleMini,
+  toggleMiniRecords,
   updateCellActive,
   addRecord
 } = userDataSlice.actions;

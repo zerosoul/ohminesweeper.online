@@ -1,10 +1,11 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { Coordinate, revealCell, toggleFlag } from "minesweeper-redux";
-import React from "react";
+import { Coordinate, revealCell, startGame, toggleFlag } from "minesweeper-redux";
+import React, { useEffect } from "react";
 import Row from "./row";
 import { shallowEqual } from "react-redux";
 import Loading from "./loading";
 import { Sound } from "@/types";
+import { difficulty } from "@/config";
 
 // type Props = {
 //   startNewGame: () => void;
@@ -12,6 +13,7 @@ import { Sound } from "@/types";
 const Board = () => {
   const grid = useAppSelector((store) => store.minesweeper.grid, shallowEqual);
   const status = useAppSelector((store) => store.minesweeper.status, shallowEqual);
+  const level = useAppSelector((store) => store.userData.level, shallowEqual);
   const dispatch = useAppDispatch();
   const onLeftClick = (e: React.MouseEvent, coordinate: Coordinate) => {
     e.preventDefault();
@@ -38,6 +40,14 @@ const Board = () => {
     }
     dispatch(revealCell({ coordinate }));
   };
+  useEffect(() => {
+    dispatch(
+      startGame({
+        difficulty: difficulty[level],
+        randSeed: Math.random()
+      })
+    );
+  }, [level]);
 
   const onRightClick = (e: React.MouseEvent, coordinate: Coordinate) => {
     e.preventDefault();
@@ -54,10 +64,11 @@ const Board = () => {
   ));
   const loading = status === "waiting";
   console.log("loading", loading);
-
+  const gameOver = status === "loss" || status === "win";
   return (
-    <div className="flex flex-col min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
+    <div className="relative flex flex-col min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
       {loading ? <Loading /> : rows}
+      {gameOver && <div className="absolute left-0 top-0 w-full h-full"></div>}
     </div>
   );
 };
