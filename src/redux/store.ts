@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { gameReducer } from "minesweeper-redux";
+import { gameReducer } from "./slice/minesweeper";
 import userDataReducer from "./slice/user.data";
 import { listenerMiddleware } from "./listenerMiddleware";
 

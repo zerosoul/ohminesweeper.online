@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import CounterView from "./counter-view";
 import { addRecord } from "@/redux/slice/user.data";
 import { DeepWriteable } from "@/types";
-import { Minesweeper } from "minesweeper-redux";
+import { Minesweeper } from "@minesweeper";
 // import React, { useEffect } from "react";
 
 const Timer = () => {

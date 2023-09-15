@@ -12,7 +12,7 @@ import { useClickAway } from "@uidotdev/usehooks";
 import SoundSwitch from "./sound-switch";
 import { RecordWindowTitle } from "./window-records";
 import { difficulty } from "@/config";
-import { startGame } from "minesweeper-redux";
+import { startGame } from "@minesweeper";
 
 // type Props = {
 //   startGame: () => void;

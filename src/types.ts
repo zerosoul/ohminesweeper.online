@@ -1,4 +1,4 @@
-import { Coordinate, Difficulty, Minesweeper } from "minesweeper-redux";
+import { Coordinate, Difficulty, Minesweeper } from "@minesweeper";
 export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> };
 // eslint-disable-next-line no-unused-vars
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;

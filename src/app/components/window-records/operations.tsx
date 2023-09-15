@@ -2,7 +2,7 @@ import React from "react";
 import WindowTitleBar from "../window-title-bar";
 import { useAppDispatch } from "@/redux/hooks";
 import { removeRecord } from "@/redux/slice/user.data";
-// import {  loadGame, startGame } from "minesweeper-redux";
+// import {  loadGame, startGame } from "@minesweeper";
 
 type Props = {
   handleClose: () => void;

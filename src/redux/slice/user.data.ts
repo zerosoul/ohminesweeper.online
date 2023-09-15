@@ -1,7 +1,7 @@
 import { defaultCustom, difficulty } from "@/config";
 import { Level, PlayRecord, UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Difficulty } from "minesweeper-redux";
+import { Difficulty } from "@minesweeper";
 
 const initialState: UserData = {
   custom: defaultCustom,

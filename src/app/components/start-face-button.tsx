@@ -2,7 +2,7 @@ import { difficulty } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateCellActive } from "@/redux/slice/user.data";
 import clsx from "clsx";
-import { GameStatus, startGame } from "minesweeper-redux";
+import { GameStatus, startGame } from "@minesweeper";
 import React, { useEffect, useState } from "react";
 import Confirm from "./confirm";
 

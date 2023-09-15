@@ -1,5 +1,11 @@
 import { MouseEventHandler, MouseEvent, TouchEvent, useEffect, useState } from "react";
-import { Cell as ICell } from "minesweeper-redux";
+import {
+  Coordinate,
+  Cell as ICell,
+  findAdjacentNoFlaggedCoordsByMarkedMineNumber,
+  revealCell
+  // revealCell
+} from "@minesweeper";
 import clsx from "clsx";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -9,9 +15,10 @@ export interface CellProps {
   cell: ICell;
   leftClick: MouseEventHandler;
   rightClick: MouseEventHandler;
+  coordinate: Coordinate;
 }
 
-function Cell({ cell, leftClick, rightClick }: CellProps) {
+function Cell({ coordinate, cell, leftClick, rightClick }: CellProps) {
   let touchData = {
     startTime: 0,
     endTime: 0,
@@ -45,6 +52,19 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
 
     setLastTick(isLastTick);
   }, [grid, numMines, status]);
+  const handleDoubleClick = () => {
+    // const aCells = findAdjacentCells(grid, coordinate, true);
+    const coords = findAdjacentNoFlaggedCoordsByMarkedMineNumber(grid, coordinate);
+    if (coords.length == 0) return;
+    coords.forEach((coord) => {
+      dispatch(
+        revealCell({
+          coordinate: coord
+        })
+      );
+    });
+    console.log({ coords });
+  };
   const timeDiff = () => {
     let timeDiff = new Date().getTime() - touchData.startTime;
     let isSend = timeDiff >= touchData.duration;
@@ -169,6 +189,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
       style={{ width: size, height: size }}
       onClick={leftClick}
       onContextMenu={rightClick}
+      onDoubleClick={cell.status == "revealed" ? handleDoubleClick : undefined}
     >
       {cellContent(cell)}
     </div>

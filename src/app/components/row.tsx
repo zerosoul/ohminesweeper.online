@@ -1,5 +1,5 @@
 // import React, { memo } from "react";
-import { Cell as ICell } from "minesweeper-redux";
+import { Cell as ICell } from "@minesweeper";
 import Cell from "./cell";
 import { CellMouseEvent } from "@/types";
 export interface RowProps {
@@ -14,6 +14,7 @@ const Row = ({ row, leftClick, rightClick, rowIndex }: RowProps) => {
     <div className="flex">
       {row.map((cell, index) => (
         <Cell
+          coordinate={{ x: index, y: rowIndex }}
           key={`cell-${rowIndex}-${index}`}
           cell={cell}
           leftClick={(e) => leftClick(e, { x: index, y: rowIndex })}

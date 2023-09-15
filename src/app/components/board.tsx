@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { Coordinate, revealCell, startGame, toggleFlag } from "minesweeper-redux";
+import { Coordinate, revealCell, startGame, toggleFlag } from "@minesweeper";
 import React, { useEffect } from "react";
 import Row from "./row";
 import { shallowEqual } from "react-redux";

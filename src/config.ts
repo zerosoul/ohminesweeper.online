@@ -1,4 +1,4 @@
-import { Difficulty } from "minesweeper-redux";
+import { Difficulty } from "@minesweeper";
 import { Level } from "./types";
 import { AppleWebApp } from "next/dist/lib/metadata/types/extra-types";
 import { Metadata } from "next";

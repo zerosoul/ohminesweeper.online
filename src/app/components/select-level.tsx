@@ -4,7 +4,7 @@ import { updateCustom, updateLevel } from "@/redux/slice/user.data";
 import { Level } from "@/types";
 import React, { FormEvent, useState } from "react";
 import Select from "./select";
-import { Difficulty, startGame } from "minesweeper-redux";
+import { Difficulty, startGame } from "@minesweeper";
 
 // type Props = {
 

@@ -81,8 +81,8 @@ export default function Home() {
           </div>
 
           <div className="status-bar fsh">
-            <p className="status-bar-field capitalize">Level: {level}</p>
-            <p className="status-bar-field capitalize">Status: {status}</p>
+            <p className="status-bar-field capitalize !pl-2">Level: {level}</p>
+            <p className="status-bar-field capitalize !pl-2">Status: {status}</p>
           </div>
         </div>
         <TaskBar />
