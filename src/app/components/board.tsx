@@ -55,6 +55,10 @@ const Board = () => {
   const onRightClick = (e: React.MouseEvent, coordinate: Coordinate) => {
     e.preventDefault();
     dispatch(toggleFlag({ coordinate }));
+    // 震动
+    if (navigator.vibrate) {
+      navigator.vibrate(150);
+    }
   };
   const rows = grid.map((row, index) => (
     <Row
