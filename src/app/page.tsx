@@ -46,7 +46,7 @@ export default function Home() {
         <DesktopShortcut />
         <div
           id="SCREEN_SHOOT_AREA"
-          className={clsx("window transition-transform", minimized && "hidden")}
+          className={clsx("window transition-transform translate-x-0", minimized && "hidden")}
         >
           <WindowTitleBar>
             <>
