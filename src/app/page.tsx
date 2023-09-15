@@ -41,7 +41,7 @@ export default function Home() {
     <>
       <main
         ref={boardRef}
-        className="relative flex flex-col transition-colors flex-1 w-screen justify-center items-start [&_.fsh]:fullscreen:hidden"
+        className="pb-12 relative flex flex-col transition-colors flex-1 w-screen justify-start items-start [&_.fsh]:fullscreen:hidden"
       >
         <DesktopShortcut />
         <div
