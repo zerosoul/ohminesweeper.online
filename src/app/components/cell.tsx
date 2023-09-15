@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, MouseEvent, TouchEvent, useEffect, useState } from "react";
 import { Cell as ICell } from "minesweeper-redux";
 import clsx from "clsx";
 import Image from "next/image";
@@ -40,8 +40,14 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
     setLastTick(isLastTick);
   }, [grid, numMines, status]);
 
-  const handleMouseDown = () => {
+  const handleTouchStart = (evt: TouchEvent<HTMLDivElement>) => {
+    console.log("cell touch start");
+    evt.preventDefault();
+    dispatch(updateCellActive(true));
+  };
+  const handleMouseDown = (evt: MouseEvent<HTMLDivElement>) => {
     console.log("cell mouse down");
+    evt.preventDefault();
     dispatch(updateCellActive(true));
   };
 
@@ -50,7 +56,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
       case "hidden":
         return (
           <div
-            onTouchStart={handleMouseDown}
+            onTouchStart={handleTouchStart}
             onMouseDown={handleMouseDown}
             role="button"
             aria-label="cell"

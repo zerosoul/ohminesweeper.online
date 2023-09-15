@@ -41,12 +41,15 @@ export default function Home() {
     <>
       <main
         ref={boardRef}
-        className="relative flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
+        className="relative flex flex-col transition-colors flex-1 w-screen justify-center items-start [&_.fsh]:fullscreen:hidden"
       >
         <DesktopShortcut />
         <div
           id="SCREEN_SHOOT_AREA"
-          className={clsx("window transition-transform translate-x-0", minimized && "hidden")}
+          className={clsx(
+            "window transition-transform translate-x-0 m-auto",
+            minimized && "hidden"
+          )}
         >
           <WindowTitleBar>
             <>
