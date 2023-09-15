@@ -21,9 +21,13 @@ const userDataSlice = createSlice({
   reducers: {
     fillUserData(state, action: PayloadAction<Partial<UserData>>) {
       const newState = { ...state, ...action.payload };
+      // 更新自定义设置
+      difficulty.custom = newState.custom;
       return newState;
     },
     resetUserData() {
+      // 更新自定义设置
+      difficulty.custom = defaultCustom;
       return initialState;
     },
     updateLevel(state, action: PayloadAction<Level>) {
