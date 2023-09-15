@@ -12,6 +12,12 @@ export interface CellProps {
 }
 
 function Cell({ cell, leftClick, rightClick }: CellProps) {
+  let touchData = {
+    startTime: 0,
+    endTime: 0,
+    duration: 600,
+    isMoving: false
+  };
   const dispatch = useAppDispatch();
   const [lastTick, setLastTick] = useState(false);
   const size = useAppSelector((store) => store.userData.cellSize);
@@ -39,11 +45,31 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
 
     setLastTick(isLastTick);
   }, [grid, numMines, status]);
-
+  const timeDiff = () => {
+    let timeDiff = new Date().getTime() - touchData.startTime;
+    let isSend = timeDiff >= touchData.duration;
+    return isSend;
+  };
   const handleTouchStart = (evt: TouchEvent<HTMLDivElement>) => {
     console.log("cell touch start");
+    touchData.startTime = new Date().getTime();
     evt.preventDefault();
     dispatch(updateCellActive(true));
+  };
+  const handleTouchMove = () => {
+    console.log("cell touch move");
+    if (touchData.isMoving) return;
+    touchData.isMoving = true;
+    if (!timeDiff()) {
+      touchData.startTime = 0;
+    }
+  };
+  const handleTouchEnd = (evt: TouchEvent<HTMLDivElement>) => {
+    console.log("cell touch end");
+    if (touchData.startTime && timeDiff()) {
+      rightClick(evt as any);
+    }
+    touchData.isMoving = false;
   };
   const handleMouseDown = (evt: MouseEvent<HTMLDivElement>) => {
     console.log("cell mouse down");
@@ -56,11 +82,14 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
       case "hidden":
         return (
           <div
+            onTouchCancel={handleTouchEnd}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             onTouchStart={handleTouchStart}
             onMouseDown={handleMouseDown}
             role="button"
             aria-label="cell"
-            className="enable-ctx-ios cell w-full h-full bg-[url(/ms/cell.default.svg)] active:bg-[url(/ms/cell.click.svg)] hover:invert-[0.15] bg-contain"
+            className="cell w-full h-full bg-[url(/ms/cell.default.svg)] active:bg-[url(/ms/cell.click.svg)] hover:invert-[0.15] bg-contain"
           ></div>
         );
       case "flagged":

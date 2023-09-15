@@ -23,9 +23,6 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
-.enable-ctx-ios {
-  -webkit-touch-callout: initial;
-}
 select {
   min-width: 80px;
   text-indent: 4px;
