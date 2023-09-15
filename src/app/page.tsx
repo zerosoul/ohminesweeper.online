@@ -4,10 +4,9 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Board from "./components/board";
 import Timer from "./components/timer";
 import { useRef } from "react";
-// import Rank from "./components/rank";
+// import Image from "next/image";
 import { difficulty } from "@/config";
 // import Language from "./components/select-lang";
-// import { shallowEqual } from "react-redux";
 import PWAUpgradeChecker from "./components/pwa-upgrade-checker";
 import clsx from "clsx";
 import TaskBar from "./components/task-bar";
@@ -19,6 +18,7 @@ import RecordsWindow from "./components/window-records";
 import CounterView from "./components/counter-view";
 import { toggleMini } from "@/redux/slice/user.data";
 import { shallowEqual } from "react-redux";
+import DesktopShortcut from "./components/desktop-shortcut";
 
 export default function Home() {
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -41,8 +41,9 @@ export default function Home() {
     <>
       <main
         ref={boardRef}
-        className="flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
+        className="relative flex flex-col transition-colors flex-1 w-screen justify-center items-center [&_.fsh]:fullscreen:hidden"
       >
+        <DesktopShortcut />
         <div
           id="SCREEN_SHOOT_AREA"
           className={clsx("window transition-transform", minimized && "hidden")}
