@@ -25,7 +25,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({ id = "root-modal", mask = true, c
         modalRoot.classList.remove("mask");
       }
     };
-  }, [mask]);
+  }, [mask, id]);
 
   if (!wrapper) return null;
   return createPortal(children, wrapper);
