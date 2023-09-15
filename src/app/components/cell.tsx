@@ -1,4 +1,4 @@
-import { MouseEventHandler, memo, useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { Cell as ICell } from "minesweeper-redux";
 import clsx from "clsx";
 import Image from "next/image";
@@ -128,7 +128,7 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
   );
 }
 
-// export default Cell;
-export default memo(Cell, (prev, next) => {
-  return prev.cell.status == next.cell.status;
-});
+export default Cell;
+// export default memo(Cell, (prev, next) => {
+//   return prev.cell.status == next.cell.status;
+// });

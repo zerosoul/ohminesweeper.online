@@ -3,13 +3,15 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateCellActive } from "@/redux/slice/user.data";
 import clsx from "clsx";
 import { GameStatus, startGame } from "minesweeper-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Confirm from "./confirm";
 
 // type Props = {
 //   startGame: () => void;
 // };
 const StartFaceButton = () => {
   const dispatch = useAppDispatch();
+  const [confirmModal, setConfirmModal] = useState(false);
   const level = useAppSelector((store) => store.userData.level);
   const status = useAppSelector((store) => store.minesweeper.status);
   const cellActive = useAppSelector((store) => store.userData.cellActive);
@@ -35,7 +37,17 @@ const StartFaceButton = () => {
       boardNode.removeEventListener("touchend", handleMouseUp);
     };
   }, []);
-  const handleRestart = () => {
+  const toggleConfirmModal = () => {
+    setConfirmModal((prev) => !prev);
+  };
+  const handleClick = () => {
+    if (status == "running") {
+      toggleConfirmModal();
+      return;
+    }
+    restart();
+  };
+  const restart = () => {
     dispatch(
       startGame({
         difficulty: difficulty[level],
@@ -43,21 +55,28 @@ const StartFaceButton = () => {
       })
     );
   };
-  const gameOver = status == "win" || status == "loss";
   return (
-    <button
-      disabled={!gameOver}
-      onClick={handleRestart}
-      className={clsx(
-        "!w-12 min-w-[unset] h-12 !p-0 flex items-center justify-center",
-        "bg-[url(/ms/result.face.png)] bg-no-repeat",
-        "bg-[length:88px_85px]"
-        // cellActive ? "" : "transition-all duration-0 md:duration-75"
+    <>
+      {confirmModal && (
+        <Confirm
+          confirm={restart}
+          close={toggleConfirmModal}
+          content="are you sure stop and restart?"
+        />
       )}
-      style={{
-        backgroundPosition: cellActive ? positionMap.waiting : positionMap[status]
-      }}
-    ></button>
+      <button
+        onClick={handleClick}
+        className={clsx(
+          "!w-12 min-w-[unset] h-12 !p-0 flex items-center justify-center",
+          "bg-[url(/ms/result.face.png)] bg-no-repeat",
+          "bg-[length:88px_85px]"
+          // cellActive ? "" : "transition-all duration-0 md:duration-75"
+        )}
+        style={{
+          backgroundPosition: cellActive ? positionMap.waiting : positionMap[status]
+        }}
+      ></button>
+    </>
   );
 };
 

@@ -41,7 +41,7 @@ input[type="submit"]:not(:disabled).active {
     inset 2px 2px grey;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAG0lEQVQYV2M8cODAf3t7ewbG/////z948CADAFuqCj64BtLKAAAAAElFTkSuQmCC);
 }
-#root-modal {
+.minesweeper-modal {
   pointer-events: none;
   position: fixed;
   z-index: 999;
@@ -54,10 +54,10 @@ input[type="submit"]:not(:disabled).active {
   align-items: center;
 }
 
-#root-modal > .wrapper {
+.minesweeper-modal > .wrapper {
   pointer-events: all;
 }
 
-#root-modal.mask {
+.minesweeper-modal.mask {
   background-color: rgba(2, 2, 2, 0.7);
 }

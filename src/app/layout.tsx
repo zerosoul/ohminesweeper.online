@@ -30,7 +30,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StrictMode>
           <ReduxProvider>{children}</ReduxProvider>
         </StrictMode>
-        <div id="root-modal"></div>
+        <div id="root-modal" className="minesweeper-modal"></div>
+        <aside id="confirm-modal" className="minesweeper-modal"></aside>
         {process.env.NODE_ENV == "production" && <Analytics />}
         {process.env.NODE_ENV == "production" && <GTag />}
       </body>
