@@ -93,7 +93,19 @@ function Cell({ cell, leftClick, rightClick }: CellProps) {
           ></div>
         );
       case "flagged":
-        return <Image alt="flag" src={"/ms/cell.flag.svg"} fill priority />;
+        return (
+          <Image
+            role="button"
+            onTouchCancel={handleTouchEnd}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchStart={handleTouchStart}
+            alt="flag"
+            src={"/ms/cell.flag.svg"}
+            fill
+            priority
+          />
+        );
       case "revealed":
         if (cell.mineCount === -1) {
           return (
