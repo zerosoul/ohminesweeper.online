@@ -1,0 +1,15 @@
+import ImageList from "./image-list";
+
+## No Flags
+
+Minesweeper is won by opening all safe squares. Flagging every mine is a waste of time. On Intermediate a NF player needs to open 216 safe squares, but a very inefficient Flagger needs to open 216 squares and flag 40 mines. However, an efficient Flagger can use chording can open multiple squares.
+
+NF players look for openings instead of mines. Openings propagate in all directions until they are surrounded by numbers; if you click inside an opening you do not have to click squares with numbers! The statistic for board difficulty is 3BV, which counts the minimum number of left clicks required to clear a board. Numbers surrounding openings are not counted because clicking them is redundant. Low 3BV boards favour NF players because these have more openings with the mines grouped into islands.
+
+The special skill of NF technique is "seeing" mines in order to use patterns such as 1-1-X and subsets to search for openings.
+
+<ImageList type="part1" />
+
+When a good NF player sees multiple safe squares, the ones containing numbers (which might be borders) are opened last.
+
+<ImageList type="part2" />

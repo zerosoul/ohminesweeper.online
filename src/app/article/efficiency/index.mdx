@@ -1,0 +1,55 @@
+import ImageList from "./image-list";
+
+## Minesweeper Efficiency
+
+Fewer clicks means less time.
+
+The first rule is to never flag a mine unless you are going to chord on it to open more squares.
+
+The second rule is to chord efficiently. New players flag and then chord multiple times on all nearby numbers, hoping to open more squares. You should practice slowly at first, being careful to chord only on numbers that will clear squares. Also practice chording on the number in each situation that will open the most squares. This practice will improve your chording efficiency during normal speedplay.
+
+The third rule is to use the 1.5 Click technique when you chord. The amateur way to chord requires four actions. You press and release the right mouse button to flag then press and release both buttons to chord. The efficient way to chord involves three actions. You press the right mouse button to flag, start pressing the left mouse button as you slide onto a number then release both buttons to chord. This reduces time spent chording by 25%.
+
+{/* part1 */}
+
+There is no reason to flag this mine because no squares can be opened by chording.
+
+Chording on a 2 opens one square but chording on a 1 opens two squares. Use the 1.5 Click to flag and slide onto the 1 to chord.
+
+Use the 1.5 Click to flag and slide onto the yellow 1 to open four squares. Do not chord the pink 1.
+
+Do not flag the pink squares because you cannot chord on them. Use the 1.5 Click to flag and slide onto the yellow 1 to chord. Do not chord the pink 2.
+
+The fourth rule is to switch between flagging and NF for local efficiency. Flaggers need to practice NF to eliminate the short pause that occurs when switching to a less familiar playing style. Practice slowly at first, being careful to choose the most efficient solution for every local situation. The global rule is that high 3BV favours flagging because there are more numbers, while low 3BV favours NF because there are more openings. The local rule is that high numbers (5,6,7,8) favour NF because there are fewer adjacent squares to open, while low numbers (1,2,3,4) favour flagging because chording opens more adjacent squares.
+
+{/* part2 */}
+
+Play NF and solve with one click. Flagging takes between 1.5 and 4 clicks depending on efficiency.
+
+Play NF and solve with one click. Flagging takes between 2.5 and 3.5 clicks depending on efficiency.
+
+A NF player takes three clicks. An efficient Flagger uses the 1.5 Click to flag and chord. An inefficient Flagger uses three flags and chords three times.
+
+A NF player hopes for openings and takes 3 to 6 clicks. An efficient Flagger uses the 1.5 Click three times. An inefficient Flagger uses three flags and chords five times.
+
+An efficient Flagger uses the 1.5 Click once to flag and chord. Total 1.5 clicks.
+
+A NF player clicks the yellow square hoping for an opening. Total 1 to 4 clicks.
+
+An efficient Flagger uses the 1.5 Click once then chords again before opening the yellow square. Total 3.5 clicks.
+
+A NF player clicks the yellow squares and hopes for an opening. Total 3 to 6 clicks.
+
+The fifth rule is to shorten your mouse path. The mouse should not move unless there is a purpose. New players move the mouse when their eyes move and they jump around the board looking for easy patterns. Experienced players solve several moves in advance and scan the board while continuing to solve locally. Most players prefer moving the mouse in certain directions and they often move the cursor further than needed to solve from their favourite direction. Practice solving from your weaker directions so you become better at automatically choosing the shortest route during normal speedplay.
+
+The statistic for efficiency is the Index of Efficiency (IOE) which measures total clicks divided by 3BV (minimum number of left clicks needed to solve the board). A board with a 3BV of 50 can be solved in 50 left clicks for an IOE of 1.00. However, it is possible to solve a board in fewer clicks than 3BV with efficient chording. You can use a version such as Minesweeper Arbiter that saves IOE records, and practice playing slowly for efficiency. This practice will gradually improve your efficiency during normal speedplay.
+
+{/* part3 */}
+
+A new player will jump to an easier part of the board. An experienced player instantly sees the pink mine and safe yellow squares and does not waste time moving to another location.
+
+Do you naturally start at the top or from the bottom? Practice the opposite direction.
+
+An extremely efficient mouse path on Expert. Flags are green and chords are purple while left clicks are blue.
+
+An inefficient mouse path on Expert. Flags are green and chords are purple while left clicks are blue.

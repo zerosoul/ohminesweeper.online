@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .article {
+    @apply max-w-6xl my-4 text-base text-justify py-3 px-5 dark:text-white;
+
+    h2 {
+      @apply w-full border-b border-b-teal-400 dark:border-b-teal-600 pb-2 text-2xl font-bold my-3 text-slate-900 dark:text-slate-100;
+    }
+    blockquote {
+      @apply my-2 p-5 bg-slate-300 dark:bg-slate-700 w-fit;
+    }
+    ul {
+      @apply list-disc ml-2 pl-4;
+      li {
+        @apply my-2;
+      }
+    }
+    > p {
+      @apply mb-4 text-slate-800 dark:text-slate-200;
+    }
+  }
+}
 @layer utilities {
   .dvh-screen {
     height: 100vh;

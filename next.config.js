@@ -4,7 +4,15 @@ const withPWA = require("@ducanh2912/next-pwa").default({
   disable: process.env.NODE_ENV === "development"
 });
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/
+});
+// @ts-ignore
+const nextConfig = withMDX({
+  experimental: {
+    mdxRs: true
+  },
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
@@ -34,6 +42,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production"
   }
-};
+});
 
 module.exports = withPWA(nextConfig);
