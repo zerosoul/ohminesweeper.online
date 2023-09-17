@@ -18,7 +18,7 @@ const WindowArticle = () => {
     ssr: true
   });
   return (
-    <aside className="window min-h-[200px] w-[calc(100%_-_40px)] fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <aside className="window min-h-[200px] w-[calc(100%_-_40px)] max-w-4xl fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <WindowTitleBar title={article}>
         <button onClick={handleClose} aria-label="Close" title="Close the window"></button>
       </WindowTitleBar>

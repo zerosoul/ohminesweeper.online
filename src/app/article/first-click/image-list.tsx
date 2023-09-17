@@ -15,7 +15,7 @@ const images: ImageProps[] = [
     title: "Average opening size on Intermediate ranges from 27 to 66 squares."
   },
   {
-    width: 200,
+    width: 400,
     height: 200,
     src: "/ms/first-click/3016-opening.gif",
     title: "Average opening size on Expert ranges from 16 to 41 squares."
@@ -33,7 +33,7 @@ const images: ImageProps[] = [
     title: "Opening probability on Intermediate ranges from 0.21 to 0.60."
   },
   {
-    width: 200,
+    width: 400,
     height: 200,
     src: "/ms/first-click/3016-probability.gif",
     title: "Opening probability on Expert ranges from 0.12 to 0.50."
@@ -41,7 +41,7 @@ const images: ImageProps[] = [
 ];
 const ImageList = () => {
   return (
-    <div className="my-5 flex gap-3 items-stretch md:gap-6 flex-wrap max-w-6xl">
+    <div className="my-5 flex gap-3 items-start  md:gap-6 flex-wrap max-w-6xl">
       {images.map((props, i) => (
         <ImageTitle key={i} {...props} />
       ))}
