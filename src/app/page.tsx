@@ -16,7 +16,7 @@ import usePreload from "./hooks/usePreload";
 import StartScreen from "./components/start-screen";
 import RecordsWindow from "./components/window-records";
 import CounterView from "./components/counter-view";
-import { toggleMini } from "@/redux/slice/user.data";
+import { toggleMini, updateArticle } from "@/redux/slice/user.data";
 import { shallowEqual } from "react-redux";
 import DesktopShortcut from "./components/desktop-shortcut";
 import WindowArticle from "./components/window-article";
@@ -58,14 +58,15 @@ export default function Home() {
               <button
                 aria-label="Help"
                 onClick={() => {
-                  const btn = document.querySelector("#HELP_TASK_BUTTON") as HTMLButtonElement;
-                  if (btn) {
-                    btn.click();
-                  }
+                  dispatch(updateArticle("how-to-play"));
                 }}
-                title="Press F1 for help"
+                title="How to play minesweeper"
               ></button>
-              <button aria-label="Maximize" onClick={handleFullscreen}></button>
+              <button
+                aria-label="Maximize"
+                className="!hidden md:!block"
+                onClick={handleFullscreen}
+              ></button>
             </>
           </WindowTitleBar>
           <div className="window-body">

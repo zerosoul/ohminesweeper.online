@@ -38,7 +38,7 @@ const Navs = () => {
     }
   ];
   return (
-    <nav>
+    <nav className="my-6">
       <ul className="flex flex-wrap justify-center">
         <li className="m-2">
           <button className="!p-0">
@@ -49,7 +49,7 @@ const Navs = () => {
         </li>
         {paths.map(({ path, title }) => {
           return (
-            <li key={path} className="m-2">
+            <li key={path} data-path={path} className="m-2">
               <button className="!p-0">
                 <Link className="px-2 text-inherit block w-full h-full" href={path}>
                   {title}
