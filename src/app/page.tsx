@@ -19,6 +19,7 @@ import CounterView from "./components/counter-view";
 import { toggleMini } from "@/redux/slice/user.data";
 import { shallowEqual } from "react-redux";
 import DesktopShortcut from "./components/desktop-shortcut";
+import WindowArticle from "./components/window-article";
 
 export default function Home() {
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -90,6 +91,7 @@ export default function Home() {
       </main>
       <PWAUpgradeChecker />
       <RecordsWindow />
+      <WindowArticle />
     </>
   );
 }

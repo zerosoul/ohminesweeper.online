@@ -1,0 +1,17 @@
+import ImageList from "./image-list";
+
+## The First Click
+
+Where is the best place to make the first click in Minesweeper?
+
+You need an opening and some numbers to start playing. Most players begin games with random clicks to find an opening. Clicking in the middle produces bigger openings so you get more numbers and an easier start to the game. However, openings in the middle are less common than openings on edges.
+
+The Beginner (8x8) and Intermediate (16x16) levels on Windows Minesweeper generate a limited number of games that repeat in board cycles. In 2002, Tim Kostka generated every board and calculated the probability and average size of openings for each square. The probability of an opening increases towards edges but the size of openings increases towards the middle. Similar calculations were performed for Expert.
+
+<ImageList />
+
+You might notice that the four squares in the top left corner produce the fewest and smallest openings. Windows Minesweeper makes the first click safe by shifting the mine to the first empty square on the top row, starting from the left corner.
+
+Windows Vista introduced guaranteed openings on the first click so you should always start in the middle. However, new players should start in the middle on all versions because, despite losing more games in the first few clicks, they will finish more games due to larger openings.
+
+For experienced players the best place to start is more complicated and depends on personal preference. For example, do you mind losing thousands of games an hour in the first three clicks just to get bigger openings?

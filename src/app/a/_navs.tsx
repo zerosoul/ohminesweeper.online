@@ -9,28 +9,32 @@ const Navs = () => {
     title: string;
   }[] = [
     {
-      path: "/a/guess",
-      title: "Guessing"
-    },
-    {
-      path: "/a/efficiency",
-      title: "Efficiency"
-    },
-    {
-      path: "/a/no-flags",
-      title: "No Flags"
-    },
-    {
-      path: "/a/more-tips",
-      title: "More Tips"
+      path: "/a/how-to-play",
+      title: "How To Play Minesweeper"
     },
     {
       path: "/a/advance-patterns",
       title: "Advance Patterns"
     },
     {
-      path: "/a/how-to",
-      title: "How To Play Minesweeper"
+      path: "/a/first-click",
+      title: "First Click"
+    },
+    {
+      path: "/a/guess",
+      title: "Guessing"
+    },
+    {
+      path: "/a/no-flag",
+      title: "No Flags"
+    },
+    {
+      path: "/a/efficiency",
+      title: "Efficiency"
+    },
+    {
+      path: "/a/more-tips",
+      title: "More Tips"
     }
   ];
   return (

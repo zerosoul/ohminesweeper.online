@@ -5,7 +5,15 @@ export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => vo
 export type Level = "beginner" | "intermediate" | "expert" | "custom";
 export type Theme = "auto" | "dark" | "light";
 export type Sound = "tick" | "start" | "win" | "loss";
-
+export type ArticleName =
+  | "no-flag"
+  | "first-click"
+  | "how-to-play"
+  | "guess"
+  | "efficiency"
+  | "more-tips"
+  | "advance-patterns"
+  | "";
 export type PlayRecord = {
   timestamp: number;
   duration: number;
@@ -18,6 +26,7 @@ export type UserInfo = {
   email: string;
 };
 export interface UserData {
+  article: ArticleName;
   custom: Difficulty;
   sound: boolean;
   minimized: boolean;

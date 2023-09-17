@@ -1,36 +1,47 @@
 import React, { LegacyRef, useState, memo } from "react";
-import SelectLevel from "./select-level";
-import DarkMode from "./button-darkmode";
-import ScreenShoot from "./screenshoot";
-import SelectZoom from "./select-cellsize";
+import SelectLevel from "../select-level";
+import DarkMode from "../button-darkmode";
+import ScreenShoot from "../screenshoot";
+import SelectZoom from "../select-cellsize";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
 import { toggleMini, toggleMiniRecords } from "@/redux/slice/user.data";
 import { useClickAway } from "@uidotdev/usehooks";
 // import Help from "./help";
-import SoundSwitch from "./sound-switch";
-import { RecordWindowTitle } from "./window-records";
-import { difficulty } from "@/config";
-import { startGame } from "@minesweeper";
+import SoundSwitch from "../sound-switch";
+import { RecordWindowTitle } from "../window-records";
+// import { difficulty } from "@/config";
+// import { startGame } from "@minesweeper";
+import CornerFooter from "./footer";
+import StartPanel from "./start-panel";
 
 // type Props = {
 //   startGame: () => void;
 // };
 
 const TaskBar = () => {
+  const [panelVisible, setPanelVisible] = useState(false);
   const [settingVisible, setSettingVisible] = useState(false);
   const dispatch = useAppDispatch();
   const minimized = useAppSelector((store) => store.userData.minimized);
-  const level = useAppSelector((store) => store.userData.level);
+  // const level = useAppSelector((store) => store.userData.level);
   const recordWindowMinimized = useAppSelector((store) => store.userData.recordWindowMinimized);
   const ref = useClickAway(() => {
     // if (settingVisible) {
     setSettingVisible(false);
     // }
   });
+  const refPanel = useClickAway(() => {
+    // if (settingVisible) {
+    setPanelVisible(false);
+    // }
+  });
   const toggleSetting = () => {
     setSettingVisible((prev) => !prev);
+  };
+  const togglePanel = () => {
+    setPanelVisible((prev) => !prev);
   };
   const handleMini = () => {
     dispatch(toggleMini());
@@ -38,20 +49,33 @@ const TaskBar = () => {
   const handleMiniRecords = () => {
     dispatch(toggleMiniRecords());
   };
-  const handleStart = () => {
-    dispatch(
-      startGame({
-        difficulty: difficulty[level],
-        randSeed: Math.random()
-      })
-    );
-  };
+  // const handleStart = () => {
+  //   dispatch(
+  //     startGame({
+  //       difficulty: difficulty[level],
+  //       randSeed: Math.random()
+  //     })
+  //   );
+  // };
   return (
-    <div className="window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1">
+    <div className="z-[999] window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1">
       <div className="flex items-center gap-1">
-        <button onClick={handleStart} className="px-2 min-w-[unset]">
-          <Image alt="start button" src={"/start-button.png"} width={45} height={14} />
-        </button>
+        <div className="relative">
+          <button
+            onClick={togglePanel}
+            className={clsx("px-2 min-w-[unset]", panelVisible && "active")}
+          >
+            <Image alt="start button" src={"/start-button.png"} width={45} height={14} />
+          </button>
+          {panelVisible && (
+            <div
+              className="absolute left-0-0 -top-4 -translate-y-full"
+              ref={refPanel as LegacyRef<HTMLDivElement>}
+            >
+              <StartPanel closePanel={togglePanel} />
+            </div>
+          )}
+        </div>
         <button
           onClick={handleMini}
           className={clsx(
@@ -109,18 +133,7 @@ const TaskBar = () => {
         <SoundSwitch />
         <div className="hidden md:block w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
         <div className="!hidden md:!flex status-bar">
-          <footer className="status-bar-field flex gap-1 !px-2">
-            <span>Made by </span>
-            <a
-              href="http://yangerxiao.com"
-              className="text-blue-500 dark:text-blue-700 underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Tristan
-            </a>{" "}
-            © {new Date().getFullYear()}
-          </footer>
+          <CornerFooter />
         </div>
       </div>
     </div>

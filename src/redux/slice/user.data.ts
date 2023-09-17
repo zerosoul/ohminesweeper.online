@@ -1,9 +1,10 @@
 import { defaultCustom, difficulty } from "@/config";
-import { Level, PlayRecord, UserData } from "@/types";
+import { ArticleName, Level, PlayRecord, UserData } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Difficulty } from "@minesweeper";
 
 const initialState: UserData = {
+  article: "no-flag",
   custom: defaultCustom,
   sound: false,
   minimized: false,
@@ -29,6 +30,9 @@ const userDataSlice = createSlice({
       // 更新自定义设置
       difficulty.custom = defaultCustom;
       return initialState;
+    },
+    updateArticle(state, action: PayloadAction<ArticleName>) {
+      state.article = action.payload;
     },
     updateLevel(state, action: PayloadAction<Level>) {
       state.level = action.payload;
@@ -73,6 +77,7 @@ const userDataSlice = createSlice({
 });
 
 export const {
+  updateArticle,
   removeRecord,
   updateCustom,
   toggleSound,

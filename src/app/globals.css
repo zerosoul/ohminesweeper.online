@@ -4,10 +4,10 @@
 
 @layer components {
   .article {
-    @apply max-w-6xl my-4 text-base text-justify py-3 px-5 dark:text-white;
+    @apply max-w-6xl py-7 text-base text-justify px-5 dark:text-white;
 
     h2 {
-      @apply w-full border-b border-b-teal-400 dark:border-b-teal-600 pb-2 text-2xl font-bold my-3 text-slate-900 dark:text-slate-100;
+      @apply w-full border-b border-b-gray-400 dark:border-b-gray-600 pb-2 text-2xl font-bold my-3 text-slate-900 dark:text-slate-100;
     }
     blockquote {
       @apply my-2 p-5 bg-slate-300 dark:bg-slate-700 w-fit;
