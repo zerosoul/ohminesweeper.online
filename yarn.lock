@@ -1102,10 +1102,10 @@
     "@babel/helper-validator-identifier" "^7.22.15"
     to-fast-properties "^2.0.0"
 
-"@ducanh2912/next-pwa@^9.5.0":
-  version "9.5.0"
-  resolved "https://mirrors.cloud.tencent.com/npm/@ducanh2912/next-pwa/-/next-pwa-9.5.0.tgz#7d70dec2f6b44ace19695c32edf1501028d2bfe1"
-  integrity sha512-+c+Ni4A51Y+W3MWNG5l6OO629kfByEdiVR8TdqN2I3/cuFXzLzRwgKZZvXKV4ilemrzWm844hny5lP81RG18/Q==
+"@ducanh2912/next-pwa@^9.6.0":
+  version "9.6.0"
+  resolved "https://mirrors.cloud.tencent.com/npm/@ducanh2912/next-pwa/-/next-pwa-9.6.0.tgz#5e4240a80fc28ae30678de24570e5e92898b7d54"
+  integrity sha512-aYq1C/Idi/nRm3uTmLO2Pw+2evuHy31uq2mD/XzhJ/ueB9FHrozf6TXuCd+m2yRmW1uZvlvqs7cwf23Gccufrw==
   dependencies:
     clean-webpack-plugin "4.0.0"
     fast-glob "3.3.1"
@@ -1672,10 +1672,10 @@
   resolved "https://mirrors.cloud.tencent.com/npm/@types/node/-/node-20.5.9.tgz#a70ec9d8fa0180a314c3ede0e20ea56ff71aed9a"
   integrity sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==
 
-"@types/node@20.6.0":
-  version "20.6.0"
-  resolved "https://mirrors.cloud.tencent.com/npm/@types/node/-/node-20.6.0.tgz#9d7daa855d33d4efec8aea88cd66db1c2f0ebe16"
-  integrity sha512-najjVq5KN2vsH2U/xyh2opaSEz6cZMR2SetLIlxlj08nOcmPOemJmUK2o4kUzfLqfrWE0PIrNeE16XhYDd3nqg==
+"@types/node@20.6.2":
+  version "20.6.2"
+  resolved "https://mirrors.cloud.tencent.com/npm/@types/node/-/node-20.6.2.tgz#a065925409f59657022e9063275cd0b9bd7e1b12"
+  integrity sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==
 
 "@types/node@^18.0.0":
   version "18.17.17"
@@ -5682,6 +5682,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://mirrors.cloud.tencent.com/npm/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

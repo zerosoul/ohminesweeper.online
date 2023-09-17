@@ -28,6 +28,17 @@
     height: 100vh;
     height: 100dvh;
   }
+  @keyframes rolling {
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+  .ani-rolling {
+    animation: rolling 1.5s ease-in-out forwards infinite;
+  }
 }
 html {
   overscroll-behavior: none;
