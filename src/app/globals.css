@@ -4,13 +4,13 @@
 
 @layer components {
   .article {
-    @apply max-w-6xl py-7 text-base text-justify px-5 dark:text-white;
+    @apply max-w-6xl py-7 text-base text-justify px-5 select-text;
 
     h2 {
-      @apply w-full border-b border-b-gray-400 dark:border-b-gray-600 pb-2 text-2xl font-bold my-3 text-slate-900 dark:text-slate-100;
+      @apply w-full border-b border-b-gray-400 dark:border-b-gray-600 pb-2 text-2xl font-bold my-3 text-slate-900;
     }
     blockquote {
-      @apply my-2 p-5 bg-slate-300 dark:bg-slate-700 w-fit;
+      @apply my-2 p-5 bg-slate-300 dark:bg-slate-700 text-slate-900 dark:text-slate-100 w-fit;
     }
     ul {
       @apply list-disc ml-2 pl-4;
@@ -19,7 +19,7 @@
       }
     }
     > p {
-      @apply mb-4 text-slate-800 dark:text-slate-200;
+      @apply mb-4 text-slate-800;
     }
   }
 }
@@ -31,18 +31,16 @@
 }
 html {
   overscroll-behavior: none;
-  /* font-size: 12px;
-  line-height: 16px; */
-}
-body {
-  cursor: url("/cursor.png"), auto;
-}
-* {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  /* font-size: 12px;
+  line-height: 16px; */
+}
+body {
+  cursor: url("/cursor.png"), auto;
 }
 select {
   min-width: 80px;

@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Difficulty } from "@minesweeper";
 
 const initialState: UserData = {
-  article: "no-flag",
+  article: "",
   custom: defaultCustom,
   sound: false,
   minimized: false,
