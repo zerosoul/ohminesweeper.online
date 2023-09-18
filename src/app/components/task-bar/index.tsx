@@ -132,7 +132,7 @@ const TaskBar = () => {
         {/* <Help /> */}
         <SoundSwitch />
         <div className="hidden md:block w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
-        <div className="!hidden md:!flex status-bar">
+        <div className="status-bar">
           <CornerFooter />
         </div>
       </div>

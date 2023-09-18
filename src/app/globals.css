@@ -4,7 +4,7 @@
 
 @layer components {
   .article {
-    @apply max-w-6xl py-7 text-base text-justify px-5 select-text;
+    @apply max-w-6xl py-7 text-base text-justify px-5 select-text bg-[silver];
 
     h2 {
       @apply w-full border-b border-b-gray-400 dark:border-b-gray-600 pb-2 text-2xl font-bold my-3 text-slate-900;

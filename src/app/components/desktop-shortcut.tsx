@@ -19,11 +19,11 @@ const DesktopShortcut = () => {
       <Image
         src="/icons/android-chrome-192x192.png"
         alt="minesweeper"
-        width={80}
-        height={80}
+        width={68}
+        height={68}
         className="drop-shadow-lg"
       />
-      <span className="text-gray-200 drop-shadow-md capitalize">minesweeper online</span>
+      <label className="text-gray-200 drop-shadow-md capitalize">minesweeper online</label>
     </div>
   );
 };

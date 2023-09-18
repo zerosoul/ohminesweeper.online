@@ -9,11 +9,11 @@ const Layout = ({ children }: Props) => {
   // console.log(h);
 
   return (
-    <section className="w-full h-full bg-[silver] flex flex-col justify-between items-center">
+    <main className="flex flex-col justify-between items-center">
       <Navs />
       <article className="article flex-1">{children}</article>
       <Navs />
-    </section>
+    </main>
   );
 };
 
