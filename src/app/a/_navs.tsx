@@ -1,3 +1,4 @@
+import { Pages } from "@/config";
 import Link from "next/link";
 import React from "react";
 
@@ -7,52 +8,22 @@ const Navs = () => {
   const paths: {
     path: string;
     title: string;
-  }[] = [
-    {
-      path: "/a/how-to-play",
-      title: "How To Play Minesweeper"
-    },
-    {
-      path: "/a/advance-patterns",
-      title: "Advance Patterns"
-    },
-    {
-      path: "/a/first-click",
-      title: "First Click"
-    },
-    {
-      path: "/a/guess",
-      title: "Guessing"
-    },
-    {
-      path: "/a/no-flag",
-      title: "No Flags"
-    },
-    {
-      path: "/a/efficiency",
-      title: "Efficiency"
-    },
-    {
-      path: "/a/more-tips",
-      title: "More Tips"
-    }
-  ];
+  }[] = Pages.map(({ url, title }) => {
+    const path = new URL(url).pathname;
+    return {
+      path,
+      title
+    };
+  });
   return (
     <nav className="my-6">
       <ul className="flex flex-wrap justify-center">
-        <li className="m-2">
-          <button className="!p-0">
-            <Link className="px-2 text-inherit block w-full h-full" href={"/"}>
-              {`<<  Back Home`}
-            </Link>{" "}
-          </button>
-        </li>
         {paths.map(({ path, title }) => {
           return (
             <li key={path} data-path={path} className="m-2">
               <button className="!p-0">
                 <Link className="px-2 text-inherit block w-full h-full" href={path}>
-                  {title}
+                  {path == "/" ? `<< Back to Home` : title}
                 </Link>
               </button>
             </li>

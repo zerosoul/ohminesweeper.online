@@ -6,6 +6,12 @@ export type Level = "beginner" | "intermediate" | "expert" | "custom";
 export type Theme = "auto" | "dark" | "light";
 export type UI = "win98" | "xp";
 export type Sound = "tick" | "start" | "win" | "loss";
+export type SiteMap = {
+  url: string;
+  lastModified?: string | Date;
+  changeFrequency?: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
+  priority?: number;
+};
 export type ArticleName =
   | "no-flag"
   | "first-click"
@@ -14,6 +20,7 @@ export type ArticleName =
   | "efficiency"
   | "more-tips"
   | "advance-patterns"
+  | "how-to-install-pwa"
   | "";
 export type PlayRecord = {
   timestamp: number;

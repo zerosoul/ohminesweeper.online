@@ -87,6 +87,15 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
       }
     },
     {
+      selected: article == "how-to-install-pwa",
+      icon: "/ie.box.png",
+      title: "How to install PWA",
+      clickHandler: () => {
+        dispatch(updateArticle("how-to-install-pwa"));
+        closePanel();
+      }
+    },
+    {
       selected: article == "more-tips",
       icon: "/info.png",
       title: "More Tips",

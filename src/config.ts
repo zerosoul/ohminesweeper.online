@@ -1,5 +1,5 @@
 import { Difficulty } from "@minesweeper";
-import { Level } from "./types";
+import { Level, SiteMap } from "./types";
 import { AppleWebApp } from "next/dist/lib/metadata/types/extra-types";
 import { Metadata } from "next";
 
@@ -133,5 +133,78 @@ export const CellSizes = [
   {
     name: "huge",
     value: 48
+  }
+];
+
+export const Pages: (SiteMap & { title: string })[] = [
+  {
+    title: "Home",
+    url: "https://ohminesweeper.online",
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 1
+  },
+  {
+    title: "How to play minesweeper",
+    url: "https://ohminesweeper.online/a/how-to-play",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9
+  },
+  {
+    title: "No Flags",
+    url: "https://ohminesweeper.online/a/no-flag",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "Advance Patterns",
+    url: "https://ohminesweeper.online/a/advance-patterns",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "First Click",
+    url: "https://ohminesweeper.online/a/first-click",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "Guessing",
+    url: "https://ohminesweeper.online/a/guess",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "Efficiency",
+    url: "https://ohminesweeper.online/a/efficiency",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "More Tips",
+    url: "https://ohminesweeper.online/a/more-tips",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "How to install with PWA",
+    url: "https://ohminesweeper.online/a/how-to-install-pwa",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
+  },
+  {
+    title: "About",
+    url: "https://ohminesweeper.online/a/about",
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8
   }
 ];
