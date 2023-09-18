@@ -3,28 +3,23 @@ import SelectLevel from "../select-level";
 import DarkMode from "../button-darkmode";
 import ScreenShoot from "../screenshoot";
 import SelectZoom from "../select-cellsize";
+import SelectUI from "./ui-switch";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import clsx from "clsx";
 import { toggleMini, toggleMiniRecords } from "@/redux/slice/user.data";
 import { useClickAway } from "@uidotdev/usehooks";
-// import Help from "./help";
 import SoundSwitch from "../sound-switch";
 import { RecordWindowTitle } from "../window-records";
-// import { difficulty } from "@/config";
-// import { startGame } from "@minesweeper";
 import CornerFooter from "./footer";
 import StartPanel from "./start-panel";
-
-// type Props = {
-//   startGame: () => void;
-// };
 
 const TaskBar = () => {
   const [panelVisible, setPanelVisible] = useState(false);
   const [settingVisible, setSettingVisible] = useState(false);
   const dispatch = useAppDispatch();
   const minimized = useAppSelector((store) => store.userData.minimized);
+  const ui = useAppSelector((store) => store.userData.ui);
   // const level = useAppSelector((store) => store.userData.level);
   const recordWindowMinimized = useAppSelector((store) => store.userData.recordWindowMinimized);
   const ref = useClickAway(() => {
@@ -49,16 +44,14 @@ const TaskBar = () => {
   const handleMiniRecords = () => {
     dispatch(toggleMiniRecords());
   };
-  // const handleStart = () => {
-  //   dispatch(
-  //     startGame({
-  //       difficulty: difficulty[level],
-  //       randSeed: Math.random()
-  //     })
-  //   );
-  // };
   return (
-    <div className="z-[999] window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1">
+    <div
+      className={clsx(
+        "z-[999] window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1",
+        ui == "xp" &&
+          "!shadow-none !rounded-none !bg-[url(/xp-taskbar.gif)] bg-repeat-x !bg-contain"
+      )}
+    >
       <div className="flex items-center gap-1">
         <div className="relative">
           <button
@@ -124,15 +117,20 @@ const TaskBar = () => {
               <SelectZoom />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-xs font-semibold">Theme:</label>
+              <label className="text-xs font-semibold">UI:</label>
+              <SelectUI />
+            </div>
+            <div className="flex flex-col gap-1">
               <DarkMode />
             </div>
           </aside>
         </div>
         {/* <Help /> */}
         <SoundSwitch />
-        <div className="hidden md:block w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
-        <div className="status-bar">
+        {ui == "win98" && (
+          <div className="hidden md:block w-[1px] h-4 bg-gray-400 shadow shadow-gray-300"></div>
+        )}
+        <div className={"xp" == ui ? "" : "status-bar"}>
           <CornerFooter />
         </div>
       </div>

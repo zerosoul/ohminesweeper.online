@@ -20,6 +20,7 @@ const RecordsWindow = () => {
   const dispatch = useAppDispatch();
   const [optTimestamp, setOptTimestamp] = useState<number | null>(null);
   const recordWindowMinimized = useAppSelector((store) => store.userData.recordWindowMinimized);
+  const ui = useAppSelector((store) => store.userData.ui);
   const { best, records, updateFilter, filter } = useRecords();
   const handleLevelChange = (level: any) => {
     console.log(level);
@@ -36,6 +37,7 @@ const RecordsWindow = () => {
     setOptTimestamp(timestamp ?? null);
   };
   if (recordWindowMinimized) return null;
+  const isXP = ui == "xp";
   return (
     <div className={clsx("window fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2")}>
       <WindowTitleBar allowDrag title={RecordWindowTitle} icon="/table.png">
@@ -61,9 +63,14 @@ const RecordsWindow = () => {
           />
         </div>
         <div className="sunken-panel w-full md:w-96  min-h-[100px] max-h-96 relative">
-          <table className="interactive w-full text-sm">
-            <thead>
-              <tr>
+          <table
+            className={clsx(
+              "interactive w-full text-sm",
+              isXP && "border-collapse border border-slate-500/70"
+            )}
+          >
+            <thead className={isXP ? "border-b border-b-slate-500" : ""}>
+              <tr className="text-left">
                 <th>Time</th>
                 <th>Level</th>
                 <th>Duration</th>
@@ -90,10 +97,12 @@ const RecordsWindow = () => {
                         status == "win" && "bg-teal-200"
                       )}
                     >
-                      <td width={30}>{dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss")}</td>
-                      <td>{level}</td>
-                      <td>{duration}s</td>
-                      <td>{status}</td>
+                      <td className={isXP ? "border-b border-b-slate-500/40" : ""}>
+                        {dayjs(timestamp).format("YYYY-MM-DD HH:mm:ss")}
+                      </td>
+                      <td className={isXP ? "border-b border-b-slate-500/40" : ""}>{level}</td>
+                      <td className={isXP ? "border-b border-b-slate-500/40" : ""}>{duration}s</td>
+                      <td className={isXP ? "border-b border-b-slate-500/40" : ""}>{status}</td>
                     </tr>
                   );
                 })

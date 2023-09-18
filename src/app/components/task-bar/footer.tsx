@@ -1,9 +1,12 @@
+import { useAppSelector } from "@/redux/hooks";
+import clsx from "clsx";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
 // type Props = {}
 let inter = 0;
 const CornerFooter = () => {
+  const ui = useAppSelector((store) => store.userData.ui);
   const [time, setTime] = useState(dayjs().format("hh:mm A"));
   useEffect(() => {
     inter = window.setInterval(() => {
@@ -16,8 +19,13 @@ const CornerFooter = () => {
   }, []);
 
   return (
-    <footer className="status-bar-field flex gap-1 items-center !px-2">
-      <time>{time}</time>
+    <footer
+      className={clsx(
+        "flex gap-1 items-center !px-2",
+        ui == "xp" ? "text-white" : "status-bar-field"
+      )}
+    >
+      <time className="">{time}</time>
       {/* <span>by </span>
       <a
         href="http://yangerxiao.com"

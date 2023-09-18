@@ -7,20 +7,20 @@ import React from "react";
 // type Props = {
 // }
 type ItemProps = {
-  selected: boolean;
+  selected?: boolean;
   name: string;
   icon: string;
   title: string;
   clickHandler: () => void;
 };
-const MenuItem = ({ selected, icon, title, clickHandler }: ItemProps) => {
+const MenuItem = ({ selected = false, icon, title, clickHandler }: ItemProps) => {
   return (
     <li
       onClick={clickHandler}
       role="button"
       className={clsx(
-        "p-1.5 flex items-center gap-4 cursor-pointer hover:bg-[#000E7A] hover:text-white",
-        selected && "bg-[#000E7A] text-white"
+        "p-1.5 flex items-center gap-4 cursor-pointer hover:bg-[--theme-color] hover:text-white",
+        selected && "bg-[--theme-color] text-white"
       )}
     >
       <Image src={icon} alt="help icon" width={30} height={30} />
@@ -99,7 +99,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
   return (
     <aside className="window max-w-[unset] w-52">
       <div className="window-body !p-0 !m-0">
-        <ul>
+        <ul className="">
           {arts.map((item) => {
             return <MenuItem key={item.title} {...item} />;
           })}

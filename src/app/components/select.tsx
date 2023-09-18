@@ -12,7 +12,7 @@ const Select = ({ disabled, value, onChange, list }: Props) => {
     <select
       disabled={disabled}
       value={value}
-      className="capitalize dark:bg-teal-950 dark:text-gray-100 font-semibold"
+      className="capitalize dark:bg-[--theme-desktop-dark-bg] dark:text-gray-100 font-semibold"
       onChange={onChange}
     >
       {list.map(({ name, value }) => (

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 // import { Inter } from 'next/font/google'
 import ReduxProvider from "../redux/provider";
-import "98.css";
+// import "98.css";
 import { PWAMeta } from "../config";
 import GTag from "./components/gtag";
 import { StrictMode } from "react";
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="dvh-screen flex flex-col justify-between transition-colors bg-teal-500 dark:bg-teal-950">
+      <body className="dvh-screen flex flex-col justify-between transition-colors bg-[--theme-desktop-bg]  dark:bg-[--theme-desktop-dark-bg]">
         <StrictMode>
           <ReduxProvider>{children}</ReduxProvider>
         </StrictMode>

@@ -6650,6 +6650,11 @@ wrappy@1:
   resolved "https://mirrors.cloud.tencent.com/npm/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
+xp.css@^0.3.0:
+  version "0.3.0"
+  resolved "https://mirrors.cloud.tencent.com/npm/xp.css/-/xp.css-0.3.0.tgz#1fd7c3e870657ca4d3dc67afec81c649fbb1e86a"
+  integrity sha512-+J2RkwXfJsTjoJO0VDz4F4Wqan7tvkxjRArAjmMWAqrlZ775zyEhq1nVRNcPgka0aq9sXQWY3Tc3MvwDerfzxg==
+
 yallist@^3.0.2:
   version "3.1.1"
   resolved "https://mirrors.cloud.tencent.com/npm/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"

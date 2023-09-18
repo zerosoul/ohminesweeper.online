@@ -8,7 +8,8 @@ import {
   addRecord,
   toggleSound,
   removeRecord,
-  updateCustom
+  updateCustom,
+  updateUI
 } from "./slice/user.data";
 
 import type { TypedAddListener, TypedStartListening } from "@reduxjs/toolkit";
@@ -31,7 +32,8 @@ startAppListening({
     addRecord,
     toggleSound,
     removeRecord,
-    updateCustom
+    updateCustom,
+    updateUI
   ),
 
   effect: async (action, listenerApi) => {
@@ -56,6 +58,11 @@ startAppListening({
       case "userData/updateCellSize":
         {
           set("cellSize", action.payload);
+        }
+        break;
+      case "userData/updateUI":
+        {
+          set("ui", action.payload);
         }
         break;
       case "userData/toggleSound":

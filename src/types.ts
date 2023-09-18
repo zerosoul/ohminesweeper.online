@@ -4,6 +4,7 @@ export type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 export type CellMouseEvent = (e: React.MouseEvent, coordinate: Coordinate) => void;
 export type Level = "beginner" | "intermediate" | "expert" | "custom";
 export type Theme = "auto" | "dark" | "light";
+export type UI = "win98" | "xp";
 export type Sound = "tick" | "start" | "win" | "loss";
 export type ArticleName =
   | "no-flag"
@@ -26,6 +27,7 @@ export type UserInfo = {
   email: string;
 };
 export interface UserData {
+  ui: UI;
   article: ArticleName;
   custom: Difficulty;
   sound: boolean;

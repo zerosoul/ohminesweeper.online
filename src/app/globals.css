@@ -4,7 +4,7 @@
 
 @layer components {
   .article {
-    @apply max-w-6xl py-7 text-base text-justify px-5 select-text bg-[silver];
+    @apply max-w-6xl py-7 text-base text-justify px-5 select-text bg-[--theme-bg-color];
 
     h2 {
       @apply w-full border-b border-b-gray-400 dark:border-b-gray-600 pb-2 text-2xl font-bold my-3 text-slate-900;
@@ -40,6 +40,13 @@
     animation: rolling 1.5s ease-in-out forwards infinite;
   }
 }
+:root {
+  --theme-color: #000e7a;
+  --theme-desktop-bg: #15b9a6;
+  --theme-desktop-dark-bg: rgb(4 47 46);
+  --theme-bg-color: silver;
+}
+
 html {
   overscroll-behavior: none;
   user-select: none;
@@ -49,6 +56,17 @@ html {
   -webkit-touch-callout: none;
   /* font-size: 12px;
   line-height: 16px; */
+}
+html.theme-xp {
+  &:root {
+    --theme-color: #003dd7;
+    --theme-desktop-bg: #014e98;
+    --theme-desktop-dark-bg: rgb(23 37 84);
+    --theme-bg-color: #fee;
+  }
+  .title-bar {
+    height: 28px;
+  }
 }
 body {
   cursor: url("/cursor.png"), auto;
