@@ -27,7 +27,7 @@ export default function Home() {
   const minimized = useAppSelector((store) => store.userData.minimized, shallowEqual);
   const status = useAppSelector((store) => store.minesweeper.status, shallowEqual);
   const remainingFlags = useAppSelector((store) => store.minesweeper.remainingFlags, shallowEqual);
-  const preloaded = usePreload();
+  const { loaded, progress, rehydrated } = usePreload();
   const dispatch = useAppDispatch();
   const handleMini = () => {
     dispatch(toggleMini());
@@ -37,7 +37,7 @@ export default function Home() {
       boardRef.current.requestFullscreen();
     }
   };
-  if (!preloaded) return <StartScreen />;
+  if (!loaded) return <StartScreen progress={progress} rehydrated={rehydrated} />;
   return (
     <>
       <main

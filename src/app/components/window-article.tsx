@@ -36,7 +36,7 @@ const WindowArticle = () => {
         </Link>
         <button onClick={handleClose} aria-label="Close" title="Close the window"></button>
       </WindowTitleBar>
-      <div className="article max-h-[calc(100vh_-_120px)] overflow-y-auto">
+      <div className="article max-h-[calc(100vh_-_150px)] overflow-y-auto">
         <WithCustomLoading />
       </div>
       <div className="flex items-center gap-1 px-5 py-2 absolute bottom-0 left-0 w-full bg-inherit">

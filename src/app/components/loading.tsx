@@ -9,7 +9,7 @@ const Loading = () => {
       <Image
         alt="loading icon"
         className="ani-rolling"
-        src={"/hourglass.png"}
+        src={"/win/hourglass.png"}
         width={20}
         height={28}
       />

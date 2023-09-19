@@ -49,7 +49,7 @@ const TaskBar = () => {
       className={clsx(
         "z-[999] window fixed bottom-0 left-0 w-full flex items-center justify-between gap-1 fsh !px-2 !py-1",
         ui == "xp" &&
-          "!shadow-none !rounded-none !bg-[url(/xp-taskbar.gif)] bg-repeat-x !bg-contain"
+          "!shadow-none !rounded-none !bg-[url(/win/xp-taskbar.gif)] bg-repeat-x !bg-contain"
       )}
     >
       <div className="flex items-center gap-1">
@@ -58,7 +58,7 @@ const TaskBar = () => {
             onClick={togglePanel}
             className={clsx("px-2 min-w-[unset]", panelVisible && "active")}
           >
-            <Image alt="start button" src={"/start-button.png"} width={45} height={14} />
+            <Image alt="start button" src={"/win/start-button.png"} width={45} height={14} />
           </button>
           {panelVisible && (
             <div
@@ -86,7 +86,7 @@ const TaskBar = () => {
             !recordWindowMinimized && "active"
           )}
         >
-          <Image alt="mine icon" src={"/table.png"} width={14} height={14} />
+          <Image alt="mine icon" src={"/win/table.png"} width={14} height={14} />
           <span className="hidden md:inline-block">{RecordWindowTitle}</span>
         </button>
       </div>
@@ -100,7 +100,7 @@ const TaskBar = () => {
             onClick={toggleSetting}
             className={clsx("min-w-[unset] !p-1", settingVisible && "active")}
           >
-            <Image alt="setting button" src={"/setting.png"} width={22} height={22} />
+            <Image alt="setting button" src={"/win/setting.png"} width={22} height={22} />
           </button>
           <aside
             ref={ref as LegacyRef<HTMLDivElement>}

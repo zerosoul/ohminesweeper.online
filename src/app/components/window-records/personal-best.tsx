@@ -30,7 +30,7 @@ const PersonalBest = ({ level, data }: Props) => {
           height={38}
           className={clsx("drop-shadow-xl")}
           alt="personal best"
-          src={"/cert.png"}
+          src={"/win/cert.png"}
         />
         {data ? (
           <div className="flex text-sm drop-shadow-lg">

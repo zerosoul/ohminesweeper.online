@@ -34,7 +34,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
   const arts = [
     {
       selected: article == "how-to-play",
-      icon: "/help.png",
+      icon: "/win/help.png",
       title: "How to play minesweeper",
       clickHandler: () => {
         dispatch(updateArticle("how-to-play"));
@@ -43,7 +43,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "advance-patterns",
-      icon: "/channel.png",
+      icon: "/win/channel.png",
       title: "Advanced Patterns",
       clickHandler: () => {
         dispatch(updateArticle("advance-patterns"));
@@ -52,7 +52,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "first-click",
-      icon: "/tip.png",
+      icon: "/win/tip.png",
       title: "First Click",
       clickHandler: () => {
         dispatch(updateArticle("first-click"));
@@ -61,7 +61,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "guess",
-      icon: "/question.png",
+      icon: "/win/question.png",
       title: "Guessing",
       clickHandler: () => {
         dispatch(updateArticle("guess"));
@@ -70,7 +70,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "no-flag",
-      icon: "/agent.png",
+      icon: "/win/agent.png",
       title: "No Flags",
       clickHandler: () => {
         dispatch(updateArticle("no-flag"));
@@ -79,7 +79,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "efficiency",
-      icon: "/keys.png",
+      icon: "/win/keys.png",
       title: "Efficiency",
       clickHandler: () => {
         dispatch(updateArticle("efficiency"));
@@ -88,7 +88,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "how-to-install-pwa",
-      icon: "/ie.box.png",
+      icon: "/win/ie.box.png",
       title: "How to install PWA",
       clickHandler: () => {
         dispatch(updateArticle("how-to-install-pwa"));
@@ -97,7 +97,7 @@ const StartPanel = ({ closePanel }: { closePanel: () => void }) => {
     },
     {
       selected: article == "more-tips",
-      icon: "/info.png",
+      icon: "/win/info.png",
       title: "More Tips",
       clickHandler: () => {
         dispatch(updateArticle("more-tips"));

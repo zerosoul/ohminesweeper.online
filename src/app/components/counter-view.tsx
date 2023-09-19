@@ -1,6 +1,8 @@
 // import { useAppSelector } from "@/redux/hooks";
 // import React, { useEffect } from "react";
 
+import { memo } from "react";
+
 type Props = {
   count: number;
 };
@@ -18,4 +20,4 @@ const CounterView = ({ count }: Props) => {
   );
 };
 
-export default CounterView;
+export default memo(CounterView, (prev, next) => prev.count === next.count);
