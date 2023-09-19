@@ -78,7 +78,7 @@ const Hotkeys = ({ children }: Props) => {
               ? document.querySelector(`#cell-${c.x}-${c.y}`)
               : document.querySelector(`#cell-${coord.x}-${coord.y}`);
             if (cell) {
-              cell.focus();
+              (cell as HTMLDivElement).focus();
             }
           } catch (error) {}
         }
