@@ -78,7 +78,7 @@ select {
 /* .sunken-panel {
   overflow-y: scroll;
 } */
-button:not(:disabled).active,
+html:not(.theme-xp) button:not(:disabled).active,
 input[type="reset"]:not(:disabled).active,
 input[type="submit"]:not(:disabled).active {
   box-shadow:

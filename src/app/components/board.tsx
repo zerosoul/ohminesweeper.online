@@ -6,6 +6,7 @@ import { shallowEqual } from "react-redux";
 import Loading from "./loading";
 import { Sound } from "@/types";
 import { difficulty } from "@/config";
+import Hotkeys from "./hotkeys";
 
 // type Props = {
 //   startNewGame: () => void;
@@ -72,10 +73,15 @@ const Board = () => {
   const waiting = status === "waiting";
   const gameOver = status === "loss" || status === "win";
   return (
-    <div className="relative flex flex-col justify-center items-center min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200">
-      {waiting ? <Loading /> : rows}
-      {gameOver && <div className="absolute left-0 top-0 w-full h-full"></div>}
-    </div>
+    <Hotkeys>
+      <div
+        tabIndex={2}
+        className="relative flex flex-col justify-center items-center min-w-[200px] min-h-[200px] border-t border-t-[#818181] border-l border-l-[#818181] border-r border-r-gray-200 border-b border-b-gray-200"
+      >
+        {waiting ? <Loading /> : rows}
+        {gameOver && <div className="absolute left-0 top-0 w-full h-full"></div>}
+      </div>
+    </Hotkeys>
   );
 };
 

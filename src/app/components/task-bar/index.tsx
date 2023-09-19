@@ -96,6 +96,7 @@ const TaskBar = () => {
 
         <div className="relative flex">
           <button
+            id="MS_SETTING_BUTTON"
             onClick={toggleSetting}
             className={clsx("min-w-[unset] !p-1", settingVisible && "active")}
           >

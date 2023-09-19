@@ -181,9 +181,14 @@ function Cell({ coordinate, cell, leftClick, rightClick }: CellProps) {
       : "";
   return (
     <div
+      role="button"
+      id={`cell-${coordinate.x}-${coordinate.y}`}
+      tabIndex={cursorPointer ? 1 : undefined}
+      data-coord={JSON.stringify(coordinate)}
       data-sound={enableSound ? sound : ""}
       className={clsx(
         "flex justify-center items-center relative",
+        "focus:sepia active:sepia",
         cursorPointer && "cursor-pointer"
       )}
       style={{ width: size, height: size }}

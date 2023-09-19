@@ -23,18 +23,12 @@ const Keyboard = () => {
           <td className="p-2 border border-gray-300">Space/Enter</td>
         </tr>
         <tr>
-          <td className="p-2 border border-gray-300">Set Flag</td>
+          <td className="p-2 border border-gray-300">Set/Unset Flag</td>
           <td className="p-2 border border-gray-300">1</td>
         </tr>
         <tr>
-          <td className="p-2 border border-gray-300">Set Flag or Chord</td>
-          <td className="p-2 border border-gray-300">
-            Ctrl+Space/Ctrl+Enter/Shift+Space/Shift+Enter
-          </td>
-        </tr>
-        <tr>
-          <td className="p-2 border border-gray-300">Open/Close Menu</td>
-          <td className="p-2 border border-gray-300">Esc/Windows Key+Z</td>
+          <td className="p-2 border border-gray-300">Close Window</td>
+          <td className="p-2 border border-gray-300">Esc</td>
         </tr>
         <tr>
           <td className="p-2 border border-gray-300">How to Play</td>
@@ -45,7 +39,7 @@ const Keyboard = () => {
           <td className="p-2 border border-gray-300">F2</td>
         </tr>
         <tr>
-          <td className="p-2 border border-gray-300">Game Options</td>
+          <td className="p-2 border border-gray-300">Open/Close Game Options</td>
           <td className="p-2 border border-gray-300">F5</td>
         </tr>
       </tbody>
