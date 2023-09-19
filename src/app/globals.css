@@ -54,8 +54,10 @@ html {
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  /* font-size: 12px;
-  line-height: 16px; */
+}
+* {
+  /* 去除锯齿 */
+  -webkit-font-smoothing: antialiased !important;
 }
 html.theme-xp {
   &:root {
