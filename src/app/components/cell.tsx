@@ -189,7 +189,7 @@ function Cell({ coordinate, cell, leftClick, rightClick }: CellProps) {
       className={clsx(
         "flex justify-center items-center relative",
         "focus:sepia active:sepia",
-        cursorPointer && "cursor-pointer"
+        cursorPointer && "not-reveal cursor-pointer"
       )}
       style={{ width: size, height: size }}
       onClick={leftClick}

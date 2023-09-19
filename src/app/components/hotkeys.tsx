@@ -8,92 +8,113 @@ type Props = {
   children: React.ReactNode;
 };
 type ArrowDirection = "ArrowUp" | "ArrowRight" | "ArrowDown" | "ArrowLeft";
-const getNextCoord = ({
-  coord,
-  direction,
-  xMax,
-  yMax
-}: {
-  coord: Coordinate;
-  direction: ArrowDirection;
-  xMax: number;
-  yMax: number;
-}) => {
-  let res = { ...coord };
-  switch (direction) {
-    case "ArrowDown":
-      {
-        if (res.y == yMax) {
-          res.y = 0;
-        } else {
-          res.y = res.y + 1;
-        }
-      }
-      break;
-    case "ArrowUp":
-      {
-        if (res.y == 0) {
-          res.y = yMax;
-        } else {
-          res.y = res.y - 1;
-        }
-      }
-      break;
-    case "ArrowRight":
-      {
-        if (res.x == xMax) {
-          res.x = 0;
-        } else {
-          res.x = res.x + 1;
-        }
-      }
-      break;
-    case "ArrowLeft":
-      {
-        if (res.x == 0) {
-          res.x = xMax;
-        } else {
-          res.x = res.x - 1;
-        }
-      }
-      break;
+const getNotReveals = () => {
+  const _arr = [...document.querySelectorAll(".board .not-reveal")].map((ele) => {
+    let res = "";
+    try {
+      const { x, y } = JSON.parse((ele as HTMLDivElement)?.dataset?.coord || "");
+      res = `${x}|${y}`;
+    } catch (error) {
+      console.log(error);
+    }
+    return res;
+  });
+  return _arr.filter((a) => !!a);
+};
+const getFirstNotReveal = () => {
+  const [x, y] = getNotReveals()[0].split("|");
+  console.log("first", x, y);
 
-    default:
-      break;
-  }
-  if (res.x < 0 || res.x > xMax) {
-    return null;
-  }
-  if (res.y < 0 || res.y > yMax) {
-    return null;
-  }
-
-  return res;
+  return document.querySelector(`#cell-${x}-${y}`) as HTMLDivElement;
 };
 const Hotkeys = ({ children }: Props) => {
   const level = useAppSelector((store) => store.userData.level);
+  const status = useAppSelector((store) => store.minesweeper.status);
   const dispatch = useAppDispatch();
+  const { width, height } = difficulty[level];
+  const xMax = width - 1;
+  const yMax = height - 1;
+  const enableBoardHotkeys = status == "running" || status == "ready";
+  // @ts-ignore
+  const getNextCoord = ({
+    coord,
+    direction,
+    notReveals
+  }: {
+    coord: Coordinate;
+    direction: ArrowDirection;
+    notReveals: string[];
+  }) => {
+    let res = { ...coord };
+    switch (direction) {
+      case "ArrowDown":
+        {
+          if (res.y == yMax) {
+            res.y = 0;
+            res.x = res.x == xMax ? 0 : res.x + 1;
+          } else {
+            res.y = res.y + 1;
+          }
+        }
+        break;
+      case "ArrowUp":
+        {
+          if (res.y == 0) {
+            res.y = yMax;
+            res.x = res.x == 0 ? xMax : res.x - 1;
+          } else {
+            res.y = res.y - 1;
+          }
+        }
+        break;
+      case "ArrowRight":
+        {
+          if (res.x == xMax) {
+            res.x = 0;
+            res.y = res.y == xMax ? 0 : res.y + 1;
+          } else {
+            res.x = res.x + 1;
+          }
+        }
+        break;
+      case "ArrowLeft":
+        {
+          if (res.x == 0) {
+            res.x = xMax;
+            res.y = res.y == 0 ? yMax : res.y - 1;
+          } else {
+            res.x = res.x - 1;
+          }
+        }
+        break;
+
+      default:
+        break;
+    }
+    console.log({ notReveals, res, coord });
+
+    if (!notReveals.includes(`${res.x}|${res.y}`)) {
+      return getNextCoord({ coord: res, direction, notReveals });
+    }
+    return res;
+  };
   useHotkeys(
     "right,left,up,down",
     (evt) => {
       console.log(evt);
       let activeEle = document.activeElement as HTMLDivElement;
       console.log({ activeEle });
-      activeEle =
-        activeEle.nodeName == "BODY"
-          ? (document.querySelector("#cell-0-0") as HTMLDivElement)
-          : activeEle;
+      activeEle = activeEle.nodeName == "BODY" ? getFirstNotReveal() : activeEle;
       if (activeEle) {
         activeEle.classList.add("a");
         let coord: any = activeEle.dataset.coord;
         if (coord) {
           try {
             coord = JSON.parse(coord) as Coordinate;
-            const { width, height } = difficulty[level];
+
             const c = getNextCoord({
+              notReveals: getNotReveals(),
               coord,
-              xMax: width - 1,
-              yMax: height - 1,
               direction: evt.code as ArrowDirection
             });
             console.log({ c });
@@ -108,7 +129,11 @@ const Hotkeys = ({ children }: Props) => {
         }
       }
     },
-    { scopes: "minesweeper", preventDefault: true }
+    {
+      scopes: "minesweeper",
+      preventDefault: true,
+      enabled: enableBoardHotkeys
+    }
   );
   useHotkeys(
     "space,enter",
@@ -120,11 +145,26 @@ const Hotkeys = ({ children }: Props) => {
           try {
             coord = JSON.parse(coord) as Coordinate;
             dispatch(revealCell({ coordinate: coord }));
+            setTimeout(() => {
+              const nextCoord = getNextCoord({
+                coord,
+                notReveals: getNotReveals(),
+                direction: "ArrowDown"
+              });
+              console.log({ nextCoord });
+
+              if (nextCoord) {
+                const cell = document.querySelector(`#cell-${nextCoord.x}-${nextCoord.y}`);
+                if (cell) {
+                  (cell as HTMLDivElement).focus();
+                }
+              }
+            }, 150);
           } catch (error) {}
         }
       }
     },
-    { scopes: "minesweeper", preventDefault: true }
+    { scopes: "minesweeper", preventDefault: true, enabled: enableBoardHotkeys }
   );
   useHotkeys(
     "1",
