@@ -1,7 +1,7 @@
 import { difficulty } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Coordinate, revealCell, startGame, toggleFlag } from "@minesweeper";
-import { updateArticle } from "@/redux/slice/user.data";
+import { toggleMini, toggleMiniRecords, toggleSound, updateArticle } from "@/redux/slice/user.data";
 import React from "react";
 import { HotkeysProvider, useHotkeys } from "react-hotkeys-hook";
 type Props = {
@@ -170,7 +170,7 @@ const Hotkeys = ({ children }: Props) => {
     { scopes: "minesweeper", preventDefault: true, enabled: enableBoardHotkeys }
   );
   useHotkeys(
-    "1",
+    "1,f",
     () => {
       const activeEle = document.activeElement as HTMLElement;
       if (activeEle) {
@@ -220,6 +220,27 @@ const Hotkeys = ({ children }: Props) => {
     "esc",
     () => {
       dispatch(updateArticle(""));
+    },
+    { scopes: "article-window", preventDefault: true }
+  );
+  useHotkeys(
+    "m",
+    () => {
+      dispatch(toggleMini());
+    },
+    { scopes: "article-window", preventDefault: true }
+  );
+  useHotkeys(
+    "r",
+    () => {
+      dispatch(toggleMiniRecords());
+    },
+    { scopes: "article-window", preventDefault: true }
+  );
+  useHotkeys(
+    "s",
+    () => {
+      dispatch(toggleSound());
     },
     { scopes: "article-window", preventDefault: true }
   );

@@ -27,7 +27,19 @@ const Keyboard = () => {
           <td className="p-2 border border-gray-300">1</td>
         </tr>
         <tr>
-          <td className="p-2 border border-gray-300">Close Window</td>
+          <td className="p-2 border border-gray-300">Toggle Sound</td>
+          <td className="p-2 border border-gray-300">S</td>
+        </tr>
+        <tr>
+          <td className="p-2 border border-gray-300">Toggle Minesweeper Window</td>
+          <td className="p-2 border border-gray-300">M</td>
+        </tr>
+        <tr>
+          <td className="p-2 border border-gray-300">Toggle Play Records Window</td>
+          <td className="p-2 border border-gray-300">R</td>
+        </tr>
+        <tr>
+          <td className="p-2 border border-gray-300">Close Article Window</td>
           <td className="p-2 border border-gray-300">Esc</td>
         </tr>
         <tr>
