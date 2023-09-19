@@ -22,16 +22,40 @@ const getNextCoord = ({
   let res = { ...coord };
   switch (direction) {
     case "ArrowDown":
-      res.y = res.y + 1;
+      {
+        if (res.y == yMax) {
+          res.y = 0;
+        } else {
+          res.y = res.y + 1;
+        }
+      }
       break;
     case "ArrowUp":
-      res.y = res.y - 1;
+      {
+        if (res.y == 0) {
+          res.y = yMax;
+        } else {
+          res.y = res.y - 1;
+        }
+      }
       break;
     case "ArrowRight":
-      res.x = res.x + 1;
+      {
+        if (res.x == xMax) {
+          res.x = 0;
+        } else {
+          res.x = res.x + 1;
+        }
+      }
       break;
     case "ArrowLeft":
-      res.x = res.x - 1;
+      {
+        if (res.x == 0) {
+          res.x = xMax;
+        } else {
+          res.x = res.x - 1;
+        }
+      }
       break;
 
     default:
@@ -68,8 +92,8 @@ const Hotkeys = ({ children }: Props) => {
             const { width, height } = difficulty[level];
             const c = getNextCoord({
               coord,
-              xMax: width,
-              yMax: height,
+              xMax: width - 1,
+              yMax: height - 1,
               direction: evt.code as ArrowDirection
             });
             console.log({ c });

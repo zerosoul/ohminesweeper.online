@@ -32,15 +32,15 @@ const Keyboard = () => {
         </tr>
         <tr>
           <td className="p-2 border border-gray-300">How to Play</td>
-          <td className="p-2 border border-gray-300">F1</td>
+          <td className="p-2 border border-gray-300">F1/Mac Cmd+1</td>
         </tr>
         <tr>
           <td className="p-2 border border-gray-300">New Game</td>
-          <td className="p-2 border border-gray-300">F2</td>
+          <td className="p-2 border border-gray-300">F2/Mac Cmd+2</td>
         </tr>
         <tr>
           <td className="p-2 border border-gray-300">Open/Close Game Options</td>
-          <td className="p-2 border border-gray-300">F5</td>
+          <td className="p-2 border border-gray-300">F5/Mac Cmd+5</td>
         </tr>
       </tbody>
     </table>
