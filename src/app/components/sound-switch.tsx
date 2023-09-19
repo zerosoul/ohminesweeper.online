@@ -22,7 +22,7 @@ const SoundSwitch = () => {
       {!sound && (
         <div className="w-full h-0.5 bg-red-600 absolute left-0 top-1/2 -translate-y-1/2 -rotate-45"></div>
       )}
-      <Image alt="sound icon" src={"/sound.png"} width={22} height={22} />
+      <Image alt="sound icon" src={"/win/sound.png"} width={22} height={22} />
     </button>
   );
 };

@@ -76,7 +76,7 @@ const ScreenShoot = () => {
         <Image
           className={disabled ? "grayscale opacity-60" : ""}
           alt="screen shoot button"
-          src={"/camera.png"}
+          src={"/win/camera.png"}
           width={22}
           height={22}
         />
