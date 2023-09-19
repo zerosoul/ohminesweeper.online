@@ -105,6 +105,9 @@ const Hotkeys = ({ children }: Props) => {
       let activeEle = document.activeElement as HTMLDivElement;
       console.log({ activeEle });
       activeEle = activeEle.nodeName == "BODY" ? getFirstNotReveal() : activeEle;
+      if (!activeEle.classList.contains("not-reveal")) {
+        activeEle = getFirstNotReveal();
+      }
       if (activeEle) {
         activeEle.classList.add("a");
         let coord: any = activeEle.dataset.coord;
