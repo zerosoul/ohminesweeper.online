@@ -11,12 +11,13 @@
 
 ## Features & Highlights
 
+- [x] Includes all the functionalities of the classic Minesweeper game. 💣
 - [x] Windows98 & Windows XP style UI (98.css) 💾
 - [x] Beginner/Intermediate/Expert mode 😈
 - [x] Sound effect 🔊
 - [x] High-score saved for each level 🏁
 - [x] Safe first click 🦺
-- [x] PWA 📱
+- [x] PWA 📦
 - [x] Mobile friendly 📱
 - [x] Keyboard shortcuts ⌨️
 - [ ] Multi-language 🌏
