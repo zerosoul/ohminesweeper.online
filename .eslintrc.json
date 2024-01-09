@@ -1,0 +1,6 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:mdx/recommended"],
+  "rules": {
+    "no-unused-vars": "error"
+  }
+}

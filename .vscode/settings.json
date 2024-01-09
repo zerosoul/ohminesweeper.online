@@ -1,0 +1,74 @@
+{
+  "todohighlight.isCaseSensitive": false,
+  "css.validate": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript"],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "appinstalled",
+    "beforeinstallprompt",
+    "boardos",
+    "btns",
+    "favs",
+    "localforage",
+    "localstorage",
+    "magiclink",
+    "navs",
+    "oidc",
+    "Privoce",
+    "reduxjs",
+    "Swiper",
+    "thirdparty",
+    "tippyjs",
+    "toastui",
+    "udecode",
+    "uiball",
+    "uids",
+    "unreads",
+    "upsert",
+    "upserted",
+    "upserting",
+    "vocechat",
+    "wavesurfer",
+    "webrowse",
+    "Wechat"
+  ],
+  "reactSnippets.settings.prettierEnabled": true,
+  "reactSnippets.settings.importReactOnTop": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

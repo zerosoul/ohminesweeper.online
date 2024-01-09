@@ -1,0 +1,53 @@
+import ImageList from "./image-list";
+
+## Minesweeper Patterns
+
+A pattern is a common arrangement of numbers with only one solution. Learning patterns is important because thinking wastes time.
+
+The two most famous patterns are 1-2-1 and 1-2-2-1. You should memorise these immediately.
+
+<ImageList type="part1" />
+
+## Advanced Patterns
+
+The 1-2-1 and 1-2-2-1 patterns are actually combinations of a more important pattern. When you see 1-2-X on a row the X is always a mine.
+
+Take some time to understand how this pattern works. There are two mines in three squares (because the 2 touches three squares) but there is one mine in the first two squares (because the 1 touches two of the three squares). The third square must contain the other mine.
+
+When a good NF player sees multiple safe squares, the ones containing numbers (which might be borders) are opened last.
+
+<ImageList type="part2" />
+
+The other important pattern is 1-1-X on a row starting from a border. The first 1 touches two squares and the second 1 touches three squares. Both clues are true so the third square must be empty. This logic is the opposite of the 1-2-X pattern (which always has a mine in the third square).
+
+<ImageList type="part3" />
+
+The 1-1-X pattern can also wrap around corners...
+
+<ImageList type="part4" />
+
+## Advanced Logic
+
+Sometimes a mine is in a subset of squares so the remaining squares must be safe. This is how the 1-1-X pattern works.
+
+<ImageList type="part5" />
+
+Sometimes it is better to find mines instead of only looking for safe squares.
+
+<ImageList type="part6" />
+
+You can combine patterns and logic to form chains of logic alternating between finding mines, using 1-1-X and using subsets. One of the earliest Minesweeper games was called Relentless Logic!
+
+<ImageList type="part7" />
+
+## Pattern Reduction
+
+Complex mine arrangements can be reduced to patterns.
+
+You simply subtract the known mines from each number. For example, if you flag a mine touching a 3 it becomes a 2.
+
+<ImageList type="part8" />
+
+The next examples are more complicated because you need to solve the entire situation in your head to see the pattern. If you do not see the patterns take turns reducing numbers and using 1-2-X to solve these examples.
+
+<ImageList type="part9" />
