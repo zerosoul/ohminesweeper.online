@@ -39,7 +39,7 @@
     "file-saver": "^2.0.5",
     "html-to-image": "^1.11.11",
     "idb-keyval": "^6.2.1",
-    "next": "15.0.3",
+    "next": "14.2.15",
     "postcss": "8.4.49",
     "react": "18.3.1",
     "react-confetti": "^6.1.0",
