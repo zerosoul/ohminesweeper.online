@@ -59,6 +59,5 @@
     "postcss-import": "^16.1.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.3.3"
-  },
-  "packageManager": "pnpm@9"
+  }
 }
