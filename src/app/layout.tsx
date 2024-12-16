@@ -6,6 +6,7 @@ import ReduxProvider from "../redux/provider";
 import { PWAMeta, viewportSetting } from "../config";
 import GTag from "@/components/gtag";
 import { StrictMode } from "react";
+import PlausibleCode from "../components/plausible";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const viewport = viewportSetting;
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <aside id="confetti-modal" className="minesweeper-modal"></aside>
         <aside id="confirm-modal" className="minesweeper-modal"></aside>
         {process.env.NODE_ENV == "production" && <GTag />}
+        {process.env.NODE_ENV == "production" && <PlausibleCode />}
       </body>
     </html>
   );
