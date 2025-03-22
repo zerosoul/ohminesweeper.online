@@ -56,12 +56,18 @@ const userDataSlice = createSlice({
     },
     toggleMini(state) {
       state.minimized = !state.minimized;
+      if (!state.minimized) {
+        state.recordWindowMinimized = true;
+      }
     },
     toggleSound(state) {
       state.sound = !state.sound;
     },
     toggleMiniRecords(state) {
       state.recordWindowMinimized = !state.recordWindowMinimized;
+      if (!state.recordWindowMinimized) {
+        state.minimized = true;
+      }
     },
     updateCellSize(state, action: PayloadAction<number>) {
       state.cellSize = action.payload;
