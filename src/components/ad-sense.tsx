@@ -5,7 +5,7 @@ type Props = {};
 const AdSense = ({}: Props) => {
   return (
     <Script
-      // async
+      async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.PUBLIC_NEXT_AD_SENSE_PID}`}
       // strategy="afterInteractive"
       crossOrigin="anonymous"
