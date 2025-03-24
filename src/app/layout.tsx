@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NODE_ENV == "production" && <GTag />}
         {process.env.NODE_ENV == "production" && <PlausibleCode />}
         {process.env.NODE_ENV == "production" && (
-          <aside className="fixed top-0 left-1/2 -translate-x-1/2 h-20  w-full">
+          <aside className="fixed top-0 left-1/2 -translate-x-1/2 h-20  w-full max-w-md">
             <AdBlock />
           </aside>
         )}
