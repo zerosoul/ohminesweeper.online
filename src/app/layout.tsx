@@ -7,7 +7,7 @@ import { PWAMeta, viewportSetting } from "../config";
 import GTag from "@/components/gtag";
 import { StrictMode } from "react";
 import PlausibleCode from "../components/plausible";
-import AdSense from "../components/ad-sense";
+// import AdSense from "../components/ad-sense";
 import AdBlock from "../components/ad-block";
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>{process.env.NODE_ENV == "production" && <AdSense />}</head>
+      {/* <head>{process.env.NODE_ENV == "production" && <AdSense />}</head> */}
       <body className="dvh-screen flex flex-col justify-between transition-colors bg-[--theme-desktop-bg]  dark:bg-[--theme-desktop-dark-bg]">
         <StrictMode>
           <ReduxProvider>{children}</ReduxProvider>
