@@ -6,7 +6,6 @@ import ReduxProvider from "../redux/provider";
 import { PWAMeta, viewportSetting } from "../config";
 import GTag from "@/components/gtag";
 import { StrictMode } from "react";
-import PlausibleCode from "../components/plausible";
 // import AdSense from "../components/ad-sense";
 import AdBlock from "../components/ad-block";
 // const inter = Inter({ subsets: ['latin'] })
@@ -41,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <aside id="confetti-modal" className="minesweeper-modal"></aside>
         <aside id="confirm-modal" className="minesweeper-modal"></aside>
         {process.env.NODE_ENV == "production" && <GTag />}
-        {process.env.NODE_ENV == "production" && <PlausibleCode />}
         {process.env.NODE_ENV == "production" && (
           <aside className="fixed top-0 left-1/2 -translate-x-1/2 h-20  w-full max-w-md">
             <AdBlock />
