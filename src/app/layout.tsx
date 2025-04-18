@@ -6,8 +6,7 @@ import ReduxProvider from "../redux/provider";
 import { PWAMeta, viewportSetting } from "../config";
 import GTag from "@/components/gtag";
 import { StrictMode } from "react";
-// import AdSense from "../components/ad-sense";
-import AdBlock from "../components/ad-block";
+import AdSense from "../components/ad-sense";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const viewport = viewportSetting;
@@ -31,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      {/* <head>{process.env.NODE_ENV == "production" && <AdSense />}</head> */}
+      <head>{process.env.NODE_ENV == "production" && <AdSense />}</head>
       <body className="dvh-screen flex flex-col justify-between transition-colors bg-[--theme-desktop-bg]  dark:bg-[--theme-desktop-dark-bg]">
         <StrictMode>
           <ReduxProvider>{children}</ReduxProvider>
@@ -40,11 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <aside id="confetti-modal" className="minesweeper-modal"></aside>
         <aside id="confirm-modal" className="minesweeper-modal"></aside>
         {process.env.NODE_ENV == "production" && <GTag />}
-        {process.env.NODE_ENV == "production" && (
-          <aside className="fixed top-0 left-1/2 -translate-x-1/2 h-20  w-full max-w-md">
-            <AdBlock />
-          </aside>
-        )}
       </body>
     </html>
   );
