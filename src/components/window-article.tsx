@@ -21,7 +21,7 @@ const WindowArticle = () => {
     ssr: true
   });
   const handleCopy = () => {
-    copy(`https://ohminesweeper.online/a/${article}`);
+    copy(`https://minesweeper.sinqi.tools/a/${article}`);
   };
   return (
     <aside className="window min-h-[200px] w-[calc(100%_-_20px)] max-w-4xl fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 dark:brightness-75">
@@ -46,7 +46,7 @@ const WindowArticle = () => {
             href={`/a/${article}`}
             target="_blank"
           >
-            {`https://ohminesweeper.online/a/${article}`}
+            {`https://minesweeper.sinqi.tools/a/${article}`}
           </Link>
           <button
             className="hidden md:block ml-2 !p-1 min-w-[unset] text-[10px]"

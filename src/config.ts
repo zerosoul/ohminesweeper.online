@@ -95,7 +95,9 @@ export const viewportSetting: Viewport = {
 };
 export const PWAMeta: Metadata = {
   metadataBase: new URL(
-    process.env.NODE_ENV == "development" ? "http://localhost:3888" : "https://ohminesweeper.online"
+    process.env.NODE_ENV == "development"
+      ? "http://localhost:3888"
+      : "https://minesweeper.sinqi.tools"
   ),
   applicationName: "MineSweeper",
   title,
@@ -107,7 +109,7 @@ export const PWAMeta: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://ohminesweeper.online",
+    url: "https://minesweeper.sinqi.tools",
     siteName: "MineSweeper",
     title,
     description
@@ -143,7 +145,7 @@ export const CellSizes = [
     value: 48
   }
 ];
-export const OnlineUrl = "https://ohminesweeper.online";
+export const OnlineUrl = "https://minesweeper.sinqi.tools";
 export const Pages: (SiteMap & { title: string })[] = [
   {
     title: "Home",

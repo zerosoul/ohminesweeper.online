@@ -1,7 +1,7 @@
 {
   "name": "ohminesweeper.online",
   "version": "1.2.0",
-  "homepage": "https://ohminesweeper.online",
+  "homepage": "https://minesweeper.sinqi.tools",
   "description": "💣💥 An old style minesweeper game built with React, Next.js, and Tailwind CSS.",
   "keywords": [
     "minesweeper",

@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     google: "MWrPIw9iMotX9pjUS-MiAj-CN58odQTTvdHtpWlxy-s"
   },
   alternates: {
-    canonical: "https://ohminesweeper.online"
+    canonical: "https://minesweeper.sinqi.tools"
     // languages: {
-    //   'en-US': 'https://ohminesweeper.online/en-US',
-    //   'zh-CN': 'https://ohminesweeper.online/zh-CN',
+    //   'en-US': 'https://minesweeper.sinqi.tools/en-US',
+    //   'zh-CN': 'https://minesweeper.sinqi.tools/zh-CN',
     // },
   }
 };

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/private/"
     },
-    sitemap: "https://ohminesweeper.online/sitemap.xml"
+    sitemap: "https://minesweeper.sinqi.tools/sitemap.xml"
   };
 }
